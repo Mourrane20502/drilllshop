@@ -1,10 +1,25 @@
+import { StaticImageData } from "next/image";
 import Image from "../app/assets/ProductNike.PNG";
 import hoverImage from "../app/assets/productNikeHover.PNG";
 import slaughterhover from "../app/assets/slaughter.PNG";
 import slaughter from "../app/assets/slaughterhover.PNG";
 
+// export const ProductPage = [
+//   {id : 1 , name:"Nike Jackets", price: 300, description: "This is a jacket that will keep you warm in the winter and cool in the summer.", image: Image, hoverImage: hoverImage},
+// ]
+interface Product {
+  id: number;
+  name: string;
+  price: number;
+  description: string;
+  image: string | StaticImageData; // Assuming Image is of type 'any' here (you can use 'StaticImageData' if you want stricter typing)
+  hoverImage: StaticImageData;
+  href: string;
+  isAvailable?: boolean;
+  ProductImages?: string[];
+}
 
-export const ProductsList = [
+export const ProductsList : Product[] = [
   {
     id: 1,
     name: "Nike Jackets",
@@ -13,7 +28,9 @@ export const ProductsList = [
     description: "This is a jacket that will keep you warm in the winter and cool in the summer.",
     image: Image,
     hoverImage: hoverImage,
-    href : "/product/1"
+    href : "/product/1",
+    isAvailable: true,
+    ProductImages : [Image, hoverImage, Image, hoverImage]
   },
   {
     id: 2,
@@ -22,7 +39,10 @@ export const ProductsList = [
     description: "This is a jacket that will keep you warm in the winter and cool in the summer.",
     image: Image,
     hoverImage: hoverImage, 
-    href : "/product/2"
+    href : "/product/2",
+    isAvailable :false
+    // ProductImages : [Image, hoverImage, Image, hoverImage]
+
 
   },
   {
@@ -32,7 +52,9 @@ export const ProductsList = [
     description: "This is a jacket that will keep you warm in the winter and cool in the summer.",
     image: Image,
     hoverImage: hoverImage,
-    href : "/product/3"
+    href : "/product/3",
+    // ProductImages : [Image, hoverImage, Image, hoverImage]
+
   },
   {
     id: 4,
@@ -41,7 +63,9 @@ export const ProductsList = [
     description: "This is a jacket that will keep you warm in the winter and cool in the summer.",
     image: Image,
     hoverImage: hoverImage,
-    href : "/product/4"
+    href : "/product/4",   
+    //  ProductImages : [Image, hoverImage, Image, hoverImage]
+
   },
   {
     id: 5,
@@ -50,7 +74,9 @@ export const ProductsList = [
     description: "This is a jacket that will keep you warm in the winter and cool in the summer.",
     image: Image,
     hoverImage: hoverImage,
-    href : "/product/5"
+    href : "/product/5",
+    // ProductImages : [Image, hoverImage, Image, hoverImage]
+
   },
   {
     id: 6,
