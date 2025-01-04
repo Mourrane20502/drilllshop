@@ -9,6 +9,7 @@ import { useState } from "react";
 import CollabsSection from "./_components/CollabsSection";
 import { FormCard } from "./_components/FormCard";
 // import Footer from "./_navigation/footer";
+import Footer from "./_navigation/footer";
 import formPhoto from "./assets/drillguys.jpg";
 import brandPic from "./assets/intro-pic.png";
 import mainPhoto from "./assets/mainphoto.jpg";
@@ -135,7 +136,7 @@ export default function Home() {
 
     
     {/* Footer Section */}
-    {/* <Footer /> */}
+    <Footer />
     </div>
 
   );

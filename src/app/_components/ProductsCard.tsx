@@ -8,8 +8,8 @@ interface ProductsCardProps {
   name: string;
   price: number;
   description: string;
-  image: StaticImageData;
-  hoverImage: StaticImageData; 
+  image: string | StaticImageData;
+  hoverImage: string | StaticImageData;
   href : string;
 }
 

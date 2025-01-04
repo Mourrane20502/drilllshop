@@ -40,7 +40,7 @@ export const ProductsList : Product[] = [
     image: Image,
     hoverImage: hoverImage, 
     href : "/product/2",
-    isAvailable :false
+    isAvailable :true
     // ProductImages : [Image, hoverImage, Image, hoverImage]
 
 
