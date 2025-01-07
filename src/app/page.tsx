@@ -9,6 +9,7 @@ import { useState } from "react";
 import CollabsSection from "./_components/CollabsSection";
 import { FormCard } from "./_components/FormCard";
 // import Footer from "./_navigation/footer";
+import FeedbackSection from "./_components/FeedbackSlider";
 import Footer from "./_navigation/footer";
 import formPhoto from "./assets/drillguys.jpg";
 import brandPic from "./assets/intro-pic.png";
@@ -18,9 +19,14 @@ export default function Home() {
   const [searchQuery, setSearchQuery] = useState('');
 
 
-  const filteredProducts = ProductsList.filter((product) =>
-    product.name.toLowerCase().startsWith(searchQuery.toLowerCase())
-  );
+  const categories = [...new Set(ProductsList.map((product) => product.category))];
+
+  // Filter products based on search query
+  const filteredProducts = searchQuery
+    ? ProductsList.filter((product) =>
+        product.name.toLowerCase().includes(searchQuery.toLowerCase())
+      )
+    : ProductsList;
 
 
   return (
@@ -76,48 +82,68 @@ export default function Home() {
   <Youtube className="text-red-500 hover:text-red-700" />
 </div> */}
       {/* Products Section */}
-      <section id='products' className="w-full px-8 dark:bg-black  max-md:-mt-10 py-5 scroll-m-16">
-        <div className="flex items-baseline justify-center gap-10 mb-9">
-        <input
-  type="text"
-  value={searchQuery}
-  onChange={(e) => setSearchQuery(e.target.value)}
-  placeholder="Search for a product..."
-  className="w-full max-w-lg px-4 py-2 rounded-lg border dark:text-black border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500 sm:max-w-xs md:max-w-md"
-/>
-        </div>
-        <div className="grid grid-cols-1 place-content-center   md:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-8">
-        {filteredProducts.length > 0 ? (
-  filteredProducts.map((product) => (
-    <ProductsCard key={product.id} {...product} />
-  ))
-) : (
-  <div className="flex   flex-col items-center justify-center w-full h-[300px] text-center py-12">
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      className="w-16 h-16 text-gray-400 mb-6"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke="currentColor"
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="2"
-        d="M13 10V3a1 1 0 00-1-1H3a1 1 0 00-1 1v18a1 1 0 001 1h10a1 1 0 001-1V14l5 5V9l-5 5z"
-      />
-    </svg>
-    <p className="text-2xl text-gray-600 font-semibold">
-      No results found for {searchQuery}
-    </p>
-    <p className="mt-4 text-gray-500 text-lg">
-      Try adjusting your search term or check for spelling errors.
-    </p>
+      <section
+  id="products"
+  className="w-full px-8 dark:bg-gray-900 py-12 scroll-m-16"
+>
+  {/* Search Bar */}
+  <div className="flex items-center justify-center mb-16">
+    <input
+      type="text"
+      value={searchQuery}
+      onChange={(e) => setSearchQuery(e.target.value)}
+      placeholder="Search for a product..."
+      className="w-full max-w-lg px-6 py-3 rounded-full border border-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:placeholder-gray-400 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 sm:max-w-xs md:max-w-md"
+    />
   </div>
-)}
 
+  {/* Categories and Products */}
+  {categories.map((category) => (
+    <div key={category} className="mb-20">
+      {/* Category Title */}
+      <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-10 text-center">
+        {category}
+      </h2>
+
+      {/* Products Grid */}
+      <div className="grid grid-cols-1 place-content-center sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-12">
+        {filteredProducts
+          .filter((product) => product.category === category)
+          .map((product) => (
+            <ProductsCard key={product.id} {...product} />
+          ))}
+      </div>
+
+      {/* Empty State */}
+      {filteredProducts.filter((product) => product.category === category)
+        .length === 0 && (
+        <div className="flex flex-col items-center justify-center w-full h-[300px] text-center py-12 bg-gray-100 dark:bg-gray-800 rounded-lg">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="w-16 h-16 text-gray-400 mb-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M13 10V3a1 1 0 00-1-1H3a1 1 0 00-1 1v18a1 1 0 001 1h10a1 1 0 001-1V14l5 5V9l-5 5z"
+            />
+          </svg>
+          <p className="text-2xl font-semibold text-gray-600 dark:text-gray-300">
+            No results found for {searchQuery}
+          </p>
+          <p className="mt-4 text-lg text-gray-500 dark:text-gray-400">
+            Try adjusting your search term or check for spelling errors.
+          </p>
         </div>
-      </section>
+      )}
+    </div>
+  ))}
+</section>
+
 
       {/* Contact Section */}
 <section
@@ -130,6 +156,7 @@ export default function Home() {
        </div>
 
       </section>
+      <FeedbackSection />
 
           {/* Collabs  Section */}
           <CollabsSection />

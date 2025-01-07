@@ -1,38 +1,31 @@
-"use client"
+"use client";
 import { ProductsList } from "@/data/drillShopData";
-import { ChevronRight, Heart, Instagram, Link } from "lucide-react";
+import { Heart, Instagram, Link } from "lucide-react";
 import Image from "next/image";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 
 export default function ProductPage() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
+  const [selectedSize, setSelectedSize] = useState<string | null>(null);
   const { id } = useParams();
+  const router = useRouter();
   const product = ProductsList.find((product) => product.href === `/product/${id}`);
 
   if (!product) {
     return <div className="py-40 text-center">Product not found</div>;
   }
 
- 
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+  const handleSizeSelection = (size: string) => {
+    setSelectedSize(size);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    toast.success("Your message has been sent!");
-    setFormData({ name: "", email: "", message: "" });
+  const handleOrderNow = () => {
+    if (!selectedSize) {
+      toast.error("Please select a size before ordering.");
+      return;
+    }
+    router.push("/product/checkout");
   };
 
   return (
@@ -64,38 +57,61 @@ export default function ProductPage() {
           {/* Product Details Section */}
           <div className="space-y-6 flex flex-col items-start justify-center">
             <h1 className="text-4xl font-semibold text-gray-800">
-               <span className="text-red-600">{product.name}</span>
+              <span className="text-red-600">{product.name}</span>
             </h1>
 
-            {/* Product Description */}
             <p className="text-xl text-gray-600">
               <span className="font-bold text-gray-900">Product Description: </span>
               {product.description}
             </p>
 
-            {/* Price */}
-            <p className="text-2xl text-gray-900">Price: <span className="font-bold">{product.price} DH</span></p>
+            <p className="text-2xl text-gray-900">
+              Price: <span className="font-bold">{product.price} DH</span>
+            </p>
 
             {/* Product Availability */}
-            <button className={product.isAvailable ? "bg-green-600 text-lg tracking-wider text-white px-10 py-3 rounded-2xl " : "bg-red-600 text-lg tracking-wider text-white px-10 py-3 rounded-2xl "}>
-              {product.isAvailable ? "In Stock" : "Not Available"}
-            </button>
-
-            {/* WhatsApp Button */}
-            <button
-              className={`${product.isAvailable ? "cursor-pointer" : "cursor-not-allowed"} 
-                flex items-center justify-center bg-green-700 text-white py-3 rounded-md gap-3 px-44 sm:w-auto hover:bg-green-800 transition-all duration-300`}
-              disabled={!product.isAvailable}
+            <p
+              className={`${
+                product.isAvailable ? "text-green-600" : "text-red-600"
+              } text-lg tracking-wider underline font-semibold `}
             >
-              <a
-                href={`https://wa.me/+212677629431?text=I'm%20interested%20in%20${encodeURIComponent(product.name)}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2"
-              >
-                Order on WhatsApp
-                <ChevronRight />
-              </a>
+              {product.isAvailable ? "In Stock" : "Not Available"}
+            </p>
+
+            {/* Size Selector */}
+            <div className="space-y-2">
+  <p className="text-lg font-medium">Select Size:</p>
+  <div className="flex gap-4">
+    {product.taille?.map((size) => {
+      const isAvailable = product.availableSizes?.includes(size); 
+      return (
+        <button
+          key={size}
+          onClick={() => isAvailable && handleSizeSelection(size)} 
+          className={`px-4 py-2 border rounded-md ${
+            selectedSize === size && isAvailable
+              ? "bg-blue-600 text-white"
+              : "bg-black text-white"
+          } ${
+            !isAvailable && "cursor-not-allowed bg-gray-200 text-gray-400 border-gray-300"
+          } 
+          } transition-all`}
+          disabled={!isAvailable} 
+        >
+          {size}
+        </button>
+      );
+    })}
+  </div>
+</div>
+
+
+            {/* Order Now Button */}
+            <button
+              onClick={handleOrderNow}
+              className="bg-blue-600 text-white py-3 px-12 rounded-md hover:bg-blue-700 transition-all duration-300"
+            >
+              Order Now
             </button>
 
             {/* Add to Wishlist Button */}
@@ -119,60 +135,7 @@ export default function ProductPage() {
           </div>
         </div>
 
-        {/* Contact Form Section */}
-        <div className="mt-20 bg-white p-8 rounded-xl shadow-lg">
-          <h2 className="text-3xl font-semibold text-gray-800 mb-6">Contact Us About This Product</h2>
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div>
-              <label htmlFor="name" className="block text-lg font-medium text-gray-700">Your Name</label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                required
-                className="w-full px-6 py-3 mt-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300"
-              />
-            </div>
-
-            <div>
-              <label htmlFor="email" className="block text-lg font-medium text-gray-700">Your Email</label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-                className="w-full px-6 py-3 mt-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300"
-              />
-            </div>
-
-            <div>
-              <label htmlFor="message" className="block text-lg font-medium text-gray-700">Your Message</label>
-              <textarea
-                id="message"
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                required
-                rows={5}
-                className="w-full px-6 py-3 mt-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300"
-              ></textarea>
-            </div>
-
-            <div className="text-center">
-              <button
-                type="submit"
-                className="bg-blue-600 text-white px-12 py-4 rounded-md hover:bg-blue-700 transition-all duration-300"
-              >
-                Submit Inquiry
-              </button>
-              <ToastContainer />
-            </div>
-          </form>
-        </div>
+        <ToastContainer />
       </div>
     </div>
   );

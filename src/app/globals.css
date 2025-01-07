@@ -1,6 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";
 
 body {
   font-family: Arial, Helvetica, sans-serif;
@@ -27,7 +29,6 @@ html {
 }
 
 .collabs-container {
- 
   animation: scroll 20s linear infinite;
 }
 
