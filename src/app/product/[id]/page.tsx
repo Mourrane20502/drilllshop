@@ -1,6 +1,6 @@
 "use client";
 import { ProductsList } from "@/data/drillShopData";
-import { Heart, Instagram, Link } from "lucide-react";
+import { Instagram, Link } from "lucide-react";
 import Image from "next/image";
 import { useParams, useRouter } from "next/navigation";
 import { useState } from "react";
@@ -10,10 +10,16 @@ export default function ProductPage() {
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
   const { id } = useParams();
   const router = useRouter();
-  const product = ProductsList.find((product) => product.href === `/product/${id}`);
+  const product = ProductsList.find(
+    (product) => product.href === `/product/${id}`
+  );
 
   if (!product) {
-    return <div className="py-40 text-center">Product not found</div>;
+    return (
+      <div className="py-40 text-center text-2xl font-semibold text-gray-700">
+        Product not found
+      </div>
+    );
   }
 
   const handleSizeSelection = (size: string) => {
@@ -25,112 +31,121 @@ export default function ProductPage() {
       toast.error("Please select a size before ordering.");
       return;
     }
-    router.push("/product/checkout");
+    router.push(`/product/${id}/checkout?size=${selectedSize}`);
   };
 
   return (
-    <div className="py-40">
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+    <div className="py-20">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
           {/* Product Images Section */}
-          <div className="flex flex-col items-center space-y-4">
-            <div className="relative group">
+          <div className="flex flex-col items-center space-y-6">
+            <div className="relative group w-full">
               <Image
                 src={product.image}
                 alt={product.name}
                 width={600}
                 height={600}
-                className="rounded-xl cursor-pointer transition-all duration-300 ease-in-out transform group-hover:scale-105"
+                className="rounded-xl cursor-pointer transition-transform duration-300 ease-in-out transform group-hover:scale-105 shadow-lg"
               />
-              <div className="absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
+              <div className="absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <Image
                   src={product.hoverImage}
                   alt={`Hover image of ${product.name}`}
                   width={600}
                   height={600}
-                  className="rounded-xl"
+                  className="rounded-xl shadow-xl"
                 />
               </div>
             </div>
           </div>
 
-          {/* Product Details Section */}
-          <div className="space-y-6 flex flex-col items-start justify-center">
-            <h1 className="text-4xl font-semibold text-gray-800">
-              <span className="text-red-600">{product.name}</span>
+          {/* 🔹 Modernized Product Details Section */}
+          <div className="bg-white shadow-lg rounded-xl p-8 space-y-8 flex flex-col items-start">
+            {/* 🔹 Product Title */}
+            <h1 className="text-5xl font-bold text-gray-900 tracking-tight">
+              {product.name}
             </h1>
 
-            <p className="text-xl text-gray-600">
-              <span className="font-bold text-gray-900">Product Description: </span>
-              {product.description}
+            {/* 🔹 Product Price */}
+            <p className="text-2xl font-semibold text-gray-900">
+              Prix :<span className="text-red-600"> {product.price} DH</span>
             </p>
 
-            <p className="text-2xl text-gray-900">
-              Price: <span className="font-bold">{product.price} DH</span>
-            </p>
-
-            {/* Product Availability */}
+            {/* 🔹 Product Availability */}
             <p
-              className={`${
+              className={`text-lg font-semibold tracking-wider ${
                 product.isAvailable ? "text-green-600" : "text-red-600"
-              } text-lg tracking-wider underline font-semibold `}
+              } `}
             >
-              {product.isAvailable ? "In Stock" : "Not Available"}
+              {product.isAvailable ? "In Stock ✅" : "Not Available ❌"}
             </p>
 
-            {/* Size Selector */}
-            <div className="space-y-2">
-  <p className="text-lg font-medium">Select Size:</p>
-  <div className="flex gap-4">
-    {product.taille?.map((size) => {
-      const isAvailable = product.availableSizes?.includes(size); 
-      return (
-        <button
-          key={size}
-          onClick={() => isAvailable && handleSizeSelection(size)} 
-          className={`px-4 py-2 border rounded-md ${
-            selectedSize === size && isAvailable
-              ? "bg-blue-600 text-white"
-              : "bg-black text-white"
-          } ${
-            !isAvailable && "cursor-not-allowed bg-gray-200 text-gray-400 border-gray-300"
-          } 
-          } transition-all`}
-          disabled={!isAvailable} 
-        >
-          {size}
-        </button>
-      );
-    })}
-  </div>
-</div>
+            {/* 🔹 Description */}
+            <div className="bg-gray-100 p-4 rounded-md w-full">
+              <h2 className="text-lg font-semibold text-gray-800">
+                Product Description:
+              </h2>
+              <p className="text-gray-600 leading-relaxed">
+                {product.description}
+              </p>
+            </div>
 
+            {/* 🔹 Size Selector */}
+            <div className="w-full">
+              <h2 className="text-lg font-medium">Choose Your Size:</h2>
+              <div className="flex flex-wrap gap-3 mt-2">
+                {product.taille?.map((size) => {
+                  const isAvailable = product.availableSizes?.includes(size);
+                  return (
+                    <button
+                      key={size}
+                      onClick={() => isAvailable && handleSizeSelection(size)}
+                      className={`px-5 py-2 rounded-lg border text-lg font-medium transition-all duration-300 ${
+                        selectedSize === size && isAvailable
+                          ? "bg-blue-600 text-white border-blue-600 shadow-md"
+                          : "bg-white text-gray-900 border-gray-400 hover:border-gray-900"
+                      } ${
+                        !isAvailable &&
+                        "cursor-not-allowed bg-gray-200 text-gray-400 border-gray-300"
+                      }`}
+                      disabled={!isAvailable}
+                    >
+                      {size}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
 
-            {/* Order Now Button */}
+            {/* 🔹 Order Now Button */}
             <button
               onClick={handleOrderNow}
-              className="bg-blue-600 text-white py-3 px-12 rounded-md hover:bg-blue-700 transition-all duration-300"
+              className={`w-full sm:w-auto text-lg font-semibold py-3 px-10 rounded-lg shadow-lg transition-all duration-300 ${
+                product.isAvailable
+                  ? "bg-blue-600 text-white hover:bg-blue-700"
+                  : "bg-gray-400 text-gray-200 cursor-not-allowed"
+              }`}
+              disabled={!product.isAvailable}
             >
-              Order Now
+              {product.isAvailable ? "🛒 Order Now" : "🚫 Out of Stock"}
             </button>
 
-            {/* Add to Wishlist Button */}
-            <button className="flex items-center text-gray-600 hover:text-red-600 py-3 px-8 rounded-md gap-3 w-full sm:w-auto border border-gray-400 hover:border-red-600 transition-all duration-300">
-              <Heart size={20} />
-              Add to Wishlist
-            </button>
+            <div className="w-full">
+              <h2 className="text-lg font-semibold text-gray-800">
+                Share This Product:
+              </h2>
+              <div className="flex flex-wrap gap-4 mt-3">
+                <button className="flex items-center gap-2 text-lg text-gray-700 hover:text-blue-600 transition-all duration-300">
+                  <Instagram size={24} />
+                  <span className="hover:underline">Instagram</span>
+                </button>
 
-            {/* Social Sharing */}
-            <div className="flex gap-6 mt-6">
-              <button className="flex items-center gap-2 text-gray-600 hover:text-blue-600 transition-all duration-300">
-                <Instagram size={24} />
-                Share on Instagram
-              </button>
-
-              <button className="flex items-center gap-2 text-gray-600 hover:text-blue-700 transition-all duration-300">
-                <Link size={24} />
-                Copy Link
-              </button>
+                <button className="flex items-center gap-2 text-lg text-gray-700 hover:text-blue-700 transition-all duration-300">
+                  <Link size={24} />
+                  <span className="hover:underline">Copy Link</span>
+                </button>
+              </div>
             </div>
           </div>
         </div>

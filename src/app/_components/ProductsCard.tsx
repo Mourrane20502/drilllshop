@@ -1,7 +1,7 @@
-"use client"
-import Image, { StaticImageData } from 'next/image';
-import Link from 'next/link';
-import React, { useState } from 'react';
+"use client";
+import Image, { StaticImageData } from "next/image";
+import Link from "next/link";
+import React, { useState } from "react";
 
 interface ProductsCardProps {
   id: number;
@@ -10,45 +10,62 @@ interface ProductsCardProps {
   description: string;
   image: string | StaticImageData;
   hoverImage: string | StaticImageData;
-  href : string;
+  href: string;
 }
 
-export default function ProductsCard({ id, name, price, image, description, hoverImage ,href }: ProductsCardProps) {
+export default function ProductsCard({
+  id,
+  name,
+  price,
+  image,
+  description,
+  hoverImage,
+  href,
+}: ProductsCardProps) {
   const [currentImage, setCurrentImage] = useState(image);
 
   const handleMouseEnter = () => {
-    
-    setCurrentImage(hoverImage); 
+    setCurrentImage(hoverImage);
   };
 
   const handleMouseLeave = () => {
-    setCurrentImage(image); 
+    setCurrentImage(image);
   };
 
   return (
     <div
       key={id}
-      className="border flex flex-col gap-4 items-center  dark:border-white/50 justify-between rounded-xl shadow-lg hover:shadow-2xl p-5 w-[400px] max-md:w-full h-[680px]"
+      className="border border-gray-300 dark:border-white/50 flex flex-col gap-4 items-center justify-between rounded-xl shadow-lg hover:shadow-2xl p-6 w-[380px] max-md:w-full h-[650px] transition-transform duration-300 hover:scale-105 bg-white dark:bg-gray-900"
     >
-      
-      {/* Image with hover effect */}
-      <Image
-        src={currentImage}
-        alt={name}
-        className="w-full cursor-pointer h-[380px] object-cover rounded-xl mb-4 transition-all duration-500 ease-in-out"
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-      />
+      {/* Product Image */}
+      <div className="relative w-full h-[360px] overflow-hidden rounded-lg">
+        <Image
+          src={currentImage}
+          alt={name}
+          className="w-full h-full object-cover rounded-lg transition-all duration-500 ease-in-out transform hover:scale-105"
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        />
+      </div>
 
       {/* Product Info */}
       <div className="flex flex-col items-center text-center">
-        <h3 className="text-2xl font-semibold text-gray-800 max-md:text-xl mb-2 dark:text-white">{name}</h3>
-        <p className="text-lg dark:text-white">Prix : {price} DH</p>
-        <p className="text-gray-600 font-light mt-2 dark:text-white">{description}</p>
+        <h3 className="text-2xl font-semibold text-gray-900 dark:text-white max-md:text-xl">
+          {name}
+        </h3>
+        <p className="text-lg font-medium text-gray-700 dark:text-gray-300 mt-2">
+          Prix : {price} DH
+        </p>
+        <p className="text-gray-600 font-light mt-3 px-4 dark:text-gray-400">
+          {description}
+        </p>
       </div>
 
       {/* View Product Button */}
-      <Link href={href} className="mt-4 w-1/2 flex items-end  justify-center max-md:w-full py-3 dark:bg-white dark:text-black bg-black text-white rounded-lg hover:bg-white hover:text-black hover:border-2 hover:border-black transition-all duration-200 ease-in-out">
+      <Link
+        href={href}
+        className="mt-4 w-2/3 max-md:w-full py-3 flex items-center justify-center font-semibold text-lg dark:bg-white dark:text-black bg-black text-white rounded-lg transition-all duration-300 hover:bg-gray-800 hover:text-white dark:hover:bg-gray-200 dark:hover:text-black transform hover:scale-105"
+      >
         View Product
       </Link>
     </div>

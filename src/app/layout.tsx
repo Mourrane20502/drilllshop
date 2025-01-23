@@ -1,6 +1,7 @@
 import { ThemeProvider } from "@/context/ThemeContext";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Footer from "./_navigation/footer";
 import Header from "./_navigation/header";
 import "./globals.css";
 
@@ -26,12 +27,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
         <ThemeProvider>
-         
-            <Header />
-            {children}
-          
+          <Header />
+          {children}
+          <Footer />
         </ThemeProvider>
       </body>
     </html>
