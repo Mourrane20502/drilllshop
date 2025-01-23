@@ -1,8 +1,8 @@
 import { StaticImageData } from "next/image";
-import Image from "../app/assets/ProductNike.PNG";
-import hoverImage from "../app/assets/productNikeHover.PNG";
-import slaughterhover from "../app/assets/slaughter.PNG";
-import slaughter from "../app/assets/slaughterhover.PNG";
+import hoverImage from "../app/assets/drillguys.jpg";
+import Image from "../app/assets/productNikeHover.jpg";
+import slaughterhover from "../app/assets/slaughter.jpg";
+import slaughter from "../app/assets/slaughterhover.jpg";
 import iconUser from "../app/assets/toto.jpg";
 
 // export const ProductPage = [
@@ -13,15 +13,14 @@ interface Product {
   name: string;
   price: number;
   description: string;
-  image: string | StaticImageData; // Assuming Image is of type 'any' here (you can use 'StaticImageData' if you want stricter typing)
+  image: string | StaticImageData;
   hoverImage: StaticImageData;
   href: string;
   isAvailable?: boolean;
-  ProductImages?: string[];
-  taille :string[],
-  availableSizes ?: string[],
-  category: "Accessories" | "Shoes" | "Clothes"; 
-
+  ProductImages?: string[] | StaticImageData[];
+  taille: string[];
+  availableSizes?: string[];
+  category: "Accessories" | "Shoes" | "Clothes";
 }
 
 export const ProductsList: Product[] = [
@@ -29,7 +28,8 @@ export const ProductsList: Product[] = [
     id: 1,
     name: "Nike Jackets",
     price: 300,
-    description: "This is a jacket that will keep you warm in the winter and cool in the summer.",
+    description:
+      "This is a jacket that will keep you warm in the winter and cool in the summer.",
     image: Image,
     hoverImage: hoverImage,
     href: "/product/1",
@@ -37,7 +37,8 @@ export const ProductsList: Product[] = [
     ProductImages: [Image, hoverImage, Image, hoverImage],
     taille: ["M", "L", "XL", "2XL"],
     availableSizes: ["M", "L"],
-    category: "Clothes"},
+    category: "Clothes",
+  },
   {
     id: 2,
     name: "Adidas Shoes",
@@ -157,44 +158,44 @@ export interface Feedback {
   comment: string;
   rating: number;
   date: string;
-  user : StaticImageData
+  user: StaticImageData;
 }
 
-
-export const feedback  : Feedback[] = [
+export const feedback: Feedback[] = [
   {
     id: 1,
-    name: 'John Doe',
-    comment: 'Great service, will definitely use again ,Great service, will definitely use again,Great service, will definitely use again,Great service, will definitely use again,Great service, will definitely use again',
+    name: "John Doe",
+    comment:
+      "Great service, will definitely use again ,Great service, will definitely use again,Great service, will definitely use again,Great service, will definitely use again,Great service, will definitely use again",
     rating: 5,
-    date: '2024-12-30',
-    user :iconUser
+    date: "2024-12-30",
+    user: iconUser,
   },
   {
     id: 2,
-    name: 'Jane Smith',
-    comment: 'Great service, will definitely use again ,Great service, will definitely use again,Great service, will definitely use again,Great service, will definitely use again,Great service, will definitely use again',
+    name: "Jane Smith",
+    comment:
+      "Great service, will definitely use again ,Great service, will definitely use again,Great service, will definitely use again,Great service, will definitely use again,Great service, will definitely use again",
     rating: 4,
-    date: '2024-12-29',
-    user :iconUser
-
+    date: "2024-12-29",
+    user: iconUser,
   },
   {
     id: 3,
-    name: 'Alex Johnson',
-    comment: 'Great service, will definitely use again ,Great service, will definitely use again,Great service, will definitely use again,Great service, will definitely use again,Great service, will definitely use again',
+    name: "Alex Johnson",
+    comment:
+      "Great service, will definitely use again ,Great service, will definitely use again,Great service, will definitely use again,Great service, will definitely use again,Great service, will definitely use again",
     rating: 2,
-    date: '2024-12-28',
-    user :iconUser
-
+    date: "2024-12-28",
+    user: iconUser,
   },
   {
     id: 4,
-    name: 'Emily Davis',
-    comment: 'Great service, will definitely use again ,Great service, will definitely use again,Great service, will definitely use again,Great service, will definitely use again,Great service, will definitely use again',
+    name: "Emily Davis",
+    comment:
+      "Great service, will definitely use again ,Great service, will definitely use again,Great service, will definitely use again,Great service, will definitely use again,Great service, will definitely use again",
     rating: 4,
-    date: '2024-12-27',
-    user :iconUser
-
-  }
+    date: "2024-12-27",
+    user: iconUser,
+  },
 ] as const;
