@@ -35,8 +35,8 @@ export const ProductsList: Product[] = [
     href: "/product/1",
     isAvailable: true,
     ProductImages: [Image, hoverImage, Image, hoverImage],
-    taille: ["M", "L", "XL", "2XL"],
-    availableSizes: ["M", "L"],
+    taille: ["S", "M", "L", "XL"],
+    availableSizes: ["S", "M", "L", "XL"],
     category: "Clothes",
   },
   {

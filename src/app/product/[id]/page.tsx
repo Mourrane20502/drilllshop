@@ -1,6 +1,6 @@
 "use client";
 import { ProductsList } from "@/data/drillShopData";
-import { Instagram, Link } from "lucide-react";
+import { Instagram, Link, Star } from "lucide-react";
 import Image from "next/image";
 import { useParams, useRouter } from "next/navigation";
 import { useState } from "react";
@@ -61,35 +61,37 @@ export default function ProductPage() {
           </div>
 
           {/* 🔹 Modernized Product Details Section */}
-          <div className="bg-white shadow-lg rounded-xl p-8 space-y-8 flex flex-col items-start">
+          <div className="bg-white shadow-lg mt-16 rounded-xl p-8 space-y-4 flex flex-col items-start">
             {/* 🔹 Product Title */}
             <h1 className="text-5xl font-bold text-gray-900 tracking-tight">
               {product.name}
             </h1>
 
             {/* 🔹 Product Price */}
-            <p className="text-2xl font-semibold text-gray-900">
-              Prix :<span className="text-red-600"> {product.price} DH</span>
+            <p className="text-3xl font-normal text-gray-900">
+              <span className="text-red-600"> {product.price}.00 DH</span>
             </p>
 
             {/* 🔹 Product Availability */}
             <p
-              className={`text-lg font-semibold tracking-wider ${
-                product.isAvailable ? "text-green-600" : "text-red-600"
+              className={`text-xl font-semibold tracking-wider  ${
+                product.isAvailable
+                  ? "text-green-600 font-bold"
+                  : "text-red-600"
               } `}
             >
-              {product.isAvailable ? "In Stock ✅" : "Not Available ❌"}
+              {product.isAvailable ? "In Stock " : "Not Available "}
             </p>
 
             {/* 🔹 Description */}
-            <div className="bg-gray-100 p-4 rounded-md w-full">
+            {/* <div className="bg-gray-100 p-4 rounded-md w-full">
               <h2 className="text-lg font-semibold text-gray-800">
                 Product Description:
               </h2>
               <p className="text-gray-600 leading-relaxed">
                 {product.description}
               </p>
-            </div>
+            </div> */}
 
             {/* 🔹 Size Selector */}
             <div className="w-full">
@@ -121,16 +123,22 @@ export default function ProductPage() {
             {/* 🔹 Order Now Button */}
             <button
               onClick={handleOrderNow}
-              className={`w-full sm:w-auto text-lg font-semibold py-3 px-10 rounded-lg shadow-lg transition-all duration-300 ${
+              className={`w-full sm:w-auto text-lg font-semibold py-3 px-52 rounded-lg shadow-lg transition-all duration-300 ${
                 product.isAvailable
-                  ? "bg-blue-600 text-white hover:bg-blue-700"
+                  ? "bg-red-600 text-white hover:bg-black"
                   : "bg-gray-400 text-gray-200 cursor-not-allowed"
               }`}
               disabled={!product.isAvailable}
             >
-              {product.isAvailable ? "🛒 Order Now" : "🚫 Out of Stock"}
+              {product.isAvailable ? " Order Now" : "Out of Stock"}
             </button>
-
+            <div className="w-full flex items-center justify-center gap-3">
+              <Star />
+              <p className="text-xl text-center font-[600]">
+                Premium Quality With Best Prices
+              </p>
+              <Star />
+            </div>
             <div className="w-full">
               <h2 className="text-lg font-semibold text-gray-800">
                 Share This Product:

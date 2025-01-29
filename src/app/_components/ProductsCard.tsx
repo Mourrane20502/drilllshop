@@ -35,7 +35,7 @@ export default function ProductsCard({
   return (
     <div
       key={id}
-      className="border border-gray-300 dark:border-white/50 flex flex-col gap-4 items-center justify-between rounded-xl shadow-lg hover:shadow-2xl p-6 w-[380px] max-md:w-full h-[650px] transition-transform duration-300 hover:scale-105 bg-white dark:bg-gray-900"
+      className="border border-gray-300  flex flex-col gap-4 items-center justify-between rounded-xl shadow-lg hover:shadow-2xl p-6 w-[380px] max-md:w-full h-[650px] transition-transform duration-300 hover:scale-105 bg-white"
     >
       {/* Product Image */}
       <div className="relative w-full h-[360px] overflow-hidden rounded-lg">
@@ -50,21 +50,19 @@ export default function ProductsCard({
 
       {/* Product Info */}
       <div className="flex flex-col items-center text-center">
-        <h3 className="text-2xl font-semibold text-gray-900 dark:text-white max-md:text-xl">
+        <h3 className="text-2xl font-semibold text-gray-900 max-md:text-xl">
           {name}
         </h3>
-        <p className="text-lg font-medium text-gray-700 dark:text-gray-300 mt-2">
+        <p className="text-lg font-medium text-gray-700 mt-2">
           Prix : {price} DH
         </p>
-        <p className="text-gray-600 font-light mt-3 px-4 dark:text-gray-400">
-          {description}
-        </p>
+        <p className="text-gray-600 font-light mt-3 px-4">{description}</p>
       </div>
 
       {/* View Product Button */}
       <Link
         href={href}
-        className="mt-4 w-2/3 max-md:w-full py-3 flex items-center justify-center font-semibold text-lg dark:bg-white dark:text-black bg-black text-white rounded-lg transition-all duration-300 hover:bg-gray-800 hover:text-white dark:hover:bg-gray-200 dark:hover:text-black transform hover:scale-105"
+        className="mt-4 w-2/3 max-md:w-full py-3 flex items-center justify-center font-semibold text-lg bg-black text-white rounded-lg transition-all duration-300 hover:bg-gray-800 hover:text-white dark:hover:bg-gray-200 dark:hover:text-black transform hover:scale-105"
       >
         View Product
       </Link>

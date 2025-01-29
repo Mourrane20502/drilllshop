@@ -7,7 +7,6 @@ import { useScroll } from "@/hooks/useScroll";
 import { useToggleMobile } from "@/hooks/useToggleMobile";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
-import { LogoDrill } from "../_components/LogoDrill";
 import { LogoDrillWhite } from "../_components/LogoDrillWhite";
 
 export default function Header() {
@@ -42,7 +41,7 @@ export default function Header() {
       >
         <nav className="flex items-center justify-around w-full">
           {/* Logo */}
-          {darkMode ? <LogoDrillWhite /> : <LogoDrill />}
+          <LogoDrillWhite classname="w-[100px] h-[100px]" />
 
           {/* Desktop Navigation Links */}
           <div className="flex space-x-6 max-md:hidden w-[30%]">

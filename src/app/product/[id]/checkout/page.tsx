@@ -4,8 +4,10 @@ import { MapPin, Phone, ShoppingCart, User } from "lucide-react";
 import Image from "next/image";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
+import {} from "react-icons/fa";
 import { toast, ToastContainer } from "react-toastify";
 
+const DISCORD_WEBHOOK_URL = process.env.DISCORD_WEBHOOK as string;
 export default function CheckoutPage() {
   const { id } = useParams();
   const searchParams = useSearchParams();
@@ -30,21 +32,62 @@ export default function CheckoutPage() {
     );
   }
 
-  const handleConfirmOrder = () => {
+  const handleConfirmOrder = async () => {
     if (!name || !address || !phone) {
       toast.error("All fields are required!");
       return;
     }
 
     setIsProcessing(true);
-    toast.success(
-      `Order for ${product.name} (Size: ${selectedSize}) Confirmed! 🚀`
-    );
 
-    setTimeout(() => {
+    const orderDetails = {
+      embeds: [
+        {
+          title: "New Order Received!",
+          color: 5814783,
+          fields: [
+            { name: "📦 Product", value: product.name, inline: false },
+            { name: "📏 Size", value: selectedSize || "N/A", inline: false },
+            { name: "💰 Price", value: `${product.price} DH`, inline: false },
+            { name: "👤 Customer Name", value: name, inline: false },
+            { name: "📍 Address", value: address, inline: false },
+            { name: "📞 Phone", value: phone, inline: false },
+            {
+              name: "📝 Order Notes",
+              value: orderNotes || "No special instructions",
+              inline: false,
+            },
+          ],
+        },
+      ],
+    };
+
+    try {
+      const response = await fetch(DISCORD_WEBHOOK_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(orderDetails),
+      });
+
+      const responseBody = await response.text();
+
+      if (response.ok) {
+        toast.success(`Order for ${product.name} Confirmed! 🚀`);
+        console.log("✅ Discord Webhook Response:", responseBody);
+        setTimeout(() => {
+          setIsProcessing(false);
+          router.push("/");
+        }, 2000);
+      } else {
+        toast.error("❌ Failed to send order to Discord!");
+        console.error("❌ Discord API Error:", response.status, responseBody);
+        setIsProcessing(false);
+      }
+    } catch (error) {
+      console.error("❌ Network Error:", error);
+      toast.error("❌ Network error occurred!");
       setIsProcessing(false);
-      router.push("/");
-    }, 2000);
+    }
   };
 
   return (
@@ -52,7 +95,7 @@ export default function CheckoutPage() {
       <div className="py-16 flex justify-center items-center min-h-screen bg-gray-50">
         <div className="w-full max-w-4xl bg-white shadow-xl rounded-lg p-8">
           <h1 className="text-3xl font-bold text-gray-900 text-center mb-6">
-            🛍️ Checkout
+            Checkout
           </h1>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -74,8 +117,8 @@ export default function CheckoutPage() {
                   <p className="text-lg text-gray-700 mt-1">
                     Size: <strong>{selectedSize}</strong>
                   </p>
-                  <p className="text-2xl font-medium text-red-600 mt-2">
-                    Prix: {product.price} DH
+                  <p className="text-2xl font-semibold text-red-600 mt-2">
+                    {product.price} DH
                   </p>
                 </div>
               </div>
@@ -84,7 +127,7 @@ export default function CheckoutPage() {
             {/* 🔹 Checkout Form Section */}
             <div className="bg-white p-6 rounded-lg shadow-md">
               <h2 className="text-2xl font-semibold text-gray-900 text-center mb-4">
-                🚚 Shipping Details
+                Shipping Details
               </h2>
 
               <div className="space-y-5">
@@ -146,7 +189,7 @@ export default function CheckoutPage() {
                   </label>
                   <textarea
                     placeholder="Special instructions for your order..."
-                    className="w-full border-gray-300 border-2 hover:border-none px-4 py-3 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none transition-all"
+                    className="w-full border-gray-300 border-2 px-4 py-3 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none transition-all"
                     value={orderNotes}
                     onChange={(e) => setOrderNotes(e.target.value)}
                   />
@@ -158,18 +201,12 @@ export default function CheckoutPage() {
                   className={`w-full text-lg font-semibold py-3 rounded-md flex items-center justify-center gap-3 transition-all duration-300 ${
                     isProcessing
                       ? "bg-gray-400 cursor-not-allowed"
-                      : "bg-black hover:bg-white hover:text-black  hover:border-2 hover:border-black/40 text-white "
+                      : "bg-black hover:bg-white hover:text-black hover:border-2 hover:border-black/40 text-white"
                   }`}
                   disabled={isProcessing}
                 >
-                  {isProcessing ? (
-                    <span className="animate-spin border-4 border-white border-t-transparent rounded-full w-6 h-6"></span>
-                  ) : (
-                    <>
-                      <ShoppingCart size={22} />
-                      Confirm Order
-                    </>
-                  )}
+                  <ShoppingCart size={22} />
+                  {isProcessing ? "Processing..." : "Confirm Order"}
                 </button>
               </div>
             </div>
