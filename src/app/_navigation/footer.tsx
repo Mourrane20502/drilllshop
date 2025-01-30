@@ -1,38 +1,37 @@
-import { Instagram, Phone } from "lucide-react";
+"use client";
+import { ArrowUp, Instagram, Phone } from "lucide-react";
 import Link from "next/link";
 import { FaTiktok } from "react-icons/fa";
 import { LogoDrill } from "../_components/LogoDrill";
-// import { LogoDrillWhite } from "../_components/LogoDrillWhite";
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-black text-white py-16  px-20">
+    <footer className="w-full bg-black text-white py-16 px-10 md:px-20">
       {/* Logo Section */}
       <div className="flex justify-center mb-10">
         <LogoDrill classname="w-28 h-28 rounded-full" />
       </div>
 
       {/* Footer Main Content */}
-      <div className="flex  items-baseline justify-center gap-52 text-sm">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-10 text-sm text-center md:text-left">
         {/* About Us Section */}
         <div>
-          <h4 className="text-3xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600">
+          <h4 className="text-2xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600">
             About Us
           </h4>
           <ul className="space-y-3">
             <li>
-              <Link className="text-lg" href="/">
+              <Link className="text-lg hover:text-blue-400" href="/">
                 Home
               </Link>
             </li>
-
             <li>
-              <Link className="text-lg" href="/products">
+              <Link className="text-lg hover:text-blue-400" href="/products">
                 Products
               </Link>
             </li>
             <li>
-              <Link className="text-lg" href="/feedback">
+              <Link className="text-lg hover:text-blue-400" href="/feedback">
                 Customer Feedback
               </Link>
             </li>
@@ -40,13 +39,11 @@ export default function Footer() {
         </div>
 
         {/* Contact Section */}
-
-        {/* Follow Us Section */}
-        <div className="flex flex-col items-baseline">
-          <h4 className="text-3xl font-bold mb-4 w-full text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600">
+        <div>
+          <h4 className="text-2xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600">
             Contact Us
           </h4>
-          <div className="flex space-x-6 ">
+          <div className="flex justify-center md:justify-start space-x-6">
             <Link
               href="https://www.tiktok.com/@drillshop.ma?_t=ZM-8tTLyZ75Dh0&_r=1"
               target="_blank"
@@ -74,11 +71,30 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Quick Links Section */}
+        {/* Customer Support Section */}
+        <div>
+          <h4 className="text-2xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600">
+            Customer Support
+          </h4>
+          <p className="text-lg">Email: support@drillshop.ma</p>
+          <p className="text-lg mt-2">Mon-Fri: 9:00 AM - 6:00 PM</p>
+          <p className="text-lg">Sat-Sun: 10:00 AM - 4:00 PM</p>
+        </div>
+      </div>
+
+      {/* Back to Top Button */}
+      <div className="mt-12 flex justify-center">
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          className="flex items-center space-x-2 text-lg font-medium bg-blue-500 hover:bg-blue-600 px-5 py-2 rounded-full transition-all duration-300"
+        >
+          <ArrowUp size={20} />
+          <span>Back to Top</span>
+        </button>
       </div>
 
       {/* Copyright Section */}
-      <div className="mt-16 text-center text-sm">
+      <div className="mt-10 text-center text-sm">
         <p>&copy; {new Date().getFullYear()} DrillShop. All Rights Reserved.</p>
       </div>
     </footer>

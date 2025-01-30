@@ -7,7 +7,8 @@ import { useState } from "react";
 import {} from "react-icons/fa";
 import { toast, ToastContainer } from "react-toastify";
 
-const DISCORD_WEBHOOK_URL = process.env.DISCORD_WEBHOOK as string;
+const DISCORD_WEBHOOK_URL =
+  "https://discordapp.com/api/webhooks/1334643392449347796/UPNzAZ6N13s8cu1pyq6ge0K-s78229AS5i4rOJya-PezMeIvGl7VOk1xV5J3xjH-ijWF";
 export default function CheckoutPage() {
   const { id } = useParams();
   const searchParams = useSearchParams();

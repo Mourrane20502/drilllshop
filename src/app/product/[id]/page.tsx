@@ -61,7 +61,7 @@ export default function ProductPage() {
           </div>
 
           {/* 🔹 Modernized Product Details Section */}
-          <div className="bg-white shadow-lg mt-16 rounded-xl p-8 space-y-4 flex flex-col items-start">
+          <div className="bg-white shadow-lg mt-16 max-md:mt-2 rounded-xl p-8 space-y-4 flex flex-col items-start">
             {/* 🔹 Product Title */}
             <h1 className="text-5xl font-bold text-gray-900 tracking-tight">
               {product.name}
@@ -123,9 +123,9 @@ export default function ProductPage() {
             {/* 🔹 Order Now Button */}
             <button
               onClick={handleOrderNow}
-              className={`w-full sm:w-auto text-lg font-semibold py-3 px-52 rounded-lg shadow-lg transition-all duration-300 ${
+              className={`w-full flex max-md:text-[16px] items-center justify-center text-lg ont-semibold py-3 max-md:px-28 px-52 rounded-lg shadow-lg transition-all duration-300 ${
                 product.isAvailable
-                  ? "bg-red-600 text-white hover:bg-black"
+                  ? "bg-red-500 text-white hover:bg-black"
                   : "bg-gray-400 text-gray-200 cursor-not-allowed"
               }`}
               disabled={!product.isAvailable}
@@ -134,7 +134,7 @@ export default function ProductPage() {
             </button>
             <div className="w-full flex items-center justify-center gap-3">
               <Star />
-              <p className="text-xl text-center font-[600]">
+              <p className="text-xl  text-center font-[600]">
                 Premium Quality With Best Prices
               </p>
               <Star />

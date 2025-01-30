@@ -58,7 +58,7 @@ export default function Home() {
             DRILLSHOP
           </motion.h1>
           <motion.p
-            className="text-lg text-center max-md:text-[18px] text-balance text-white font-medium leading-relaxed drop-shadow-lg"
+            className="text-lg text-center max-md:w-[90%] max-md:text-[18px] text-balance text-white font-medium leading-relaxed drop-shadow-lg"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 1 }}
@@ -100,7 +100,7 @@ export default function Home() {
             loading="lazy"
             height={550}
             alt="brand photo"
-            className="rounded-2xl max-md:hidden shadow-xl hover:scale-105 transition-transform duration-500 ease-in-out"
+            className="rounded-2xl shadow-xl hover:scale-105 transition-transform duration-500 ease-in-out"
           />
         </motion.div>
         <motion.div
@@ -157,7 +157,7 @@ export default function Home() {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search for a product..."
-            className="w-full max-w-lg px-6 py-3 rounded-full border border-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:placeholder-gray-400 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 sm:max-w-xs md:max-w-md"
+            className="w-full max-w-lg px-6 py-3 rounded-full border border-gray-300  focus:outline-none focus:ring-2 focus:ring-black transition-all duration-300 sm:max-w-xs md:max-w-md"
           />
         </div>
 
