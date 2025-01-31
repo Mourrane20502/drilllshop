@@ -11,6 +11,7 @@ interface ProductsCardProps {
   image: string | StaticImageData;
   hoverImage: string | StaticImageData;
   href: string;
+  bestSelling?: boolean;
 }
 
 export default function ProductsCard({
@@ -21,6 +22,7 @@ export default function ProductsCard({
   description,
   hoverImage,
   href,
+  bestSelling,
 }: ProductsCardProps) {
   const [currentImage, setCurrentImage] = useState(image);
 
@@ -35,8 +37,14 @@ export default function ProductsCard({
   return (
     <div
       key={id}
-      className="border border-gray-300  flex flex-col gap-4 items-center justify-between rounded-xl shadow-lg hover:shadow-2xl p-6 w-[380px] max-md:w-full h-[650px] transition-transform duration-300 hover:scale-105 bg-white"
+      className="relative border border-gray-300 flex flex-col gap-4 items-center justify-between rounded-xl shadow-lg hover:shadow-2xl p-6 w-[380px] max-md:w-full h-[650px] transition-transform duration-300 hover:scale-105 bg-white"
     >
+      {bestSelling && (
+        <div className="absolute top-0 z-10 left-0 bg-red-500 text-white text-xs py-3 font-bold uppercase flex items-center justify-center  w-1/2 rounded-md shadow-md">
+          Best Seller
+        </div>
+      )}
+
       {/* Product Image */}
       <div className="relative w-full h-[360px] overflow-hidden rounded-lg">
         <Image

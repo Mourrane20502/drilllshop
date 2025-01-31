@@ -21,6 +21,7 @@ interface Product {
   taille: string[];
   availableSizes?: string[];
   category: "Accessories" | "Shoes" | "Clothes";
+  bestSelling?: boolean;
 }
 
 export const ProductsList: Product[] = [
@@ -38,6 +39,7 @@ export const ProductsList: Product[] = [
     taille: ["S", "M", "L", "XL"],
     availableSizes: ["S", "M", "L", "XL"],
     category: "Clothes",
+    bestSelling: true,
   },
   {
     id: 2,
@@ -49,7 +51,8 @@ export const ProductsList: Product[] = [
     href: "/product/2",
     isAvailable: true,
     taille: ["40", "41", "42", "43"],
-    category: "Shoes", // Category: Shoes
+    category: "Shoes",
+    bestSelling: false,
   },
   {
     id: 3,
@@ -61,7 +64,8 @@ export const ProductsList: Product[] = [
     href: "/product/3",
     isAvailable: true,
     taille: ["S", "M", "L", "XL"],
-    category: "Accessories", // Category: Accessories
+    category: "Accessories",
+    bestSelling: true,
   },
   {
     id: 4,
@@ -72,7 +76,8 @@ export const ProductsList: Product[] = [
     hoverImage: slaughterhover,
     href: "/product/4",
     taille: ["M", "L", "XL", "2XL"],
-    category: "Clothes", // Category: Clothes
+    category: "Clothes",
+    bestSelling: false,
   },
   {
     id: 5,
@@ -83,7 +88,8 @@ export const ProductsList: Product[] = [
     hoverImage: hoverImage,
     href: "/product/5",
     taille: ["One Size"],
-    category: "Accessories", // Category: Accessories
+    category: "Accessories",
+    bestSelling: true,
   },
   {
     id: 6,
@@ -94,7 +100,8 @@ export const ProductsList: Product[] = [
     hoverImage: hoverImage,
     href: "/product/6",
     taille: ["40", "41", "42", "43"],
-    category: "Shoes", // Category: Shoes
+    category: "Shoes",
+    bestSelling: false,
   },
   {
     id: 7,
@@ -105,7 +112,8 @@ export const ProductsList: Product[] = [
     hoverImage: slaughterhover,
     href: "/product/7",
     taille: ["M", "L", "XL", "2XL"],
-    category: "Clothes", // Category: Clothes
+    category: "Clothes", // Category: Clothes,
+    bestSelling: false,
   },
   {
     id: 8,
@@ -116,7 +124,8 @@ export const ProductsList: Product[] = [
     hoverImage: hoverImage,
     href: "/product/8",
     taille: ["One Size"],
-    category: "Accessories", // Category: Accessories
+    category: "Accessories",
+    bestSelling: false,
   },
   {
     id: 9,
@@ -127,7 +136,8 @@ export const ProductsList: Product[] = [
     hoverImage: hoverImage,
     href: "/product/9",
     taille: ["40", "41", "42", "43"],
-    category: "Shoes", // Category: Shoes
+    category: "Shoes",
+    bestSelling: true,
   },
   {
     id: 10,
@@ -139,6 +149,7 @@ export const ProductsList: Product[] = [
     href: "/product/10",
     taille: ["M", "L", "XL", "2XL"],
     category: "Clothes", // Category: Clothes
+    bestSelling: true,
   },
   {
     id: 11,
@@ -149,7 +160,8 @@ export const ProductsList: Product[] = [
     hoverImage: hoverImage,
     href: "/product/11",
     taille: ["One Size"],
-    category: "Accessories", // Category: Accessories
+    category: "Accessories",
+    bestSelling: false,
   },
 ];
 export interface Feedback {

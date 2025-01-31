@@ -16,16 +16,26 @@ import maindrill from "./assets/drillmainsection.png";
 // import mainPhoto from "./assets/mainphoto.jpg";
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("All");
 
   const categories = [
+    "All",
     ...new Set(ProductsList.map((product) => product.category)),
   ];
 
-  const filteredProducts = searchQuery
-    ? ProductsList.filter((product) =>
-        product.name.toLowerCase().startsWith(searchQuery.toLowerCase())
-      )
-    : ProductsList;
+  const filteredProducts = ProductsList.filter(
+    (product) =>
+      (selectedCategory === "All" || product.category === selectedCategory) &&
+      product.name.toLowerCase().includes(searchQuery.toLowerCase())
+  ).sort((a, b) => {
+    if (a.bestSelling && !b.bestSelling) {
+      return -1;
+    }
+    if (!a.bestSelling && b.bestSelling) {
+      return 1;
+    }
+    return 0;
+  });
 
   return (
     <div className="py-28">
@@ -149,63 +159,53 @@ export default function Home() {
   <Youtube className="text-red-500 hover:text-red-700" />
 </div> */}
       {/* Products Section */}
-      <section id="products" className="w-full px-8  py-12 scroll-m-16">
+      <section id="products" className="w-full px-8 py-12 scroll-m-16">
         {/* Search Bar */}
-        <div className="flex items-center justify-center mb-16">
+        <div className="flex items-center justify-center mb-8">
           <input
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search for a product..."
-            className="w-full max-w-lg px-6 py-3 rounded-full border border-gray-300  focus:outline-none focus:ring-2 focus:ring-black transition-all duration-300 sm:max-w-xs md:max-w-md"
+            className="w-full max-w-lg px-6 py-3 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-black transition-all duration-300"
           />
         </div>
 
-        {/* Categories and Products */}
-        {categories.map((category) => (
-          <div key={category} className="mb-20">
-            {/* Category Title */}
-            <h2 className="text-4xl font-bold text-gray-900  mb-10 text-center">
+        {/* Category Buttons */}
+        <div className="flex flex-wrap justify-center gap-4 mb-10">
+          {categories.map((category) => (
+            <button
+              key={category}
+              onClick={() => setSelectedCategory(category)}
+              className={`px-6 py-3 rounded-lg text-lg font-medium transition-all duration-300 ${
+                selectedCategory === category
+                  ? "bg-black text-white"
+                  : "bg-gray-200 hover:bg-gray-300"
+              }`}
+            >
               {category}
-            </h2>
+            </button>
+          ))}
+        </div>
 
-            {/* Products Grid */}
-            <div className="grid grid-cols-1 place-content-center sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-12">
-              {filteredProducts
-                .filter((product) => product.category === category)
-                .map((product) => (
-                  <ProductsCard key={product.id} {...product} />
-                ))}
-            </div>
+        {/* Products Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-12">
+          {filteredProducts.map((product) => (
+            <ProductsCard key={product.id} {...product} />
+          ))}
+        </div>
 
-            {/* Empty State */}
-            {filteredProducts.filter((product) => product.category === category)
-              .length === 0 && (
-              <div className="flex flex-col items-center justify-center w-full h-[300px] text-center py-12 bg-gray-100 dark:bg-gray-800 rounded-lg">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="w-16 h-16 text-gray-400 mb-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M13 10V3a1 1 0 00-1-1H3a1 1 0 00-1 1v18a1 1 0 001 1h10a1 1 0 001-1V14l5 5V9l-5 5z"
-                  />
-                </svg>
-                <p className="text-2xl font-semibold text-gray-600 dark:text-gray-300">
-                  No results found for {searchQuery}
-                </p>
-                <p className="mt-4 text-lg text-gray-500 dark:text-gray-400">
-                  Try adjusting your search term or check for spelling errors.
-                </p>
-              </div>
-            )}
+        {/* Empty State */}
+        {filteredProducts.length === 0 && (
+          <div className="flex flex-col items-center justify-center w-full h-[300px] text-center py-12 bg-gray-100 dark:bg-gray-800 rounded-lg">
+            <p className="text-2xl font-semibold text-gray-600 dark:text-gray-300">
+              No products found.
+            </p>
+            <p className="mt-4 text-lg text-gray-500 dark:text-gray-400">
+              Try a different category or adjust your search term.
+            </p>
           </div>
-        ))}
+        )}
       </section>
 
       <FeedbackSection />

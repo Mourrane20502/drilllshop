@@ -25,7 +25,7 @@ export default function Header() {
           isScrolling
             ? "hidden"
             : "bg-black dark:bg-white dark:text-black text-white"
-        } transition-all gap-7 duration-300 ease-in-out flex items-center overflow-hidden justify-center w-full h-10 absolute top-0 left-0 z-20`}
+        } transition-all gap-7 duration-300 ease-in-out flex items-center overflow-hidden justify-center w-full h-10 absolute top-0 left-0 z-50`}
       >
         <p className="text-center max-md:text-sm px-4">
           Livraison Gratuite disponible partout au Maroc!
