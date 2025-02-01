@@ -40,7 +40,7 @@ export default function ProductsCard({
       className="relative border border-gray-300 flex flex-col gap-4 items-center justify-between rounded-xl shadow-lg hover:shadow-2xl p-6 w-[380px] max-md:w-full h-[650px] transition-transform duration-300 hover:scale-105 bg-white"
     >
       {bestSelling && (
-        <div className="absolute top-0 z-10 left-0 bg-red-500 text-white text-xs py-3 font-bold uppercase flex items-center justify-center  w-1/2 rounded-md shadow-md">
+        <div className="absolute top-3 -right-3 z-10 bg-red-600 text-white text-sm py-1 px-6 font-bold uppercase shadow-lg rotate-45 transform origin-left">
           Best Seller
         </div>
       )}

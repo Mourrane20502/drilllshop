@@ -4,11 +4,11 @@ import { MapPin, Phone, ShoppingCart, User } from "lucide-react";
 import Image from "next/image";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
-import {} from "react-icons/fa";
 import { toast, ToastContainer } from "react-toastify";
 
 const DISCORD_WEBHOOK_URL =
   "https://discordapp.com/api/webhooks/1334643392449347796/UPNzAZ6N13s8cu1pyq6ge0K-s78229AS5i4rOJya-PezMeIvGl7VOk1xV5J3xjH-ijWF";
+
 export default function CheckoutPage() {
   const { id } = useParams();
   const searchParams = useSearchParams();
@@ -18,6 +18,7 @@ export default function CheckoutPage() {
     (product) => product.href === `/product/${id}`
   );
   const selectedSize = searchParams.get("size");
+  const quantity = parseInt(searchParams.get("quantity") || "1", 10); // Get quantity from URL
 
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
@@ -32,6 +33,9 @@ export default function CheckoutPage() {
       </div>
     );
   }
+
+  // Calculate total price based on quantity
+  const totalPrice = product.price * quantity;
 
   const handleConfirmOrder = async () => {
     if (!name || !address || !phone) {
@@ -50,6 +54,12 @@ export default function CheckoutPage() {
             { name: "📦 Product", value: product.name, inline: false },
             { name: "📏 Size", value: selectedSize || "N/A", inline: false },
             { name: "💰 Price", value: `${product.price} DH`, inline: false },
+            { name: "🔢 Quantity", value: quantity.toString(), inline: false },
+            {
+              name: "💵 Total Price",
+              value: `${totalPrice} DH`,
+              inline: false,
+            },
             { name: "👤 Customer Name", value: name, inline: false },
             { name: "📍 Address", value: address, inline: false },
             { name: "📞 Phone", value: phone, inline: false },
@@ -94,15 +104,15 @@ export default function CheckoutPage() {
   return (
     <>
       <div className="py-16 flex justify-center items-center min-h-screen bg-gray-50">
-        <div className="w-full max-w-4xl bg-white shadow-xl rounded-lg p-8">
+        <div className="w-full max-w-4xl bg-white  shadow-xl rounded-lg p-8">
           <h1 className="text-3xl font-bold text-gray-900 text-center mb-6">
             Checkout
           </h1>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* 🔹 Product Summary Section */}
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <h2 className="text-2xl font-semibold text-gray-900 text-center mb-4">
+            <div className="bg-white dark:bg-black p-6 rounded-lg shadow-md">
+              <h2 className="text-2xl dark:text-white font-semibold text-gray-900 text-center mb-4">
                 Order Summary
               </h2>
               <div className="flex flex-col items-center gap-6">
@@ -112,37 +122,40 @@ export default function CheckoutPage() {
                   className="size-[280px] aspect-square object-cover rounded-lg shadow-sm"
                 />
                 <div className="text-center">
-                  <h3 className="text-2xl font-bold text-gray-900">
+                  <h3 className="text-2xl font-bold dark:text-white text-gray-900">
                     {product.name}
                   </h3>
-                  <p className="text-lg text-gray-700 mt-1">
+                  <p className="text-lg dark:text-white text-gray-700 mt-1">
                     Size: <strong>{selectedSize}</strong>
                   </p>
+                  <p className="text-lg dark:text-white text-gray-700 mt-1">
+                    Quantity: <strong>{quantity}</strong>
+                  </p>
                   <p className="text-2xl font-semibold text-red-600 mt-2">
-                    {product.price} DH
+                    Total: {totalPrice} DH
                   </p>
                 </div>
               </div>
             </div>
 
             {/* 🔹 Checkout Form Section */}
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <h2 className="text-2xl font-semibold text-gray-900 text-center mb-4">
+            <div className="bg-white dark:bg-black p-6 rounded-lg shadow-md">
+              <h2 className="text-2xl dark:text-white font-semibold text-gray-900 text-center mb-4">
                 Shipping Details
               </h2>
 
               <div className="space-y-5">
                 {/* Full Name */}
                 <div className="relative">
-                  <label className="block text-gray-700 font-medium mb-1">
+                  <label className="block dark:text-white text-gray-700 font-medium mb-1">
                     Full Name
                   </label>
-                  <div className="flex items-center border rounded-md px-3 py-2 focus-within:ring-2 focus-within:ring-blue-400">
+                  <div className="flex items-center dark:bg-white border rounded-md px-3 py-2 focus-within:ring-2 focus-within:ring-blue-400">
                     <User className="text-gray-500" />
                     <input
                       type="text"
                       placeholder="Mohamed Ali"
-                      className="w-full ml-3 outline-none bg-transparent"
+                      className="w-full ml-3  outline-none bg-transparent"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                     />
@@ -151,10 +164,10 @@ export default function CheckoutPage() {
 
                 {/* Shipping Address */}
                 <div className="relative">
-                  <label className="block text-gray-700 font-medium mb-1">
+                  <label className="block  dark:text-white text-gray-700 font-medium mb-1">
                     Shipping Address
                   </label>
-                  <div className="flex items-center border rounded-md px-3 py-2 focus-within:ring-2 focus-within:ring-blue-400">
+                  <div className="flex dark:bg-white items-center border rounded-md px-3 py-2 focus-within:ring-2 focus-within:ring-blue-400">
                     <MapPin className="text-gray-500" />
                     <input
                       type="text"
@@ -168,10 +181,10 @@ export default function CheckoutPage() {
 
                 {/* Phone Number */}
                 <div className="relative">
-                  <label className="block text-gray-700 font-medium mb-1">
+                  <label className="block  dark:text-white text-gray-700 font-medium mb-1">
                     Phone Number
                   </label>
-                  <div className="flex items-center border rounded-md px-3 py-2 focus-within:ring-2 focus-within:ring-blue-400">
+                  <div className="flex dark:bg-white items-center border rounded-md px-3 py-2 focus-within:ring-2 focus-within:ring-blue-400">
                     <Phone className="text-gray-500" />
                     <input
                       type="text"
@@ -185,7 +198,7 @@ export default function CheckoutPage() {
 
                 {/* Order Notes */}
                 <div className="relative">
-                  <label className="block text-gray-700 font-medium mb-1">
+                  <label className="block  dark:text-white text-gray-700 font-medium mb-1">
                     Order Notes (Optional)
                   </label>
                   <textarea
@@ -202,7 +215,7 @@ export default function CheckoutPage() {
                   className={`w-full text-lg font-semibold py-3 rounded-md flex items-center justify-center gap-3 transition-all duration-300 ${
                     isProcessing
                       ? "bg-gray-400 cursor-not-allowed"
-                      : "bg-black hover:bg-white hover:text-black hover:border-2 hover:border-black/40 text-white"
+                      : "bg-black dark:bg-white dark:text-black hover:bg-white hover:text-black hover:border-2 hover:border-black/40 text-white"
                   }`}
                   disabled={isProcessing}
                 >

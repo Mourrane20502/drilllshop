@@ -6,7 +6,7 @@ import { LogoDrill } from "../_components/LogoDrill";
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-black text-white py-16 px-10 md:px-20">
+    <footer className="w-full bg-black max-md:dark:border-t-2 max-md:dark:border-white text-white py-16 px-10 md:px-20">
       {/* Logo Section */}
       <div className="flex justify-center mb-10">
         <LogoDrill classname="w-28 h-28 rounded-full" />
@@ -93,7 +93,6 @@ export default function Footer() {
         </button>
       </div>
 
-      {/* Copyright Section */}
       <div className="mt-10 text-center text-sm">
         <p>&copy; {new Date().getFullYear()} DrillShop. All Rights Reserved.</p>
       </div>

@@ -35,8 +35,10 @@ export default function Header() {
       {/* Main Header */}
       <header
         className={`${
-          isScrolling ? "shadow-lg py-4" : "shadow-md py-6"
-        } transition-all overflow-hidden dark:bg-black duration-300 ease-in-out bg-white h-[140px] max-md:h-[120px] flex flex-col items-center fixed top-0 left-0 right-0 w-full z-10 p-4`}
+          isScrolling
+            ? "shadow-lg py-4 h-[100px]"
+            : "shadow-md py-6 mt-4 h-[110px]"
+        } transition-all overflow-hidden dark:bg-black duration-300 ease-in-out bg-white  max-md:h-[120px] flex flex-col justify-center items-center fixed top-0 left-0 right-0 w-full z-20 p-4`}
       >
         <nav className="flex items-center py-4 max-md:mt-5 justify-between w-full max-w-6xl mx-auto">
           {/* Logo */}

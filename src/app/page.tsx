@@ -3,20 +3,18 @@ import ProductsCard from "@/app/_components/ProductsCard";
 import { Button } from "@/components/ui/button";
 import { ProductsList } from "@/data/drillShopData";
 import { motion } from "framer-motion";
-// import { Instagram, Youtube } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import CollabsSection from "./_components/CollabsSection";
-// import Footer from "./_navigation/footer";
 import FeedbackSection from "./_components/FeedbackSlider";
 import BgSection from "./assets/bgsection.png";
 import maindrill from "./assets/drillmainsection.png";
-// import brandPic from "./assets/intro-pic.png";
-// import mainPhoto from "./assets/mainphoto.jpg";
+
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
+  const [showAllProducts, setShowAllProducts] = useState(false);
 
   const categories = [
     "All",
@@ -36,6 +34,10 @@ export default function Home() {
     }
     return 0;
   });
+
+  const displayedProducts = showAllProducts
+    ? filteredProducts
+    : filteredProducts.slice(0, 4);
 
   return (
     <div className="py-28">
@@ -154,13 +156,8 @@ export default function Home() {
         </motion.div>
       </motion.section>
 
-      {/* <div className="sticky flex flex-col items-center justify-center gap-5 top-1/2 right-10 p-8 z-10">
-  <Instagram size={22} className="text-blue-500 hover:text-blue-700" />
-  <Youtube className="text-red-500 hover:text-red-700" />
-</div> */}
       {/* Products Section */}
       <section id="products" className="w-full px-8 py-12 scroll-m-16">
-        {/* Search Bar */}
         <div className="flex items-center justify-center mb-8">
           <input
             type="text"
@@ -176,11 +173,14 @@ export default function Home() {
           {categories.map((category) => (
             <button
               key={category}
-              onClick={() => setSelectedCategory(category)}
+              onClick={() => {
+                setSelectedCategory(category);
+                setShowAllProducts(false);
+              }}
               className={`px-6 py-3 rounded-lg text-lg font-medium transition-all duration-300 ${
                 selectedCategory === category
-                  ? "bg-black text-white"
-                  : "bg-gray-200 hover:bg-gray-300"
+                  ? "bg-black border-[1px] border-white text-white"
+                  : "bg-white text-black hover:bg-gray-300"
               }`}
             >
               {category}
@@ -190,10 +190,21 @@ export default function Home() {
 
         {/* Products Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-12">
-          {filteredProducts.map((product) => (
+          {displayedProducts.map((product) => (
             <ProductsCard key={product.id} {...product} />
           ))}
         </div>
+
+        {filteredProducts.length > 5 && !showAllProducts && (
+          <div className="flex justify-center mt-8">
+            <Button
+              onClick={() => setShowAllProducts(true)}
+              className="px-8 py-6 text-lg dark:bg-white dark:text-black bg-black text-white hover:bg-gray-800 transition-all duration-300"
+            >
+              View More
+            </Button>
+          </div>
+        )}
 
         {/* Empty State */}
         {filteredProducts.length === 0 && (
@@ -210,7 +221,7 @@ export default function Home() {
 
       <FeedbackSection />
 
-      {/* Collabs  Section */}
+      {/* Collabs Section */}
       <CollabsSection />
     </div>
   );
