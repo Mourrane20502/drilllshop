@@ -4,18 +4,29 @@ import { Switch } from "@/components/ui/switch";
 import { useTheme } from "@/context/ThemeContext";
 import { useScroll } from "@/hooks/useScroll";
 import { useToggleMobile } from "@/hooks/useToggleMobile";
-import { Menu, Search, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import { LogoDrill } from "../_components/LogoDrill";
 import { LogoDrillWhite } from "../_components/LogoDrillWhite";
+import SearchComponent from "../_components/SearchComponent";
 
 export default function Header() {
   const { isScrolling } = useScroll();
   const { isMobile, toggleMobile } = useToggleMobile();
   const { darkMode, toggleDarkMode } = useTheme();
-  const [searchOpen, setSearchOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
+  const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
+
+  const searchData = [
+    { id: 1, title: "Home", link: "/" },
+    { id: 2, title: "Products", link: "#products" },
+    { id: 3, title: "Contact", link: "#contact" },
+    { id: 4, title: "Feedback", link: "/contact" },
+  ];
+
+  const handleSearchToggle = (isOpen: boolean) => {
+    setIsSearchOpen(isOpen);
+  };
 
   return (
     <>
@@ -32,45 +43,32 @@ export default function Header() {
         </p>
       </div>
 
-      {/* Main Header */}
       <header
         className={`${
           isScrolling
             ? "shadow-lg py-4 h-[100px]"
             : "shadow-md py-6 mt-4 h-[110px]"
-        } transition-all overflow-hidden dark:bg-black duration-300 ease-in-out bg-white  max-md:h-[120px] flex flex-col justify-center items-center fixed top-0 left-0 right-0 w-full z-20 p-4`}
+        } ${
+          isSearchOpen ? "h-[180px] max-md:h-[200px]" : ""
+        } transition-all overflow-hidden dark:bg-black duration-300 ease-in-out bg-white max-md:h-[120px] flex flex-col justify-center items-center fixed top-0 left-0 right-0 w-full z-20 p-4`}
       >
         <nav className="flex items-center py-4 max-md:mt-5 justify-between w-full max-w-6xl mx-auto">
           {/* Logo */}
           {darkMode ? (
-            <LogoDrill classname="size-[90px] max-md:size-[50px]" />
+            <Link href="/" className="cursor-pointer">
+              <LogoDrill classname="size-[90px] max-md:size-[50px]" />
+            </Link>
           ) : (
-            <LogoDrillWhite classname="size-[90px] max-md:size-[50px]" />
+            <Link href="/" className="cursor-pointer">
+              <LogoDrillWhite classname="size-[90px] max-md:size-[50px]" />
+            </Link>
           )}
 
           {/* Search Bar */}
-          <div className="relative">
-            {searchOpen ? (
-              <div className="flex items-center space-x-2">
-                <input
-                  type="text"
-                  placeholder="Search..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="border border-gray-300 rounded-lg px-6 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300"
-                />
-                <X
-                  onClick={() => setSearchOpen(false)}
-                  className="text-black dark:text-white cursor-pointer"
-                />
-              </div>
-            ) : (
-              <Search
-                onClick={() => setSearchOpen(!searchOpen)}
-                className="w-6 h-6 dark:text-white cursor-pointer"
-              />
-            )}
-          </div>
+          <SearchComponent
+            data={searchData}
+            onSearchToggle={handleSearchToggle}
+          />
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-6">
@@ -126,7 +124,7 @@ export default function Header() {
         <div
           className={`fixed top-0 left-0 w-full h-screen bg-black bg-opacity-90 flex flex-col items-center justify-center space-y-6 transform ${
             isMobile ? "translate-x-0" : "-translate-x-full"
-          } transition-transform duration-300 ease-in-out md:hidden`}
+          }  transition-transform duration-300 ease-in-out md:hidden`}
         >
           <X
             onClick={toggleMobile}

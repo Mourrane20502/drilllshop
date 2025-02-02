@@ -93,69 +93,6 @@ export default function Home() {
         </motion.div>
       </motion.section>
 
-      {/* About Section */}
-      <motion.section
-        className="w-full dark:bg-black/95 max-md:flex-col max-md:gap-6 flex items-center justify-center py-20 px-4 max-md:px-2"
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 1, ease: "easeOut" }}
-      >
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 1, delay: 0.5 }}
-        >
-          <Image
-            src={maindrill}
-            loading="lazy"
-            height={550}
-            alt="brand photo"
-            className="rounded-2xl shadow-xl hover:scale-105 transition-transform duration-500 ease-in-out"
-          />
-        </motion.div>
-        <motion.div
-          className="flex flex-col items-center gap-8 max-w-2xl max-md:px-2 px-6"
-          initial={{ opacity: 0, x: -50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 1, delay: 0.8, ease: "easeOut" }}
-        >
-          <motion.h2
-            className="dark:text-white text-center max-md:tracking-wider text-5xl text-gray-900 font-bold tracking-wide leading-tight"
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 1, delay: 1 }}
-          >
-            DRILLSHOP
-          </motion.h2>
-          <motion.p
-            className="text-xl dark:text-white text-gray-700 max-md:text-md leading-relaxed tracking-wide text-center"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 1, delay: 1.2 }}
-          >
-            DrillShop is a 100% Moroccan store created by a group of passionate
-            friends. We offer unlimited collections, with limited stock
-            production, unique for each model. Each piece is exclusive and
-            reflects the culture of young Moroccans.
-          </motion.p>
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 1, delay: 1.4 }}
-          >
-            <Button className="px-8 py-6 text-lg border-2 dark:bg-white dark:text-black border-gray-900 hover:bg-gray-900 hover:text-white transition-all duration-300 ease-in-out max-md:w-3/4">
-              <Link href="#feedback">See Feedback</Link>
-            </Button>
-          </motion.div>
-        </motion.div>
-      </motion.section>
-
       {/* Products Section */}
       <section id="products" className="w-full px-8 py-12 scroll-m-16">
         <div className="flex items-center justify-center mb-8">
@@ -218,6 +155,68 @@ export default function Home() {
           </div>
         )}
       </section>
+      {/* About Section */}
+      <motion.section
+        className="w-full dark:bg-black/95 max-md:flex-col max-md:gap-6 flex items-center justify-center py-20 px-4 max-md:px-2"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 1, ease: "easeOut" }}
+      >
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 1, delay: 0.5 }}
+        >
+          <Image
+            src={maindrill}
+            loading="lazy"
+            height={550}
+            alt="brand photo"
+            className="rounded-2xl shadow-xl hover:scale-105 transition-transform duration-500 ease-in-out"
+          />
+        </motion.div>
+        <motion.div
+          className="flex flex-col items-center gap-8 max-w-2xl max-md:px-2 px-6"
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 1, delay: 0.8, ease: "easeOut" }}
+        >
+          <motion.h2
+            className="dark:text-white text-center max-md:tracking-wider text-5xl text-gray-900 font-bold tracking-wide leading-tight"
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 1, delay: 1 }}
+          >
+            DRILLSHOP
+          </motion.h2>
+          <motion.p
+            className="text-xl dark:text-white text-gray-700 max-md:text-md leading-relaxed tracking-wide text-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 1, delay: 1.2 }}
+          >
+            DrillShop is a 100% Moroccan store created by a group of passionate
+            friends. We offer unlimited collections, with limited stock
+            production, unique for each model. Each piece is exclusive and
+            reflects the culture of young Moroccans.
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 1, delay: 1.4 }}
+          >
+            <Button className="px-8  py-6 text-lg border-2 dark:bg-white dark:text-black border-gray-900 hover:bg-gray-900 hover:text-white transition-all duration-300 ease-in-out max-md:w-full">
+              <Link href="#feedback">See Feedback</Link>
+            </Button>
+          </motion.div>
+        </motion.div>
+      </motion.section>
 
       <FeedbackSection />
 

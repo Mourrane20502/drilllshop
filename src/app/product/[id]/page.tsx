@@ -176,7 +176,7 @@ export default function ProductPage() {
               }`}
               disabled={!product.isAvailable}
             >
-              {product.isAvailable ? " Order Now" : "Out of Stock"}
+              {product.isAvailable ? "Order Now" : "Out of Stock"}
             </button>
 
             <div className="w-full flex items-center justify-center gap-3">
