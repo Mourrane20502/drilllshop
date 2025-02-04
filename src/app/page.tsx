@@ -13,17 +13,18 @@ import maindrill from "./assets/drillmainsection.png";
 
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [selectedCategory, setSelectedCategory] = useState("Best Seller");
   const [showAllProducts, setShowAllProducts] = useState(false);
 
   const categories = [
-    "All",
+    "Best Seller",
     ...new Set(ProductsList.map((product) => product.category)),
   ];
 
   const filteredProducts = ProductsList.filter(
     (product) =>
-      (selectedCategory === "All" || product.category === selectedCategory) &&
+      (selectedCategory === "Best Seller" ||
+        product.category === selectedCategory) &&
       product.name.toLowerCase().includes(searchQuery.toLowerCase())
   ).sort((a, b) => {
     if (a.bestSelling && !b.bestSelling) {

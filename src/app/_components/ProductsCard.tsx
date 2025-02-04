@@ -40,8 +40,9 @@ export default function ProductsCard({
       className="relative border border-gray-300 flex flex-col gap-4 items-center justify-between rounded-xl shadow-lg hover:shadow-2xl p-6 w-[380px] max-md:w-full h-[650px] transition-transform duration-300 hover:scale-105 bg-white"
     >
       {bestSelling && (
-        <div className="absolute top-0 rounded-full -right-1 z-10 bg-red-600 text-white text-sm py-1 px-6 font-bold uppercase shadow-lg">
-          Best Seller
+        <div className="absolute flex flex-col items-center justify-center -top-3 rounded-full -right-2 z-10 bg-[#f80312] text-white text-sm  w-[80px] h-[80px] font-bold uppercase shadow-lg">
+          <p>Best</p>
+          <p>Seller</p>
         </div>
       )}
 

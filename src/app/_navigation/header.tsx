@@ -6,27 +6,13 @@ import { useScroll } from "@/hooks/useScroll";
 import { useToggleMobile } from "@/hooks/useToggleMobile";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
-import { useState } from "react";
 import { LogoDrill } from "../_components/LogoDrill";
 import { LogoDrillWhite } from "../_components/LogoDrillWhite";
-import SearchComponent from "../_components/SearchComponent";
 
 export default function Header() {
   const { isScrolling } = useScroll();
   const { isMobile, toggleMobile } = useToggleMobile();
   const { darkMode, toggleDarkMode } = useTheme();
-  const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
-
-  const searchData = [
-    { id: 1, title: "Home", link: "/" },
-    { id: 2, title: "Products", link: "#products" },
-    { id: 3, title: "Contact", link: "#contact" },
-    { id: 4, title: "Feedback", link: "/contact" },
-  ];
-
-  const handleSearchToggle = (isOpen: boolean) => {
-    setIsSearchOpen(isOpen);
-  };
 
   return (
     <>
@@ -36,10 +22,19 @@ export default function Header() {
           isScrolling
             ? "hidden"
             : "bg-black dark:bg-white dark:text-black text-white"
-        } transition-all gap-7 duration-300 ease-in-out flex items-center overflow-hidden justify-center w-full h-10 absolute top-0 left-0 z-50`}
+        } transition-all gap-7 duration-300  ease-in-out flex items-center overflow-hidden justify-start w-full h-10 absolute top-0 left-0 z-50`}
       >
-        <p className="text-center max-md:text-sm px-4">
-          Livraison Gratuite disponible partout au Maroc!
+        <p className="text-center max-md:w-[400px]  uppercase header-container px-2">
+          Livraison Gratuite à partir de 599 Dh
+        </p>
+        <p className="text-center max-md:hidden uppercase header-container px-2">
+          Livraison Gratuite à partir de 599 Dh
+        </p>
+        <p className="text-center max-md:hidden uppercase  header-container  px-2">
+          Livraison Gratuite à partir de 599 Dh
+        </p>
+        <p className="text-center max-md:hidden uppercase  header-container  px-2">
+          Livraison Gratuite à partir de 599 Dh
         </p>
       </div>
 
@@ -48,27 +43,23 @@ export default function Header() {
           isScrolling
             ? "shadow-lg py-4 h-[100px]"
             : "shadow-md py-6 mt-4 h-[110px]"
-        } ${
-          isSearchOpen ? "h-[180px] max-md:h-[200px]" : ""
+        } 
+
         } transition-all overflow-hidden dark:bg-black duration-300 ease-in-out bg-white max-md:h-[120px] flex flex-col justify-center items-center fixed top-0 left-0 right-0 w-full z-20 p-4`}
       >
         <nav className="flex items-center py-4 max-md:mt-5 justify-between w-full max-w-6xl mx-auto">
           {/* Logo */}
           {darkMode ? (
             <Link href="/" className="cursor-pointer">
-              <LogoDrill classname="size-[90px] max-md:size-[50px]" />
+              <LogoDrill classname="size-[90px] mt-3 max-md:size-[50px]" />
             </Link>
           ) : (
             <Link href="/" className="cursor-pointer">
-              <LogoDrillWhite classname="size-[90px] max-md:size-[50px]" />
+              <LogoDrillWhite classname="size-[90px] mt-3 max-md:size-[50px]" />
             </Link>
           )}
 
           {/* Search Bar */}
-          <SearchComponent
-            data={searchData}
-            onSearchToggle={handleSearchToggle}
-          />
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-6">

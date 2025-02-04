@@ -19,10 +19,10 @@ const FeedbackSection = () => {
   return (
     <section
       id="feedback"
-      className="w-full py-20 bg-gradient-to-r from-blue-50 to-white dark:from-gray-800 dark:to-gray-900 px-6"
+      className="w-full py-20 bg-gradient-to-r from-blue-50 to-white  px-6"
     >
       {/* Section Title */}
-      <h2 className="text-5xl font-extrabold text-center text-gray-800 dark:text-white mb-14 tracking-wide">
+      <h2 className="text-5xl font-extrabold text-center dark! text-gray-800 dark:text-black mb-14 tracking-wide">
         What Our Customers Say
       </h2>
 
@@ -31,7 +31,7 @@ const FeedbackSection = () => {
         <Slider {...settings} className="pb-3">
           {feedback.map((item) => (
             <div key={item.id} className="px-6">
-              <div className="relative bg-white dark:bg-gray-800 rounded-xl shadow-xl p-10 flex flex-col items-center text-center transition-all duration-500 ease-in-out pb-8 ">
+              <div className="relative bg-white dark:bg-black rounded-xl shadow-xl p-10 flex flex-col items-center text-center transition-all duration-500 ease-in-out pb-8 ">
                 {/* Profil Picture */}
                 <div className="w-28 h-28 rounded-full overflow-hidden border-2 border-indigo-500 dark:border-gray-600 shadow-lg mb-6">
                   <Image

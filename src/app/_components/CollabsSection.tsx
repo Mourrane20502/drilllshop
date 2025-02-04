@@ -24,12 +24,12 @@ const mockCollabData: Collab[] = [
 
 export default function CollabsSection() {
   return (
-    <section className="py-20 bg-black dark:bg-white dark:shadow-lg text-white mb-5">
+    <section className="py-20  bg-black dark:bg-black dark:shadow-lg dark:border-b-[20px] dark:border-gray-200 text-white mb-5">
       <div className="container mx-auto text-center mb-12">
-        <h2 className="text-5xl font-bold dark:text-black max-md:text-2xl">
+        <h2 className="text-5xl font-bold dark:text-white max-md:text-2xl">
           Our Amazing Collaborators
         </h2>
-        <p className="mt-4 text-lg dark:text-black text-center max-md:text-md">
+        <p className="mt-4 text-lg dark:text-white text-center max-md:text-md">
           Check out the incredible people we’ve worked with!
         </p>
       </div>

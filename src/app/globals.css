@@ -18,6 +18,18 @@ html {
     opacity: 1;
   }
 }
+@keyframes scrollHeader {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.header-container {
+  animation: scrollHeader 7s linear infinite;
+}
 
 @keyframes scroll {
   0% {
