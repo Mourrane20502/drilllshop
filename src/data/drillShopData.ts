@@ -3,6 +3,8 @@ import iceflow from "../app/assets/clothe.png";
 import iceFlowHover from "../app/assets/clothehover.png";
 import crtz from "../app/assets/crtz.png";
 import crtzhover from "../app/assets/crtzhover.png";
+import cubain from "../app/assets/cubain.jpg";
+import cubainHover from "../app/assets/cubainhover.jpg";
 import hoverImage from "../app/assets/drillguys.jpg";
 import glove from "../app/assets/glove.png";
 import glove2 from "../app/assets/glove2.png";
@@ -177,8 +179,8 @@ export const ProductsList: Product[] = [
     name: "Cubain Chain",
     price: 100,
     description: "Protect your eyes with these trendy sunglasses.",
-    image: Image,
-    hoverImage: hoverImage,
+    image: cubain,
+    hoverImage: cubainHover,
     href: "/product/11",
     taille: ["One Size"],
     category: "Accessories",
