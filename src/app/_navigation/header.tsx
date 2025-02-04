@@ -85,13 +85,13 @@ export default function Header() {
               Products
             </Link>
             <Link
-              href="#contact"
+              href="#about"
               className="text-lg dark:text-white hover:scale-105 transition-all duration-300 ease-in-out"
             >
-              Contact
+              About
             </Link>
             <Link
-              href="/contact"
+              href="#feedback"
               className="text-lg dark:text-white hover:scale-105 transition-all duration-300 ease-in-out"
             >
               Feedback
@@ -152,7 +152,7 @@ export default function Header() {
             Contact
           </Link>
           <Link
-            href="/contact"
+            href="#feedback"
             className="text-2xl text-white hover:scale-105 transition-all duration-300 ease-in-out"
             onClick={toggleMobile}
           >

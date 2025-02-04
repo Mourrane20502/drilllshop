@@ -12,8 +12,8 @@ const FeedbackSection = () => {
     autoplay: true,
     autoplaySpeed: 1500,
     arrows: false,
-    fade: true, // Smooth transition effect
-    adaptiveHeight: true, // Adjust height dynamically
+    fade: true,
+    adaptiveHeight: true,
   };
 
   return (

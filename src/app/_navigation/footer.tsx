@@ -26,12 +26,12 @@ export default function Footer() {
               </Link>
             </li>
             <li>
-              <Link className="text-lg hover:text-blue-400" href="/products">
+              <Link className="text-lg hover:text-blue-400" href="#products">
                 Products
               </Link>
             </li>
             <li>
-              <Link className="text-lg hover:text-blue-400" href="/feedback">
+              <Link className="text-lg hover:text-blue-400" href="#feedback">
                 Customer Feedback
               </Link>
             </li>

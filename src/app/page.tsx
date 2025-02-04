@@ -157,6 +157,7 @@ export default function Home() {
       </section>
       {/* About Section */}
       <motion.section
+        id="about"
         className="w-full dark:bg-black/95 max-md:flex-col max-md:gap-6 flex items-center justify-center py-20 px-4 max-md:px-2"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
