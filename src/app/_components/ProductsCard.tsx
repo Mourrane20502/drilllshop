@@ -59,7 +59,7 @@ export default function ProductsCard({
 
       {/* Product Info */}
       <div className="flex flex-col items-center text-center">
-        <h3 className="text-2xl font-semibold text-gray-900 max-md:text-xl">
+        <h3 className="text-2xl w-[90%] font-semibold text-gray-900 max-md:text-xl">
           {name}
         </h3>
         <p className="text-lg font-medium text-gray-700 mt-2">

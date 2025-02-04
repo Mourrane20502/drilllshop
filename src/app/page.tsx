@@ -38,7 +38,7 @@ export default function Home() {
 
   const displayedProducts = showAllProducts
     ? filteredProducts
-    : filteredProducts.slice(0, 4);
+    : filteredProducts.slice(0, 5);
 
   return (
     <div className="py-28">

@@ -1,10 +1,29 @@
 import { StaticImageData } from "next/image";
+import iceflow from "../app/assets/clothe.png";
+import iceFlowHover from "../app/assets/clothehover.png";
+import crtz from "../app/assets/crtz.png";
+import crtzhover from "../app/assets/crtzhover.png";
 import hoverImage from "../app/assets/drillguys.jpg";
+import glove from "../app/assets/glove.png";
+import glove2 from "../app/assets/glove2.png";
+import glove3 from "../app/assets/glove3.png";
+import gloveHover from "../app/assets/glovehover.png";
+import glove2hover from "../app/assets/glover2hover.png";
+import glove3hover from "../app/assets/glover3hover.png";
+import nikeshort from "../app/assets/nikeshort.png";
+import nikeshorthover from "../app/assets/nikeshorthover.png";
 import Image from "../app/assets/productNikeHover.jpg";
-import slaughterhover from "../app/assets/slaughter.jpg";
-import slaughter from "../app/assets/slaughterhover.jpg";
+import sabr from "../app/assets/sabr.png";
+import sabrhover from "../app/assets/sabrhover.png";
+import shoe1 from "../app/assets/shoe1.jpg";
+import shoe2 from "../app/assets/shoe2.jpg";
+import shoe3 from "../app/assets/shoe3.png";
+import shoe3hover from "../app/assets/shoe3hover.png";
+import shoe1hover from "../app/assets/shoehover.avif";
+import shoe2hover from "../app/assets/shover2hover.jpg";
+import stussy from "../app/assets/stussy.png";
+import stussyHover from "../app/assets/stussyhover.png";
 import iconUser from "../app/assets/toto.jpg";
-
 // export const ProductPage = [
 //   {id : 1 , name:"Nike Jackets", price: 300, description: "This is a jacket that will keep you warm in the winter and cool in the summer.", image: Image, hoverImage: hoverImage},
 // ]
@@ -27,12 +46,12 @@ interface Product {
 export const ProductsList: Product[] = [
   {
     id: 1,
-    name: "Nike Jackets",
+    name: "Crtz X Slaughter Gang",
     price: 300,
     description:
       "This is a jacket that will keep you warm in the winter and cool in the summer.",
-    image: Image,
-    hoverImage: hoverImage,
+    image: crtz,
+    hoverImage: crtzhover,
     href: "/product/1",
     isAvailable: true,
     ProductImages: [Image, hoverImage, Image, hoverImage],
@@ -43,11 +62,11 @@ export const ProductsList: Product[] = [
   },
   {
     id: 2,
-    name: "Adidas Shoes",
+    name: "Corteiz Nike Air Max 95 DarkGreen",
     price: 250,
     description: "Durable and stylish sports shoes for all-day comfort.",
-    image: Image,
-    hoverImage: hoverImage,
+    image: shoe2,
+    hoverImage: shoe2hover,
     href: "/product/2",
     isAvailable: true,
     taille: ["40", "41", "42", "43"],
@@ -56,11 +75,11 @@ export const ProductsList: Product[] = [
   },
   {
     id: 3,
-    name: "Leather Belt",
+    name: "Nike Gloves",
     price: 150,
     description: "High-quality leather belt for a sophisticated look.",
-    image: Image,
-    hoverImage: hoverImage,
+    image: glove,
+    hoverImage: gloveHover,
     href: "/product/3",
     isAvailable: true,
     taille: ["S", "M", "L", "XL"],
@@ -69,23 +88,24 @@ export const ProductsList: Product[] = [
   },
   {
     id: 4,
-    name: "Yamaha Hoodie",
+    name: "Ice FLOW Collection",
     price: 320,
     description: "Comfortable hoodie for outdoor adventures.",
-    image: slaughter,
-    hoverImage: slaughterhover,
+    image: iceflow,
+    hoverImage: iceFlowHover,
     href: "/product/4",
     taille: ["M", "L", "XL", "2XL"],
     category: "Clothes",
     bestSelling: false,
+    isAvailable: true,
   },
   {
     id: 5,
-    name: "Classic Watch",
+    name: "NorthFace Gloves",
     price: 800,
     description: "Elegant timepiece for formal and casual occasions.",
-    image: Image,
-    hoverImage: hoverImage,
+    image: glove2,
+    hoverImage: glove2hover,
     href: "/product/5",
     taille: ["One Size"],
     category: "Accessories",
@@ -93,11 +113,11 @@ export const ProductsList: Product[] = [
   },
   {
     id: 6,
-    name: "Running Shoes",
+    name: "Corteiz Nike Air Max 95 Pink",
     price: 200,
     description: "Lightweight shoes for enhanced running performance.",
-    image: Image,
-    hoverImage: hoverImage,
+    image: shoe3,
+    hoverImage: shoe3hover,
     href: "/product/6",
     taille: ["40", "41", "42", "43"],
     category: "Shoes",
@@ -105,11 +125,11 @@ export const ProductsList: Product[] = [
   },
   {
     id: 7,
-    name: "Tesla Jacket",
+    name: "STÜSSY TEE Collection",
     price: 400,
     description: "Modern and sleek jacket with advanced insulation.",
-    image: slaughter,
-    hoverImage: slaughterhover,
+    image: stussy,
+    hoverImage: stussyHover,
     href: "/product/7",
     taille: ["M", "L", "XL", "2XL"],
     category: "Clothes", // Category: Clothes,
@@ -117,11 +137,11 @@ export const ProductsList: Product[] = [
   },
   {
     id: 8,
-    name: "Travel Backpack",
+    name: "Trapstar Gloves",
     price: 120,
     description: "Spacious and durable backpack for all your adventures.",
-    image: Image,
-    hoverImage: hoverImage,
+    image: glove3,
+    hoverImage: glove3hover,
     href: "/product/8",
     taille: ["One Size"],
     category: "Accessories",
@@ -129,11 +149,11 @@ export const ProductsList: Product[] = [
   },
   {
     id: 9,
-    name: "Formal Shoes",
+    name: "Corteiz Nike Air Max 95 Blue",
     price: 500,
     description: "Polished leather shoes for professional settings.",
-    image: Image,
-    hoverImage: hoverImage,
+    image: shoe1,
+    hoverImage: shoe1hover,
     href: "/product/9",
     taille: ["40", "41", "42", "43"],
     category: "Shoes",
@@ -141,19 +161,20 @@ export const ProductsList: Product[] = [
   },
   {
     id: 10,
-    name: "Chevrolet Hoodie",
+    name: "NIKE TRACK PANTS ",
     price: 350,
     description: "Stylish and warm hoodie for car enthusiasts.",
-    image: slaughter,
-    hoverImage: slaughterhover,
+    image: nikeshort,
+    hoverImage: nikeshorthover,
     href: "/product/10",
-    taille: ["M", "L", "XL", "2XL"],
-    category: "Clothes", // Category: Clothes
+    taille: ["S", "M", "L", "XL"],
+    category: "Clothes",
     bestSelling: true,
+    isAvailable: true,
   },
   {
     id: 11,
-    name: "Sunglasses",
+    name: "Cubain Chain",
     price: 100,
     description: "Protect your eyes with these trendy sunglasses.",
     image: Image,
@@ -161,6 +182,18 @@ export const ProductsList: Product[] = [
     href: "/product/11",
     taille: ["One Size"],
     category: "Accessories",
+    bestSelling: false,
+  },
+  {
+    id: 12,
+    name: "صبر  Summer Collection",
+    price: 400,
+    description: "Modern and sleek jacket with advanced insulation.",
+    image: sabr,
+    hoverImage: sabrhover,
+    href: "/product/7",
+    taille: ["M", "L", "XL", "2XL"],
+    category: "Clothes",
     bestSelling: false,
   },
 ];
