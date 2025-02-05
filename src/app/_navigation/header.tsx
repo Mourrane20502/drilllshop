@@ -22,18 +22,19 @@ export default function Header() {
           isScrolling
             ? "hidden"
             : "bg-black dark:bg-white dark:text-black text-white"
-        } transition-all gap-7 duration-300  ease-in-out flex items-center overflow-hidden justify-start w-full h-10 absolute top-0 left-0 z-50`}
+        } transition-all gap-4 duration-300 ease-in-out flex items-center justify-start w-full h-14 absolute top-0 left-0 z-50 overflow-hidden`}
       >
-        <p className="text-center max-md:w-[400px]  uppercase header-container px-2">
+        {/* Paragraphs with animation and spaced out */}
+        <p className="text-center max-md:hidden  uppercase header-container px-4 animate-slide">
           Livraison Gratuite à partir de 599 Dh
         </p>
-        <p className="text-center max-md:hidden uppercase header-container px-2">
+        <p className="text-center max-md:hidden uppercase header-container px-4 animate-slide delay-200">
           Livraison Gratuite à partir de 599 Dh
         </p>
-        <p className="text-center max-md:hidden uppercase  header-container  px-2">
+        <p className="text-center max-md:hidden uppercase header-container px-4 animate-slide delay-400">
           Livraison Gratuite à partir de 599 Dh
         </p>
-        <p className="text-center max-md:hidden uppercase  header-container  px-2">
+        <p className="text-center max-md:w-full uppercase header-container px-4 animate-slide delay-600">
           Livraison Gratuite à partir de 599 Dh
         </p>
       </div>
@@ -42,7 +43,7 @@ export default function Header() {
         className={`${
           isScrolling
             ? "shadow-lg py-4 h-[100px]"
-            : "shadow-md py-6 mt-4 h-[110px]"
+            : "shadow-md py-6 mt-9 h-[110px]"
         } 
 
         } transition-all overflow-hidden dark:bg-black duration-300 ease-in-out bg-white max-md:h-[120px] flex flex-col justify-center items-center fixed top-0 left-0 right-0 w-full z-20 p-4`}
@@ -119,7 +120,7 @@ export default function Header() {
         >
           <X
             onClick={toggleMobile}
-            className="absolute top-10 right-6 w-10 h-10 text-white cursor-pointer"
+            className="absolute top-14 right-6 w-10 h-10 text-white cursor-pointer"
           />
           <Link
             href="/"

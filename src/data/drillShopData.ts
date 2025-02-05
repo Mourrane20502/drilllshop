@@ -56,7 +56,7 @@ export const ProductsList: Product[] = [
     hoverImage: crtzhover,
     href: "/product/1",
     isAvailable: true,
-    ProductImages: [Image, hoverImage, Image, hoverImage],
+    ProductImages: [crtz, crtzhover, Image, hoverImage],
     taille: ["S", "M", "L", "XL"],
     availableSizes: ["S", "M", "L", "XL"],
     category: "Clothes",
@@ -69,6 +69,7 @@ export const ProductsList: Product[] = [
     description: "Durable and stylish sports shoes for all-day comfort.",
     image: shoe2,
     hoverImage: shoe2hover,
+    ProductImages: [Image, hoverImage, Image, hoverImage],
     href: "/product/2",
     isAvailable: true,
     taille: ["40", "41", "42", "43"],
@@ -82,6 +83,7 @@ export const ProductsList: Product[] = [
     description: "High-quality leather belt for a sophisticated look.",
     image: glove,
     hoverImage: gloveHover,
+    ProductImages: [Image, hoverImage, Image, hoverImage],
     href: "/product/3",
     isAvailable: true,
     taille: ["S", "M", "L", "XL"],
@@ -95,6 +97,8 @@ export const ProductsList: Product[] = [
     description: "Comfortable hoodie for outdoor adventures.",
     image: iceflow,
     hoverImage: iceFlowHover,
+    ProductImages: [Image, hoverImage, Image, hoverImage],
+
     href: "/product/4",
     taille: ["M", "L", "XL", "2XL"],
     category: "Clothes",
@@ -108,6 +112,8 @@ export const ProductsList: Product[] = [
     description: "Elegant timepiece for formal and casual occasions.",
     image: glove2,
     hoverImage: glove2hover,
+    ProductImages: [Image, hoverImage, Image, hoverImage],
+
     href: "/product/5",
     taille: ["One Size"],
     category: "Accessories",
@@ -120,6 +126,8 @@ export const ProductsList: Product[] = [
     description: "Lightweight shoes for enhanced running performance.",
     image: shoe3,
     hoverImage: shoe3hover,
+    ProductImages: [Image, hoverImage, Image, hoverImage],
+
     href: "/product/6",
     taille: ["40", "41", "42", "43"],
     category: "Shoes",
@@ -132,6 +140,8 @@ export const ProductsList: Product[] = [
     description: "Modern and sleek jacket with advanced insulation.",
     image: stussy,
     hoverImage: stussyHover,
+    ProductImages: [Image, hoverImage, Image, hoverImage],
+
     href: "/product/7",
     taille: ["M", "L", "XL", "2XL"],
     category: "Clothes", // Category: Clothes,
@@ -144,6 +154,8 @@ export const ProductsList: Product[] = [
     description: "Spacious and durable backpack for all your adventures.",
     image: glove3,
     hoverImage: glove3hover,
+    ProductImages: [Image, hoverImage, Image, hoverImage],
+
     href: "/product/8",
     taille: ["One Size"],
     category: "Accessories",
@@ -156,6 +168,8 @@ export const ProductsList: Product[] = [
     description: "Polished leather shoes for professional settings.",
     image: shoe1,
     hoverImage: shoe1hover,
+    ProductImages: [Image, hoverImage, Image, hoverImage],
+
     href: "/product/9",
     taille: ["40", "41", "42", "43"],
     category: "Shoes",
@@ -168,6 +182,8 @@ export const ProductsList: Product[] = [
     description: "Stylish and warm hoodie for car enthusiasts.",
     image: nikeshort,
     hoverImage: nikeshorthover,
+    ProductImages: [Image, hoverImage, Image, hoverImage],
+
     href: "/product/10",
     taille: ["S", "M", "L", "XL"],
     category: "Clothes",
@@ -181,6 +197,8 @@ export const ProductsList: Product[] = [
     description: "Protect your eyes with these trendy sunglasses.",
     image: cubain,
     hoverImage: cubainHover,
+    ProductImages: [Image, hoverImage, Image, hoverImage],
+
     href: "/product/11",
     taille: ["One Size"],
     category: "Accessories",
@@ -193,6 +211,8 @@ export const ProductsList: Product[] = [
     description: "Modern and sleek jacket with advanced insulation.",
     image: sabr,
     hoverImage: sabrhover,
+    ProductImages: [Image, hoverImage, Image, hoverImage],
+
     href: "/product/7",
     taille: ["M", "L", "XL", "2XL"],
     category: "Clothes",

@@ -17,14 +17,11 @@ const mockCollabData: Collab[] = [
   { id: 4, name: "Nom :", imageUrl: totoImg },
   { id: 5, name: "Nom :", imageUrl: bo9alImg },
   { id: 6, name: "Nom :", imageUrl: totoImg },
-  { id: 7, name: "Nom :", imageUrl: totoImg },
-  { id: 8, name: "Nom :", imageUrl: bo9alImg },
-  { id: 9, name: "Nom :", imageUrl: totoImg },
 ];
 
 export default function CollabsSection() {
   return (
-    <section className="py-20  bg-black dark:bg-black dark:shadow-lg dark:border-b-[20px] dark:border-gray-200 text-white mb-5">
+    <section className="py-20 bg-black  text-white">
       <div className="container mx-auto text-center mb-12">
         <h2 className="text-5xl font-bold dark:text-white max-md:text-2xl">
           Our Amazing Collaborators
@@ -35,7 +32,7 @@ export default function CollabsSection() {
       </div>
 
       <div className="overflow-hidden">
-        <div className="collabs-container items-center justify-center max-md:items-baseline flex animate-scroll gap-6">
+        <div className="collabs-container items-center justify-center max-md:flex-wrap flex animate-scroll gap-6 space-x-4 flex-wrap">
           {mockCollabData.map((collab) => (
             <div
               key={collab.id}
@@ -44,9 +41,9 @@ export default function CollabsSection() {
               <Image
                 src={collab.imageUrl}
                 alt={collab.name}
-                className="w-[200px] h-32 object-cover rounded-md mb-4"
-                width={150}
-                height={150}
+                className="w-full h-auto object-cover rounded-md mb-4 transition-all duration-500 ease-in-out transform hover:scale-105"
+                width={200}
+                height={200}
               />
             </div>
           ))}

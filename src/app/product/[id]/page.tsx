@@ -1,19 +1,29 @@
 "use client";
 import { ProductsList } from "@/data/drillShopData";
 import { Instagram, Link as LinkIcon, Star } from "lucide-react";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import { useParams, useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react"; // Import useEffect for the initial setup
 import { toast, ToastContainer } from "react-toastify";
 
 export default function ProductPage() {
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
   const [quantity, setQuantity] = useState(1);
+  const [mainImage, setMainImage] = useState<string | StaticImageData>(""); // Initialize mainImage
   const { id } = useParams();
   const router = useRouter();
+
+  // Find product based on id from the URL
   const product = ProductsList.find(
     (product) => product.href === `/product/${id}`
   );
+
+  useEffect(() => {
+    // Only set the main image if the product exists
+    if (product) {
+      setMainImage(product.image);
+    }
+  }, [product]); // This will run when the product is found and ensures mainImage is set
 
   if (!product) {
     return (
@@ -67,7 +77,7 @@ export default function ProductPage() {
           <div className="flex flex-col items-center space-y-6">
             <div className="relative group w-full">
               <Image
-                src={product.image}
+                src={mainImage}
                 alt={product.name}
                 width={600}
                 height={600}
@@ -77,16 +87,35 @@ export default function ProductPage() {
                 <Image
                   src={product.hoverImage}
                   alt={`Hover image of ${product.name}`}
-                  width={600}
-                  height={600}
+                  width={500}
+                  height={500}
                   className="rounded-xl shadow-xl"
                 />
               </div>
             </div>
+
+            {/* Thumbnail Images */}
+            <div className="flex gap-4 mt-4">
+              {product.ProductImages?.map((image, index) => (
+                <div
+                  key={index}
+                  className="w-16 h-16 cursor-pointer"
+                  onClick={() => setMainImage(image)}
+                >
+                  <Image
+                    src={image}
+                    alt={`Thumbnail ${index}`}
+                    width={64}
+                    height={64}
+                    className="rounded-md  object-cover"
+                  />
+                </div>
+              ))}
+            </div>
           </div>
 
           <div className="bg-white dark:bg-black shadow-lg mt-16 max-md:mt-2 rounded-xl p-8 space-y-4 flex flex-col items-start">
-            <h1 className="text-5xl font-bold dark:text-white text-gray-900 tracking-tight">
+            <h1 className="text-5xl max-md:text-2xl font-bold dark:text-white text-gray-900 tracking-tight">
               {product.name}
             </h1>
 
