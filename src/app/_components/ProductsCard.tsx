@@ -48,13 +48,15 @@ export default function ProductsCard({
 
       {/* Product Image */}
       <div className="relative w-full h-[360px] overflow-hidden rounded-lg">
-        <Image
-          src={currentImage}
-          alt={name}
-          className="w-full h-full object-cover rounded-lg transition-all duration-500 ease-in-out transform hover:scale-105"
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-        />
+        <Link href={href}>
+          <Image
+            src={currentImage}
+            alt={name}
+            className="w-full h-full object-cover rounded-lg transition-all duration-500 ease-in-out transform hover:scale-105"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+          />
+        </Link>
       </div>
 
       {/* Product Info */}

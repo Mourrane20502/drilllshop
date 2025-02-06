@@ -3,27 +3,25 @@ import { ProductsList } from "@/data/drillShopData";
 import { Instagram, Link as LinkIcon, Star } from "lucide-react";
 import Image, { StaticImageData } from "next/image";
 import { useParams, useRouter } from "next/navigation";
-import { useEffect, useState } from "react"; // Import useEffect for the initial setup
+import { useEffect, useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 
 export default function ProductPage() {
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
   const [quantity, setQuantity] = useState(1);
-  const [mainImage, setMainImage] = useState<string | StaticImageData>(""); // Initialize mainImage
+  const [mainImage, setMainImage] = useState<string | StaticImageData>("");
   const { id } = useParams();
   const router = useRouter();
 
-  // Find product based on id from the URL
   const product = ProductsList.find(
     (product) => product.href === `/product/${id}`
   );
 
   useEffect(() => {
-    // Only set the main image if the product exists
     if (product) {
       setMainImage(product.image);
     }
-  }, [product]); // This will run when the product is found and ensures mainImage is set
+  }, [product]);
 
   if (!product) {
     return (
@@ -83,15 +81,6 @@ export default function ProductPage() {
                 height={600}
                 className="rounded-xl cursor-pointer transition-transform duration-300 ease-in-out transform group-hover:scale-105 shadow-lg"
               />
-              <div className="absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <Image
-                  src={product.hoverImage}
-                  alt={`Hover image of ${product.name}`}
-                  width={500}
-                  height={500}
-                  className="rounded-xl shadow-xl"
-                />
-              </div>
             </div>
 
             {/* Thumbnail Images */}
