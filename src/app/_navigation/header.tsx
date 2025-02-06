@@ -26,16 +26,28 @@ export default function Header() {
       >
         {/* Paragraphs with animation and spaced out */}
         <p className="text-center max-md:hidden  uppercase header-container px-4 animate-slide">
-          Livraison Gratuite à partir de 599 Dh
+          NEW DROP SOON
         </p>
         <p className="text-center max-md:hidden uppercase header-container px-4 animate-slide delay-200">
-          Livraison Gratuite à partir de 599 Dh
+          NEW DROP SOON
         </p>
         <p className="text-center max-md:hidden uppercase header-container px-4 animate-slide delay-400">
-          Livraison Gratuite à partir de 599 Dh
+          NEW DROP SOON
         </p>
-        <p className="text-center max-md:w-full uppercase header-container px-4 animate-slide delay-600">
-          Livraison Gratuite à partir de 599 Dh
+        <p className="text-center max-md:w-full max-md:text-xl  uppercase header-container px-4 animate-slide delay-600">
+          NEW DROP SOON
+        </p>
+        <p className="text-center max-md:hidden uppercase header-container px-4 animate-slide delay-400">
+          NEW DROP SOON
+        </p>
+        <p className="text-center max-md:hidden  uppercase header-container px-4 animate-slide delay-600">
+          NEW DROP SOON
+        </p>{" "}
+        <p className="text-center max-md:hidden uppercase header-container px-4 animate-slide delay-400">
+          NEW DROP SOON
+        </p>
+        <p className="text-center max-md:hidden  uppercase header-container px-4 animate-slide delay-600">
+          NEW DROP SOON
         </p>
       </div>
 
