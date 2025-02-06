@@ -34,15 +34,16 @@ export default function Header() {
         <p className="text-center max-md:hidden uppercase header-container px-4 animate-slide delay-400">
           NEW DROP SOON
         </p>
-        <p className="text-center max-md:w-full max-md:text-xl  uppercase header-container px-4 animate-slide delay-600">
+        <p className="text-center max-md:w-full max-md:text-[14px]  uppercase header-container px-4 animate-slide delay-600">
           NEW DROP SOON
         </p>
-        <p className="text-center max-md:hidden uppercase header-container px-4 animate-slide delay-400">
+        <p className="text-center max-md:w-full max-md:text-[14px] uppercase header-container px-4 animate-slide delay-600">
           NEW DROP SOON
         </p>
-        <p className="text-center max-md:hidden  uppercase header-container px-4 animate-slide delay-600">
+        <p className="text-center max-md:w-full max-md:text-[14px]  uppercase header-container px-4 animate-slide delay-600">
           NEW DROP SOON
-        </p>{" "}
+        </p>
+
         <p className="text-center max-md:hidden uppercase header-container px-4 animate-slide delay-400">
           NEW DROP SOON
         </p>

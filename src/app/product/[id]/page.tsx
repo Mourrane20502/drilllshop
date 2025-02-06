@@ -72,7 +72,7 @@ export default function ProductPage() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
           {/* Product Images Section */}
-          <div className="flex flex-col items-center space-y-6 max-md:mt-20">
+          <div className="flex  max-md:flex-col justify-center items-center space-x-6 max-md:mt-20">
             <div className="relative group w-full">
               <Image
                 src={mainImage}
@@ -84,7 +84,7 @@ export default function ProductPage() {
             </div>
 
             {/* Thumbnail Images */}
-            <div className="flex gap-4 mt-4">
+            <div className="flex flex-col  items-center justify-center gap-8">
               {product.ProductImages?.map((image, index) => (
                 <div
                   key={index}

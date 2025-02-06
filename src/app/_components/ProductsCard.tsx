@@ -64,8 +64,8 @@ export default function ProductsCard({
         <h3 className="text-2xl w-[90%] font-semibold text-gray-900 max-md:text-xl">
           {name}
         </h3>
-        <p className="text-lg font-medium text-gray-700 mt-2">
-          Prix : {price} DH
+        <p className="text-lg font-semibold text-red-600 mt-2">
+          Prix : {price} DHs
         </p>
         <p className="text-gray-600 font-light mt-3 px-4">{description}</p>
       </div>

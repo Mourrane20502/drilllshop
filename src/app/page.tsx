@@ -38,7 +38,7 @@ export default function Home() {
 
   const displayedProducts = showAllProducts
     ? filteredProducts
-    : filteredProducts.slice(0, 5);
+    : filteredProducts.slice(0, 6);
 
   return (
     <div className="py-28">
@@ -133,7 +133,7 @@ export default function Home() {
           ))}
         </div>
 
-        {filteredProducts.length > 5 && !showAllProducts && (
+        {filteredProducts.length > 6 && !showAllProducts && (
           <div className="flex justify-center mt-8">
             <Button
               onClick={() => setShowAllProducts(true)}

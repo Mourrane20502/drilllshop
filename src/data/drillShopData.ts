@@ -3,8 +3,12 @@ import iceflow from "../app/assets/clothe.png";
 import iceFlowHover from "../app/assets/clothehover.png";
 import crtz from "../app/assets/crtz.png";
 import crtzhover from "../app/assets/crtzhover.png";
-import cubain from "../app/assets/cubain.jpg";
 import cubainHover from "../app/assets/cubainhover.jpg";
+import cubain from "../app/assets/cubainmain.jpg.png";
+import debardeur2 from "../app/assets/debarbeur2.png";
+import debardeur3 from "../app/assets/debardeur3.png";
+import debardeur4 from "../app/assets/debardeur4.png";
+import debardeur from "../app/assets/debardeurmain.png";
 import hoverImage from "../app/assets/drillguys.jpg";
 import glove from "../app/assets/glove.png";
 import glove2 from "../app/assets/glove2.png";
@@ -12,11 +16,26 @@ import glove3 from "../app/assets/glove3.png";
 import gloveHover from "../app/assets/glovehover.png";
 import glove2hover from "../app/assets/glover2hover.png";
 import glove3hover from "../app/assets/glover3hover.png";
+import ilyas from "../app/assets/ilyas.png";
+import ilyas2 from "../app/assets/ilyas2.png";
+import ilyas3 from "../app/assets/ilyas3.png";
+import ilyas4 from "../app/assets/ilyas4.png";
+import ilyas5 from "../app/assets/ilyas5.png";
+import jacket from "../app/assets/jacket.png";
+import jacket2 from "../app/assets/jacket2.png";
+import jacket3 from "../app/assets/jacket3.png";
+import jacket4 from "../app/assets/jacket4.png";
+import jacket5 from "../app/assets/jacket6.png";
 import nikeshort from "../app/assets/nikeshort.png";
 import nikeshorthover from "../app/assets/nikeshorthover.png";
+import pendentif2 from "../app/assets/pendentif2.png";
+import pendentif3 from "../app/assets/pendentif3.png";
+import pendentif4 from "../app/assets/pendentif4.png";
+import pendentif5 from "../app/assets/pendentif5.png";
 import Image from "../app/assets/productNikeHover.jpg";
 import sabr from "../app/assets/sabr.png";
 import sabrhover from "../app/assets/sabrhover.png";
+import savage from "../app/assets/savage.png";
 import shoe1 from "../app/assets/shoe1.jpg";
 import shoe2 from "../app/assets/shoe2.jpg";
 import shoe3 from "../app/assets/shoe3.png";
@@ -25,7 +44,13 @@ import shoe1hover from "../app/assets/shoehover.avif";
 import shoe2hover from "../app/assets/shover2hover.jpg";
 import stussy from "../app/assets/stussy.png";
 import stussyHover from "../app/assets/stussyhover.png";
+import tennis from "../app/assets/tennis.png";
+import tennis2 from "../app/assets/tennis2.png";
+import tennis3 from "../app/assets/tennis3.png";
 import iconUser from "../app/assets/toto.jpg";
+import polo from "../app/assets/tricot.png";
+import polo2 from "../app/assets/tricot2.png";
+import polo3 from "../app/assets/tricot3.png";
 // export const ProductPage = [
 //   {id : 1 , name:"Nike Jackets", price: 300, description: "This is a jacket that will keep you warm in the winter and cool in the summer.", image: Image, hoverImage: hoverImage},
 // ]
@@ -43,15 +68,16 @@ interface Product {
   availableSizes?: string[];
   category: "Accessories" | "Shoes" | "Clothes";
   bestSelling?: boolean;
+  hasMultipleColors?: boolean;
 }
 
 export const ProductsList: Product[] = [
   {
     id: 1,
-    name: "Crtz X Slaughter Gang",
+    name: "CRTZ x Slaughter Gang",
     price: 300,
     description:
-      "This is a jacket that will keep you warm in the winter and cool in the summer.",
+      "This is blends bold street style with premium quality and limited edition.",
     image: crtz,
     hoverImage: crtzhover,
     href: "/product/1",
@@ -66,7 +92,8 @@ export const ProductsList: Product[] = [
     id: 2,
     name: "Corteiz Nike Air Max 95 DarkGreen",
     price: 250,
-    description: "Durable and stylish sports shoes for all-day comfort.",
+    description:
+      "A bold collaboration featuring the Nike Air Max 95 in a striking darkgreen colorway.",
     image: shoe2,
     hoverImage: shoe2hover,
     ProductImages: [Image, hoverImage, Image, hoverImage],
@@ -94,7 +121,8 @@ export const ProductsList: Product[] = [
     id: 4,
     name: "Ice FLOW Collection",
     price: 320,
-    description: "Comfortable hoodie for outdoor adventures.",
+    description:
+      "A sleek, cool collection featuring icy tones and modern designs.",
     image: iceflow,
     hoverImage: iceFlowHover,
     ProductImages: [Image, hoverImage, Image, hoverImage],
@@ -123,7 +151,8 @@ export const ProductsList: Product[] = [
     id: 6,
     name: "Corteiz Nike Air Max 95 Pink",
     price: 200,
-    description: "Lightweight shoes for enhanced running performance.",
+    description:
+      "A bold collaboration featuring the Nike Air Max 95 in a striking pink colorway.",
     image: shoe3,
     hoverImage: shoe3hover,
     ProductImages: [Image, hoverImage, Image, hoverImage],
@@ -137,7 +166,8 @@ export const ProductsList: Product[] = [
     id: 7,
     name: "STÜSSY TEE Collection",
     price: 400,
-    description: "Modern and sleek jacket with advanced insulation.",
+    description:
+      "A fresh collection of classic tees with iconic designs and bold graphics",
     image: stussy,
     hoverImage: stussyHover,
     ProductImages: [Image, hoverImage, Image, hoverImage],
@@ -165,7 +195,8 @@ export const ProductsList: Product[] = [
     id: 9,
     name: "Corteiz Nike Air Max 95 Blue",
     price: 500,
-    description: "Polished leather shoes for professional settings.",
+    description:
+      "A bold collaboration featuring the Nike Air Max 95 in a striking blue colorway.",
     image: shoe1,
     hoverImage: shoe1hover,
     ProductImages: [Image, hoverImage, Image, hoverImage],
@@ -179,7 +210,8 @@ export const ProductsList: Product[] = [
     id: 10,
     name: "NIKE TRACK PANTS ",
     price: 350,
-    description: "Stylish and warm hoodie for car enthusiasts.",
+    description:
+      "Comfortable and stylish with a sleek, breathable design. Perfect for any activity.",
     image: nikeshort,
     hoverImage: nikeshorthover,
     ProductImages: [Image, hoverImage, Image, hoverImage],
@@ -195,9 +227,9 @@ export const ProductsList: Product[] = [
     name: "Cubain Chain",
     price: 100,
     description: "Protect your eyes with these trendy sunglasses.",
-    image: cubain,
-    hoverImage: cubainHover,
-    ProductImages: [Image, hoverImage, Image, hoverImage],
+    image: cubainHover,
+    hoverImage: cubain,
+    ProductImages: [cubainHover, cubain],
 
     href: "/product/11",
     taille: ["One Size"],
@@ -206,16 +238,108 @@ export const ProductsList: Product[] = [
   },
   {
     id: 12,
-    name: "صبر  Summer Collection",
+    name: "صبر  - Summer Collection",
     price: 400,
-    description: "Modern and sleek jacket with advanced insulation.",
+    description:
+      "A blend of style and comfort with light designs and vibrant summer colors",
     image: sabr,
     hoverImage: sabrhover,
     ProductImages: [Image, hoverImage, Image, hoverImage],
 
-    href: "/product/7",
+    href: "/product/12",
     taille: ["M", "L", "XL", "2XL"],
     category: "Clothes",
+    bestSelling: false,
+  },
+  {
+    id: 13,
+    name: "Nike Puffer Jacket",
+    price: 300,
+    description:
+      "Warm, lightweight with a sleek design. Perfect for staying cozy in cold weather.",
+    image: ilyas,
+    hoverImage: ilyas2,
+    href: "/product/13",
+    isAvailable: true,
+    ProductImages: [ilyas, ilyas2, ilyas3, ilyas4, ilyas5],
+    taille: ["S", "M", "L", "XL"],
+    availableSizes: ["S", "M", "L", "XL"],
+    category: "Clothes",
+    bestSelling: true,
+  },
+  {
+    id: 14,
+    name: "Black Polo Corteiz",
+    price: 300,
+    description:
+      "Warm, lightweight with a sleek design. Perfect for staying cozy in cold weather.",
+    image: polo,
+    hoverImage: polo2,
+    href: "/product/14",
+    isAvailable: true,
+    ProductImages: [polo, polo3, polo2],
+    taille: ["S", "M", "L", "XL"],
+    availableSizes: ["S", "M", "L", "XL"],
+    category: "Clothes",
+    bestSelling: false,
+  },
+  {
+    id: 15,
+    name: "Débardeur Corteiz",
+    price: 300,
+    description:
+      "Warm, lightweight with a sleek design. Perfect for staying cozy in cold weather.",
+    image: debardeur,
+    hoverImage: debardeur4,
+    href: "/product/15",
+    isAvailable: true,
+    ProductImages: [debardeur, debardeur2, debardeur3, debardeur4],
+    taille: ["S", "M", "L", "XL"],
+    availableSizes: ["S", "M", "L", "XL"],
+    category: "Clothes",
+    bestSelling: false,
+  },
+  {
+    id: 16,
+    name: "Corteiz Spring jacket",
+    price: 300,
+    description:
+      "Warm, lightweight with a sleek design. Perfect for staying cozy in cold weather.",
+    image: jacket,
+    hoverImage: jacket2,
+    href: "/product/16",
+    isAvailable: true,
+    ProductImages: [jacket, jacket2, jacket3, jacket4, jacket5],
+    taille: ["S", "M", "L", "XL"],
+    availableSizes: ["S", "M", "L", "XL"],
+    category: "Clothes",
+    bestSelling: false,
+  },
+  {
+    id: 17,
+    name: "Pendentifs",
+    price: 100,
+    description: "Protect your eyes with these trendy sunglasses.",
+    image: savage,
+    hoverImage: pendentif2,
+    ProductImages: [savage, pendentif2, pendentif3, pendentif4, pendentif5],
+
+    href: "/product/17",
+    taille: ["One Size"],
+    category: "Accessories",
+    bestSelling: false,
+  },
+  {
+    id: 18,
+    name: "Tennis Chain",
+    price: 100,
+    description: "Protect your eyes with these trendy sunglasses.",
+    image: tennis,
+    hoverImage: tennis2,
+    ProductImages: [tennis, tennis2, tennis3],
+    href: "/product/18",
+    taille: ["One Size"],
+    category: "Accessories",
     bestSelling: false,
   },
 ];

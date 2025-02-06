@@ -34,7 +34,6 @@ export default function CheckoutPage() {
     );
   }
 
-  // Calculate total price based on quantity
   const totalPrice = product.price * quantity;
 
   const handleConfirmOrder = async () => {
@@ -131,9 +130,15 @@ export default function CheckoutPage() {
                   <p className="text-lg dark:text-white text-gray-700 mt-1">
                     Quantity: <strong>{quantity}</strong>
                   </p>
-                  <p className="text-2xl font-semibold text-red-600 mt-2">
-                    Total: {totalPrice} DH
-                  </p>
+                  <div className="flex flex-col items-center justify-center gap-1">
+                    <p className="text-lg font-semibold text-red-600 mt-2">
+                      Total: {totalPrice} DH
+                    </p>
+                    <p className="text-md font-normal text-green-600">
+                      {" "}
+                      + Frais de Livraison (selon La ville)
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
