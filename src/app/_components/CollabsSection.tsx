@@ -15,8 +15,6 @@ const mockCollabData: Collab[] = [
   { id: 2, name: "Nom :", imageUrl: totoImg },
   { id: 3, name: "Nom :", imageUrl: bo9alImg },
   { id: 4, name: "Nom :", imageUrl: totoImg },
-  { id: 5, name: "Nom :", imageUrl: bo9alImg },
-  { id: 6, name: "Nom :", imageUrl: totoImg },
 ];
 
 export default function CollabsSection() {
@@ -32,7 +30,7 @@ export default function CollabsSection() {
       </div>
 
       <div className="overflow-hidden">
-        <div className="collabs-container items-center justify-center max-md:flex-wrap flex animate-scroll gap-6 space-x-4 flex-wrap">
+        <div className="collabs-container items-center justify-center  max-md:grid max-md:grid-cols-4 max-md:gap-8 flex animate-scroll gap-6 space-x-4 flex-wrap">
           {mockCollabData.map((collab) => (
             <div
               key={collab.id}
