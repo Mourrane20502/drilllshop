@@ -60,9 +60,20 @@ export default function ProductPage() {
     setSelectedColor(color);
 
     if (typeof mainImage === "string") {
-      const colorImage = product.ProductImages?.find((image) =>
-        image.includes(color.toLowerCase())
+      const colorImage = product.ProductImages?.find(
+        (image) =>
+          typeof image === "string" && image.includes(color.toLowerCase())
       );
+
+      if (colorImage) {
+        setMainImage(colorImage);
+      }
+    } else {
+      const colorImage = product.ProductImages?.find((image) => {
+        const imageSrc = typeof image === "string" ? image : image.src;
+        return imageSrc?.includes(color.toLowerCase());
+      });
+
       if (colorImage) {
         setMainImage(colorImage);
       }
@@ -70,12 +81,12 @@ export default function ProductPage() {
   };
 
   const handleOrderNow = () => {
-    if (!selectedSize || !selectedColor) {
-      toast.error("Please select a size and color before ordering.");
+    if (!selectedSize) {
+      toast.error("Please select a size before ordering.");
       return;
     }
     router.push(
-      `/product/${id}/checkout?size=${selectedSize}&quantity=${quantity}&color=${selectedColor}`
+      `/product/${id}/checkout?size=${selectedSize}&quantity=${quantity}`
     );
   };
 

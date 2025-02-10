@@ -139,10 +139,6 @@ export default function CheckoutPage() {
                       + Frais de Livraison (selon La ville)
                     </p>
                     {}
-                    <p className="text-md font-normal text-green-600">
-                      {" "}
-                      + Frais de Livraison (selon La ville)
-                    </p>
                   </div>
                 </div>
               </div>

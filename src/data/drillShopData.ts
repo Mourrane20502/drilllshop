@@ -71,6 +71,7 @@ import polo3 from "../app/assets/tricot3.png";
 // export const ProductPage = [
 //   {id : 1 , name:"Nike Jackets", price: 300, description: "This is a jacket that will keep you warm in the winter and cool in the summer.", image: Image, hoverImage: hoverImage},
 // ]
+
 export interface Product {
   id: number;
   name: string;
@@ -80,7 +81,7 @@ export interface Product {
   hoverImage: StaticImageData;
   href: string;
   isAvailable?: boolean;
-  ProductImages?: string[] | StaticImageData[];
+  ProductImages?: (string | StaticImageData)[];
   taille: string[];
   availableSizes?: string[];
   category: "Accessories" | "Shoes" | "Clothes";
