@@ -36,10 +36,12 @@ export default function Home() {
     return 0;
   });
 
-  const displayedProducts = showAllProducts
-    ? filteredProducts
-    : filteredProducts.slice(0, 6);
-
+  const displayedProducts =
+    selectedCategory === "Best Seller"
+      ? filteredProducts.slice(0, 3)
+      : showAllProducts
+      ? filteredProducts
+      : filteredProducts.slice(0, 6);
   return (
     <div className="py-28">
       {/* Main section */}
@@ -102,7 +104,7 @@ export default function Home() {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search for a product..."
-            className="w-full max-w-lg px-6 py-3 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-black transition-all duration-300"
+            className="w-full max-w-lg px-6 py-3 dark:text-black rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-black transition-all duration-300"
           />
         </div>
 
@@ -133,16 +135,18 @@ export default function Home() {
           ))}
         </div>
 
-        {filteredProducts.length > 6 && !showAllProducts && (
-          <div className="flex justify-center mt-8">
-            <Button
-              onClick={() => setShowAllProducts(true)}
-              className="px-8 py-6 text-lg dark:bg-white dark:text-black bg-black text-white hover:bg-gray-800 transition-all duration-300"
-            >
-              View More
-            </Button>
-          </div>
-        )}
+        {filteredProducts.length > 6 &&
+          !showAllProducts &&
+          selectedCategory !== "Best Seller" && (
+            <div className="flex justify-center mt-8">
+              <Button
+                onClick={() => setShowAllProducts(true)}
+                className="px-8 py-6 text-lg dark:bg-white dark:text-black bg-black text-white hover:bg-gray-800 transition-all duration-300"
+              >
+                View More
+              </Button>
+            </div>
+          )}
 
         {/* Empty State */}
         {filteredProducts.length === 0 && (

@@ -1,4 +1,11 @@
 import { StaticImageData } from "next/image";
+import short from "../app/assets/1.png";
+import short2 from "../app/assets/2.png";
+import short3 from "../app/assets/3.png";
+import short4 from "../app/assets/4.png";
+import short5 from "../app/assets/5.png";
+import short6 from "../app/assets/6.png";
+import short7 from "../app/assets/7.png";
 import iceflow from "../app/assets/clothe.png";
 import iceFlowHover from "../app/assets/clothehover.png";
 import crtz from "../app/assets/crtz.png";
@@ -9,7 +16,10 @@ import debardeur2 from "../app/assets/debarbeur2.png";
 import debardeur3 from "../app/assets/debardeur3.png";
 import debardeur4 from "../app/assets/debardeur4.png";
 import debardeur from "../app/assets/debardeurmain.png";
-import hoverImage from "../app/assets/drillguys.jpg";
+import ensembleCorteiz from "../app/assets/ensemble_corteiz1.png";
+import ensembleCorteiz2 from "../app/assets/ensemble_corteiz2.png";
+import ensembleCorteiz3 from "../app/assets/ensemble_corteiz3.png";
+import ensembleCorteiz4 from "../app/assets/ensemble_corteiz4.png";
 import glove from "../app/assets/glove.png";
 import glove2 from "../app/assets/glove2.png";
 import glove3 from "../app/assets/glove3.png";
@@ -32,7 +42,6 @@ import pendentif2 from "../app/assets/pendentif2.png";
 import pendentif3 from "../app/assets/pendentif3.png";
 import pendentif4 from "../app/assets/pendentif4.png";
 import pendentif5 from "../app/assets/pendentif5.png";
-import Image from "../app/assets/productNikeHover.jpg";
 import sabr from "../app/assets/sabr.png";
 import sabrhover from "../app/assets/sabrhover.png";
 import savage from "../app/assets/savage.png";
@@ -47,14 +56,22 @@ import stussyHover from "../app/assets/stussyhover.png";
 import tennis from "../app/assets/tennis.png";
 import tennis2 from "../app/assets/tennis2.png";
 import tennis3 from "../app/assets/tennis3.png";
+import tnShoes from "../app/assets/tn.png";
+import tnShoes2 from "../app/assets/tn2.png";
+import tnShoes3 from "../app/assets/tn3.png";
 import iconUser from "../app/assets/toto.jpg";
+import trap from "../app/assets/trap.png";
+import trap2 from "../app/assets/trap2.png";
+import trap3 from "../app/assets/trap3.png";
+import trap4 from "../app/assets/trap4.png";
 import polo from "../app/assets/tricot.png";
 import polo2 from "../app/assets/tricot2.png";
 import polo3 from "../app/assets/tricot3.png";
+
 // export const ProductPage = [
 //   {id : 1 , name:"Nike Jackets", price: 300, description: "This is a jacket that will keep you warm in the winter and cool in the summer.", image: Image, hoverImage: hoverImage},
 // ]
-interface Product {
+export interface Product {
   id: number;
   name: string;
   price: number;
@@ -69,6 +86,7 @@ interface Product {
   category: "Accessories" | "Shoes" | "Clothes";
   bestSelling?: boolean;
   hasMultipleColors?: boolean;
+  colors?: string[];
 }
 
 export const ProductsList: Product[] = [
@@ -82,7 +100,7 @@ export const ProductsList: Product[] = [
     hoverImage: crtzhover,
     href: "/product/1",
     isAvailable: true,
-    ProductImages: [crtz, crtzhover, Image, hoverImage],
+    ProductImages: [crtz, crtzhover],
     taille: ["S", "M", "L", "XL"],
     availableSizes: ["S", "M", "L", "XL"],
     category: "Clothes",
@@ -96,7 +114,7 @@ export const ProductsList: Product[] = [
       "A bold collaboration featuring the Nike Air Max 95 in a striking darkgreen colorway.",
     image: shoe2,
     hoverImage: shoe2hover,
-    ProductImages: [Image, hoverImage, Image, hoverImage],
+    ProductImages: [shoe2, shoe2hover],
     href: "/product/2",
     isAvailable: true,
     taille: ["40", "41", "42", "43"],
@@ -110,7 +128,7 @@ export const ProductsList: Product[] = [
     description: "High-quality leather belt for a sophisticated look.",
     image: glove,
     hoverImage: gloveHover,
-    ProductImages: [Image, hoverImage, Image, hoverImage],
+    ProductImages: [glove, gloveHover],
     href: "/product/3",
     isAvailable: true,
     taille: ["S", "M", "L", "XL"],
@@ -125,7 +143,7 @@ export const ProductsList: Product[] = [
       "A sleek, cool collection featuring icy tones and modern designs.",
     image: iceflow,
     hoverImage: iceFlowHover,
-    ProductImages: [Image, hoverImage, Image, hoverImage],
+    ProductImages: [iceflow, iceFlowHover],
 
     href: "/product/4",
     taille: ["M", "L", "XL", "2XL"],
@@ -140,7 +158,7 @@ export const ProductsList: Product[] = [
     description: "Elegant timepiece for formal and casual occasions.",
     image: glove2,
     hoverImage: glove2hover,
-    ProductImages: [Image, hoverImage, Image, hoverImage],
+    ProductImages: [glove2, glove2hover],
 
     href: "/product/5",
     taille: ["One Size"],
@@ -155,7 +173,7 @@ export const ProductsList: Product[] = [
       "A bold collaboration featuring the Nike Air Max 95 in a striking pink colorway.",
     image: shoe3,
     hoverImage: shoe3hover,
-    ProductImages: [Image, hoverImage, Image, hoverImage],
+    ProductImages: [shoe3, shoe3hover],
 
     href: "/product/6",
     taille: ["40", "41", "42", "43"],
@@ -170,7 +188,7 @@ export const ProductsList: Product[] = [
       "A fresh collection of classic tees with iconic designs and bold graphics",
     image: stussy,
     hoverImage: stussyHover,
-    ProductImages: [Image, hoverImage, Image, hoverImage],
+    ProductImages: [stussy, stussyHover],
 
     href: "/product/7",
     taille: ["M", "L", "XL", "2XL"],
@@ -184,7 +202,7 @@ export const ProductsList: Product[] = [
     description: "Spacious and durable backpack for all your adventures.",
     image: glove3,
     hoverImage: glove3hover,
-    ProductImages: [Image, hoverImage, Image, hoverImage],
+    ProductImages: [glove3, glove3hover],
 
     href: "/product/8",
     taille: ["One Size"],
@@ -199,7 +217,7 @@ export const ProductsList: Product[] = [
       "A bold collaboration featuring the Nike Air Max 95 in a striking blue colorway.",
     image: shoe1,
     hoverImage: shoe1hover,
-    ProductImages: [Image, hoverImage, Image, hoverImage],
+    ProductImages: [shoe1, shoe1hover],
 
     href: "/product/9",
     taille: ["40", "41", "42", "43"],
@@ -214,7 +232,7 @@ export const ProductsList: Product[] = [
       "Comfortable and stylish with a sleek, breathable design. Perfect for any activity.",
     image: nikeshort,
     hoverImage: nikeshorthover,
-    ProductImages: [Image, hoverImage, Image, hoverImage],
+    ProductImages: [nikeshort, nikeshorthover],
 
     href: "/product/10",
     taille: ["S", "M", "L", "XL"],
@@ -244,7 +262,7 @@ export const ProductsList: Product[] = [
       "A blend of style and comfort with light designs and vibrant summer colors",
     image: sabr,
     hoverImage: sabrhover,
-    ProductImages: [Image, hoverImage, Image, hoverImage],
+    ProductImages: [sabr, sabrhover],
 
     href: "/product/12",
     taille: ["M", "L", "XL", "2XL"],
@@ -340,6 +358,77 @@ export const ProductsList: Product[] = [
     href: "/product/18",
     taille: ["One Size"],
     category: "Accessories",
+    bestSelling: false,
+  },
+  {
+    id: 19,
+    name: "Ensemble Corteiz",
+    price: 100,
+    description: "Protect your eyes with these trendy sunglasses.",
+    image: ensembleCorteiz,
+    isAvailable: true,
+    hoverImage: ensembleCorteiz2,
+    ProductImages: [
+      ensembleCorteiz,
+      ensembleCorteiz2,
+      ensembleCorteiz3,
+      ensembleCorteiz4,
+    ],
+    href: "/product/19",
+    taille: ["S", "M", "L", "XL"],
+    availableSizes: ["S", "M", "L", "XL"],
+    category: "Clothes",
+    bestSelling: false,
+  },
+  {
+    id: 20,
+    name: "Short Corteiz",
+    price: 200,
+    description: "Protect your eyes with these trendy sunglasses.",
+    image: short,
+    isAvailable: true,
+    hoverImage: short2,
+    ProductImages: [short, short2, short3, short4, short5, short6, short7],
+    href: "/product/20",
+    taille: ["S", "M", "L", "XL"],
+    availableSizes: ["S", "M", "L", "XL"],
+    category: "Clothes",
+    bestSelling: false,
+    hasMultipleColors: true,
+    colors: ["Black", "White"],
+  },
+  {
+    id: 21,
+    name: "Tn Shoes",
+    price: 250,
+    description:
+      "A bold collaboration featuring the Nike Air Max 95 in a striking darkgreen colorway.",
+    image: tnShoes,
+    hoverImage: tnShoes2,
+    ProductImages: [tnShoes, tnShoes2, tnShoes3],
+    href: "/product/21",
+    isAvailable: true,
+    taille: ["40", "41", "42", "43"],
+    availableSizes: ["40", "41", "42", "43"],
+    category: "Shoes",
+    bestSelling: false,
+  },
+  {
+    id: 22,
+    name: "Sac Trapstar",
+    price: 250,
+    description:
+      "A bold collaboration featuring the Nike Air Max 95 in a striking darkgreen colorway.",
+    image: trap,
+    hoverImage: trap2,
+    ProductImages: [trap, trap2, trap3, trap4],
+    hasMultipleColors: true,
+    colors: ["Blue", "Black", "White"],
+    href: "/product/22",
+    isAvailable: true,
+    taille: ["40", "41", "42", "43"],
+    availableSizes: ["40", "41", "42", "43"],
+    category: "Clothes",
     bestSelling: false,
   },
 ];

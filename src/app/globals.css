@@ -10,38 +10,45 @@ body {
 html {
   scroll-behavior: smooth;
 }
+
 @keyframes fadeIn {
   0% {
     opacity: 0;
+    transform: translateY(10px);
   }
   100% {
     opacity: 1;
+    transform: translateY(0);
   }
 }
+
 @keyframes scrollHeader {
   0% {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(100%);
+    transform: translateX(-100%);
   }
 }
 
 .header-container {
-  animation: scrollHeader 7s linear infinite;
+  animation: scrollHeader 12s ease-in-out infinite;
 }
 
 @keyframes scroll {
   0% {
-    transform: translateX(80);
+    transform: translateX(100px);
   }
   100% {
-    transform: translateX(-40%);
+    transform: translateX(50%);
   }
 }
 
 .collabs-container {
-  animation: scroll 20s linear infinite;
+  animation: scroll 150s infinite;
+  display: flex;
+  gap: 3rem;
+  transition: transform 0.5s ease-out;
 }
 
 ::-webkit-scrollbar {
@@ -49,9 +56,10 @@ html {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #000000;
+  background-color: #261818af;
   border-radius: 5px;
 }
+
 @keyframes fromLeft {
   0% {
     opacity: 0;
@@ -62,13 +70,16 @@ html {
     transform: translateX(0);
   }
 }
+
 .fromLeft {
-  animation: fromLeft 0.7s ease-in-out forwards;
-}
-.animate-fadeIn {
-  animation: fadeIn 0.5s ease-in-out forwards;
+  animation: fromLeft 0.8s ease-out forwards;
 }
 
+.animate-fadeIn {
+  animation: fadeIn 1s ease-out forwards;
+}
+
+/* Layering for dark mode */
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -97,6 +108,7 @@ html {
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
   }
+
   .dark {
     --background: 0 0% 3.9%;
     --foreground: 0 0% 98%;

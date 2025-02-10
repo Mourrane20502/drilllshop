@@ -1,15 +1,21 @@
 "use client";
-import { ProductsList } from "@/data/drillShopData";
-import { Instagram, Link as LinkIcon, Star } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Product, ProductsList } from "@/data/drillShopData";
+import { ChevronLeft, Instagram, Link as LinkIcon, Star } from "lucide-react";
 import Image, { StaticImageData } from "next/image";
+import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import Zoom from "react-medium-image-zoom";
+import "react-medium-image-zoom/dist/styles.css";
 import { toast, ToastContainer } from "react-toastify";
 
 export default function ProductPage() {
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
+  const [selectedColor, setSelectedColor] = useState<string | null>(null);
   const [quantity, setQuantity] = useState(1);
   const [mainImage, setMainImage] = useState<string | StaticImageData>("");
+
   const { id } = useParams();
   const router = useRouter();
 
@@ -23,6 +29,21 @@ export default function ProductPage() {
     }
   }, [product]);
 
+  // Get random products to display in the "Other Products" section
+  const getRandomProducts = () => {
+    const randomProducts: Product[] = [];
+    while (randomProducts.length < 5) {
+      const randomProduct =
+        ProductsList[Math.floor(Math.random() * ProductsList.length)];
+      if (!randomProducts.includes(randomProduct)) {
+        randomProducts.push(randomProduct);
+      }
+    }
+    return randomProducts;
+  };
+
+  const randomProducts = getRandomProducts();
+
   if (!product) {
     return (
       <div className="py-40 text-center text-2xl font-semibold text-gray-700">
@@ -35,13 +56,26 @@ export default function ProductPage() {
     setSelectedSize(size);
   };
 
+  const handleColorSelection = (color: string) => {
+    setSelectedColor(color);
+
+    if (typeof mainImage === "string") {
+      const colorImage = product.ProductImages?.find((image) =>
+        image.includes(color.toLowerCase())
+      );
+      if (colorImage) {
+        setMainImage(colorImage);
+      }
+    }
+  };
+
   const handleOrderNow = () => {
-    if (!selectedSize) {
-      toast.error("Please select a size before ordering.");
+    if (!selectedSize || !selectedColor) {
+      toast.error("Please select a size and color before ordering.");
       return;
     }
     router.push(
-      `/product/${id}/checkout?size=${selectedSize}&quantity=${quantity}`
+      `/product/${id}/checkout?size=${selectedSize}&quantity=${quantity}&color=${selectedColor}`
     );
   };
 
@@ -68,23 +102,33 @@ export default function ProductPage() {
   };
 
   return (
-    <div className="py-20">
+    <div className="py-44">
+      <div className="fixed top-[20%] z-50 max-md:left-0 left-5 flex items-center justify-center bg-black text-white rounded-full">
+        <ChevronLeft
+          onClick={() => router.push("/")}
+          size={35}
+          className="cursor-pointer"
+        />
+      </div>
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
           {/* Product Images Section */}
-          <div className="flex  max-md:flex-col justify-center items-center space-x-6 max-md:mt-20">
-            <div className="relative group w-full">
-              <Image
-                src={mainImage}
-                alt={product.name}
-                width={600}
-                height={600}
-                className="rounded-xl cursor-pointer transition-transform duration-300 ease-in-out transform group-hover:scale-105 shadow-lg"
-              />
+          <div className="flex flex-col items-center space-y-6 lg:space-y-0 lg:flex-row lg:space-x-6">
+            {/* Main Product Image */}
+            <div className="relative w-full max-w-lg mx-auto lg:max-w-none">
+              <Zoom>
+                <Image
+                  src={mainImage}
+                  alt={product.name}
+                  width={600}
+                  height={600}
+                  className="rounded-xl  cursor-pointer transition-transform duration-300 ease-in-out transform group-hover:scale-105 shadow-lg"
+                />
+              </Zoom>
             </div>
 
             {/* Thumbnail Images */}
-            <div className="flex flex-col  items-center justify-center gap-8">
+            <div className="flex justify-center space-x-4 lg:flex-col lg:space-x-0 lg:space-y-4">
               {product.ProductImages?.map((image, index) => (
                 <div
                   key={index}
@@ -96,23 +140,25 @@ export default function ProductPage() {
                     alt={`Thumbnail ${index}`}
                     width={64}
                     height={64}
-                    className="rounded-md  object-cover"
+                    className="rounded-md object-cover border-2 transition-all duration-200"
                   />
                 </div>
               ))}
             </div>
           </div>
 
-          <div className="bg-white dark:bg-black shadow-lg mt-16 max-md:mt-2 rounded-xl p-8 space-y-4 flex flex-col items-start">
-            <h1 className="text-5xl max-md:text-2xl font-bold dark:text-white text-gray-900 tracking-tight">
+          {/* Product Details Section */}
+          <div className="bg-white dark:bg-black shadow-lg rounded-xl p-8 space-y-6 flex flex-col items-start">
+            <h1 className="text-3xl lg:text-5xl font-bold dark:text-white text-gray-900 tracking-tight">
               {product.name}
             </h1>
 
-            {/* 🔹 Product Price */}
-            <p className="text-3xl font-normal text-gray-900">
+            {/* Product Price */}
+            <p className="text-2xl lg:text-3xl font-normal text-gray-900">
               <span className="text-red-600"> {product.price}.00 DH</span>
             </p>
 
+            {/* Product Availability */}
             <p
               className={`text-xl font-semibold tracking-wider  ${
                 product.isAvailable
@@ -123,7 +169,7 @@ export default function ProductPage() {
               {product.isAvailable ? "In Stock " : "Not Available "}
             </p>
 
-            {/* 🔹 Size Selector */}
+            {/* Size Selector */}
             <div className="w-full">
               <h2 className="text-lg font-medium dark:text-white">
                 Choose Your Size:
@@ -152,7 +198,40 @@ export default function ProductPage() {
               </div>
             </div>
 
-            {/* 🔹 Quantity Selector */}
+            {/* Color Selector */}
+            {product.hasMultipleColors && (
+              <div className="w-full">
+                <h2 className="text-lg font-medium dark:text-white">
+                  Choose Color:
+                </h2>
+                <div className="flex gap-3 mt-2">
+                  {product.colors?.map((color, index) => {
+                    const isWhite = color.toLowerCase() === "white";
+                    const isSelected = selectedColor === color;
+
+                    return (
+                      <div
+                        key={index}
+                        onClick={() => handleColorSelection(color)}
+                        className={`w-12 h-12 rounded-full cursor-pointer transition-transform duration-300 ${
+                          isSelected
+                            ? "scale-125 dark:border-2 border-white"
+                            : ""
+                        }`}
+                        style={{
+                          backgroundColor: color.toLowerCase(),
+                          border: isWhite
+                            ? "2px solid black"
+                            : "2px solid white",
+                        }}
+                      ></div>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+
+            {/* Quantity Selector */}
             <div className="w-full">
               <h2 className="text-lg font-medium dark:text-white">Quantity:</h2>
               <div className="flex items-center gap-3 mt-2">
@@ -184,10 +263,10 @@ export default function ProductPage() {
               </div>
             </div>
 
-            {/* 🔹 Order Now Button */}
+            {/* Order Now Button */}
             <button
               onClick={handleOrderNow}
-              className={`w-full flex max-md:text-[14px] items-center justify-center text-lg font-semibold py-3 max-md:px-28 px-52 rounded-lg shadow-lg transition-all duration-300 ${
+              className={`w-full flex items-center justify-center text-lg font-semibold py-3 rounded-lg shadow-lg transition-all duration-300 ${
                 product.isAvailable
                   ? "bg-black text-white dark:bg-white dark:text-black hover:bg-white hover:border-black hover:text-black border border-black"
                   : "bg-gray-400 text-gray-200 cursor-not-allowed"
@@ -197,15 +276,16 @@ export default function ProductPage() {
               {product.isAvailable ? "Order Now" : "Out of Stock"}
             </button>
 
+            {/* Product Ratings */}
             <div className="w-full flex items-center justify-center gap-3">
               <Star className="text-yellow-300 fill-yellow-300" />
-              <p className="text-xl dark:text-white max-md:text-[15px] text-center font-[500] ">
+              <p className="text-xl dark:text-white text-center font-[500]">
                 Premium Quality With Best Prices
               </p>
               <Star className="text-yellow-300 fill-yellow-300" />
             </div>
 
-            {/* 🔹 Share This Product */}
+            {/* Share This Product */}
             <div className="w-full">
               <h2 className="text-lg dark:text-white font-semibold text-gray-800">
                 Share This Product:
@@ -237,6 +317,38 @@ export default function ProductPage() {
           </div>
         </div>
 
+        {/* Other Products Section */}
+        <div className="mt-16">
+          <h2 className="text-3xl font-bold text-center mb-8 dark:text-white">
+            Other Products
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+            {randomProducts.map((product, index) => (
+              <Link key={index} href={product.href} passHref>
+                <div className="bg-white dark:bg-black rounded-lg shadow-lg overflow-hidden cursor-pointer">
+                  <div className="relative h-64">
+                    <Image
+                      src={product.image}
+                      alt={product.name}
+                      layout="fill"
+                      objectFit="cover"
+                      className="rounded-t-lg"
+                    />
+                  </div>
+                  <div className="p-4 flex flex-col items-center justify-center gap-3">
+                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+                      {product.name}
+                    </h3>
+                    <p className="text-gray-600 dark:text-gray-300">
+                      {product.price} DH
+                    </p>
+                    <Button className="py-5">SEE PRODUCT</Button>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
         <ToastContainer />
       </div>
     </div>

@@ -18,7 +18,7 @@ export default function CheckoutPage() {
     (product) => product.href === `/product/${id}`
   );
   const selectedSize = searchParams.get("size");
-  const quantity = parseInt(searchParams.get("quantity") || "1", 10); // Get quantity from URL
+  const quantity = parseInt(searchParams.get("quantity") || "1", 10);
 
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
@@ -138,6 +138,11 @@ export default function CheckoutPage() {
                       {" "}
                       + Frais de Livraison (selon La ville)
                     </p>
+                    {}
+                    <p className="text-md font-normal text-green-600">
+                      {" "}
+                      + Frais de Livraison (selon La ville)
+                    </p>
                   </div>
                 </div>
               </div>
@@ -160,7 +165,7 @@ export default function CheckoutPage() {
                     <input
                       type="text"
                       placeholder="Mohamed Ali"
-                      className="w-full ml-3  outline-none bg-transparent"
+                      className="w-full ml-3 dark:text-black outline-none bg-transparent"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                     />
@@ -177,7 +182,7 @@ export default function CheckoutPage() {
                     <input
                       type="text"
                       placeholder="Casablanca 20250, Morocco"
-                      className="w-full ml-3 outline-none bg-transparent"
+                      className="w-full ml-3 dark:text-black outline-none bg-transparent"
                       value={address}
                       onChange={(e) => setAddress(e.target.value)}
                     />
@@ -194,7 +199,7 @@ export default function CheckoutPage() {
                     <input
                       type="text"
                       placeholder="+212 600 000 000"
-                      className="w-full ml-3 outline-none bg-transparent"
+                      className="w-full ml-3 outline-none  dark:text-black bg-transparent"
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
                     />
@@ -208,7 +213,7 @@ export default function CheckoutPage() {
                   </label>
                   <textarea
                     placeholder="Special instructions for your order..."
-                    className="w-full border-gray-300 border-2 px-4 py-3 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none transition-all"
+                    className="w-full dark:text-black border-gray-300 border-2 px-4 py-3 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none transition-all"
                     value={orderNotes}
                     onChange={(e) => setOrderNotes(e.target.value)}
                   />

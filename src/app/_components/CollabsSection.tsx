@@ -1,52 +1,95 @@
-"use client";
 import Image, { StaticImageData } from "next/image";
 import React from "react";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
 import bo9alImg from "../assets/bo9al.jpg";
 import totoImg from "../assets/toto.jpg";
 
 interface Collab {
   id: number;
-  name: string;
   imageUrl: string | StaticImageData;
 }
 
 const mockCollabData: Collab[] = [
-  { id: 1, name: "Nom  :  ", imageUrl: bo9alImg },
-  { id: 2, name: "Nom :", imageUrl: totoImg },
-  { id: 3, name: "Nom :", imageUrl: bo9alImg },
-  { id: 4, name: "Nom :", imageUrl: totoImg },
+  { id: 1, imageUrl: bo9alImg },
+  { id: 2, imageUrl: totoImg },
+  { id: 3, imageUrl: bo9alImg },
+  { id: 4, imageUrl: totoImg },
 ];
 
 export default function CollabsSection() {
+  const settings = {
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2000,
+
+    dots: true, // Show dots for navigation
+    appendDots: (dots: React.ReactNode) => (
+      <div
+        style={{
+          backgroundColor: "#000",
+          borderRadius: "10px",
+          padding: "10px",
+        }}
+      >
+        <ul style={{ display: "flex", justifyContent: "center" }}>{dots}</ul>
+      </div>
+    ),
+    customPaging: () => (
+      <div
+        style={{
+          width: "10px",
+          height: "10px",
+          borderRadius: "50%",
+          backgroundColor: "#fff",
+          opacity: 0.6,
+        }}
+      />
+    ),
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2, // 2 items for tablet
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1, // 1 item for mobile
+        },
+      },
+    ],
+  };
+
   return (
-    <section className="py-20 bg-black  text-white">
+    <section className="py-20 bg-black text-white overflow-hidden">
       <div className="container mx-auto text-center mb-12">
-        <h2 className="text-5xl font-bold dark:text-white max-md:text-2xl">
+        <h2 className="text-5xl font-bold dark:text-white max-md:text-3xl mb-6">
           Our Amazing Collaborators
         </h2>
-        <p className="mt-4 text-lg dark:text-white text-center max-md:text-md">
-          Check out the incredible people we’ve worked with!
-        </p>
       </div>
 
-      <div className="overflow-hidden">
-        <div className="collabs-container items-center justify-center  max-md:grid max-md:grid-cols-4 max-md:gap-8 flex animate-scroll gap-6 space-x-4 flex-wrap">
-          {mockCollabData.map((collab) => (
-            <div
-              key={collab.id}
-              className="flex flex-col justify-center items-center w-32 mx-4"
-            >
+      <Slider {...settings}>
+        {mockCollabData.map((collab) => (
+          <div
+            key={collab.id}
+            className="flex justify-center  items-center p-4"
+          >
+            <div className="w-full overflow-hidden rounded-lg">
               <Image
                 src={collab.imageUrl}
-                alt={collab.name}
-                className="w-full h-auto object-cover rounded-md mb-4 transition-all duration-500 ease-in-out transform hover:scale-105"
-                width={200}
-                height={200}
+                alt={`Image ${collab.id}`}
+                className="w-[240px] h-[300px] max-md:mx-auto object-cover"
               />
             </div>
-          ))}
-        </div>
-      </div>
+          </div>
+        ))}
+      </Slider>
     </section>
   );
 }
