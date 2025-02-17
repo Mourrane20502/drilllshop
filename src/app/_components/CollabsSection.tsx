@@ -4,7 +4,8 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import bo9alImg from "../assets/bo9al.jpg";
-import totoImg from "../assets/toto.jpg";
+import hassa1 from "../assets/hassa1.jpg";
+import x7kira from "../assets/x7kira.jpg";
 
 interface Collab {
   id: number;
@@ -13,9 +14,8 @@ interface Collab {
 
 const mockCollabData: Collab[] = [
   { id: 1, imageUrl: bo9alImg },
-  { id: 2, imageUrl: totoImg },
-  { id: 3, imageUrl: bo9alImg },
-  { id: 4, imageUrl: totoImg },
+  { id: 2, imageUrl: x7kira },
+  { id: 3, imageUrl: hassa1 },
 ];
 
 export default function CollabsSection() {
@@ -68,7 +68,7 @@ export default function CollabsSection() {
 
   return (
     <section className="py-20 bg-black text-white overflow-hidden">
-      <div className="container mx-auto text-center mb-12">
+      <div className="container mx-auto text-center mb-2">
         <h2 className="text-5xl font-bold dark:text-white max-md:text-3xl mb-6">
           Our Amazing Collaborators
         </h2>
@@ -76,11 +76,8 @@ export default function CollabsSection() {
 
       <Slider {...settings}>
         {mockCollabData.map((collab) => (
-          <div
-            key={collab.id}
-            className="flex justify-center  items-center p-4"
-          >
-            <div className="w-full overflow-hidden rounded-lg">
+          <div key={collab.id} className="flex justify-center items-center p-4">
+            <div className="w-full overflow-hidden rounded-lg mb-10">
               <Image
                 src={collab.imageUrl}
                 alt={`Image ${collab.id}`}
