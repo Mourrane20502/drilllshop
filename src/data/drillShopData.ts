@@ -6,6 +6,9 @@ import short4 from "../app/assets/4.png";
 import short5 from "../app/assets/5.png";
 import short6 from "../app/assets/6.png";
 import short7 from "../app/assets/7.png";
+import abdo from "../app/assets/abdo.jpg";
+import ali from "../app/assets/ali.jpg";
+import amine from "../app/assets/amine.jpg";
 import iceflow from "../app/assets/clothe.png";
 import iceFlowHover from "../app/assets/clothehover.png";
 import crtz from "../app/assets/crtz.png";
@@ -38,10 +41,13 @@ import jacket4 from "../app/assets/jacket4.png";
 import jacket5 from "../app/assets/jacket6.png";
 import nikeshort from "../app/assets/nikeshort.png";
 import nikeshorthover from "../app/assets/nikeshorthover.png";
+import omar from "../app/assets/omar.jpg";
 import pendentif2 from "../app/assets/pendentif2.png";
 import pendentif3 from "../app/assets/pendentif3.png";
 import pendentif4 from "../app/assets/pendentif4.png";
 import pendentif5 from "../app/assets/pendentif5.png";
+import reda from "../app/assets/reda.jpg";
+import saad from "../app/assets/saad.jpg";
 import sabr from "../app/assets/sabr.png";
 import sabrhover from "../app/assets/sabrhover.png";
 import savage from "../app/assets/savage.png";
@@ -51,6 +57,7 @@ import shoe3 from "../app/assets/shoe3.png";
 import shoe3hover from "../app/assets/shoe3hover.png";
 import shoe1hover from "../app/assets/shoehover.avif";
 import shoe2hover from "../app/assets/shover2hover.jpg";
+import simo from "../app/assets/simo.jpg";
 import stussy from "../app/assets/stussy.png";
 import stussyHover from "../app/assets/stussyhover.png";
 import tennis from "../app/assets/tennis.png";
@@ -59,7 +66,6 @@ import tennis3 from "../app/assets/tennis3.png";
 import tnShoes from "../app/assets/tn.png";
 import tnShoes2 from "../app/assets/tn2.png";
 import tnShoes3 from "../app/assets/tn3.png";
-import iconUser from "../app/assets/toto.jpg";
 import trap from "../app/assets/trap.png";
 import trap2 from "../app/assets/trap2.png";
 import trap3 from "../app/assets/trap3.png";
@@ -67,7 +73,7 @@ import trap4 from "../app/assets/trap4.png";
 import polo from "../app/assets/tricot.png";
 import polo2 from "../app/assets/tricot2.png";
 import polo3 from "../app/assets/tricot3.png";
-
+import youssef from "../app/assets/youssef.jpg";
 // export const ProductPage = [
 //   {id : 1 , name:"Nike Jackets", price: 300, description: "This is a jacket that will keep you warm in the winter and cool in the summer.", image: Image, hoverImage: hoverImage},
 // ]
@@ -445,38 +451,70 @@ export interface Feedback {
 export const feedback: Feedback[] = [
   {
     id: 1,
-    name: "John Doe",
+    name: "Ayoub",
     comment:
-      "Great service, will definitely use again ,Great service, will definitely use again,Great service, will definitely use again,Great service, will definitely use again,Great service, will definitely use again",
+      "Commande Bien Recu , ahsen service maa ahsen qualité , Kantsna dima  Ljadid 👌 ",
     rating: 5,
-    date: "2024-12-30",
-    user: iconUser,
+    date: "2025-01-03",
+    user: amine,
   },
   {
     id: 2,
-    name: "Jane Smith",
+    name: "Ali",
     comment:
-      "Great service, will definitely use again ,Great service, will definitely use again,Great service, will definitely use again,Great service, will definitely use again,Great service, will definitely use again",
+      "It’s not my first time  ou machi lekhra kil3ada i´m from the real ones 🤟",
     rating: 4,
     date: "2024-12-29",
-    user: iconUser,
+    user: ali,
   },
   {
     id: 3,
-    name: "Alex Johnson",
+    name: "Simo",
     comment:
-      "Great service, will definitely use again ,Great service, will definitely use again,Great service, will definitely use again,Great service, will definitely use again,Great service, will definitely use again",
-    rating: 2,
+      "Men 2023 ou ana m3akum malgre mchat likum page 2 fois dimaaa mteb3kum ❤ ",
+    rating: 5,
     date: "2024-12-28",
-    user: iconUser,
+    user: simo,
   },
   {
     id: 4,
-    name: "Emily Davis",
+    name: "Reda",
     comment:
-      "Great service, will definitely use again ,Great service, will definitely use again,Great service, will definitely use again,Great service, will definitely use again,Great service, will definitely use again",
-    rating: 4,
-    date: "2024-12-27",
-    user: iconUser,
+      "Broooooooo qualité naaadya lay7fdk kifma f tsawer l3alamiya 🔥🔥🔥 ",
+    rating: 5,
+    date: "2025-02-07",
+    user: reda,
+  },
+  {
+    id: 5,
+    name: "Youssef",
+    comment: "Pyasa tbarkelah lahuma barik anb9a dima nt9eda men 3ndkum⭐ ",
+    rating: 5,
+    date: "2025-01-22",
+    user: youssef,
+  },
+  {
+    id: 6,
+    name: "Abdo",
+    comment: "Chy 7aja laakher naaadeen keep going ✅",
+    rating: 5,
+    date: "2025-02-05",
+    user: abdo,
+  },
+  {
+    id: 7,
+    name: "Omar",
+    comment: "9arebt nkmel collection 😂😍",
+    rating: 5,
+    date: "2025-01-30",
+    user: omar,
+  },
+  {
+    id: 8,
+    name: "Saad",
+    comment: "Tbarkelah sel3a n9iya ma3ndi mantsalkom🤝🏼",
+    rating: 5,
+    date: "2025-01-24",
+    user: saad,
   },
 ] as const;

@@ -31,20 +31,20 @@ const FeedbackSection = () => {
         <Slider {...settings} className="pb-3">
           {feedback.map((item) => (
             <div key={item.id} className="px-6">
-              <div className="relative bg-white dark:bg-black rounded-xl shadow-xl p-10 flex flex-col items-center text-center transition-all duration-500 ease-in-out pb-8 ">
+              <div className="relative bg-white dark:bg-black rounded-xl shadow-xl p-10 flex flex-col items-center text-center transition-all duration-500 ease-in-out pb-8">
                 {/* Profil Picture */}
-                <div className="w-28 h-28 rounded-full overflow-hidden border-2 border-indigo-500 dark:border-gray-600 shadow-lg mb-6">
+                <div className="size-32 rounded-full overflow-hidden  dark:border-gray-600 shadow-lg mb-6">
                   <Image
                     src={item.user}
                     alt={item.name}
-                    width={112}
-                    height={112}
-                    className="w-full h-full object-cover"
+                    width={152}
+                    height={152}
+                    className="object-cover"
                   />
                 </div>
 
                 {/* Comment */}
-                <p className="text-xl font-medium text-gray-700 dark:text-gray-200 leading-relaxed max-w-2xl">
+                <p className="text-xl font-medium text-gray-700 dark:text-gray-200 leading-relaxed max-w-[500px]">
                   “{item.comment}”
                 </p>
 
@@ -65,7 +65,7 @@ const FeedbackSection = () => {
 
                 {/* Name & Date */}
                 <p className="mt-5 text-lg text-gray-500 dark:text-gray-400 italic">
-                  - {item.name}, {item.date}
+                  - {item.name}, {item.date} -
                 </p>
               </div>
             </div>
