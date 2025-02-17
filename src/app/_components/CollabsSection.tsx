@@ -3,7 +3,7 @@ import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
-import bo9alImg from "../assets/bo9al.jpg";
+import bo9alImg from "../assets/bo9al.jpeg";
 import hassa1 from "../assets/hassa1.jpg";
 import x7kira from "../assets/x7kira.jpg";
 
@@ -13,9 +13,9 @@ interface Collab {
 }
 
 const mockCollabData: Collab[] = [
-  { id: 1, imageUrl: bo9alImg },
+  { id: 1, imageUrl: hassa1 },
   { id: 2, imageUrl: x7kira },
-  { id: 3, imageUrl: hassa1 },
+  { id: 3, imageUrl: bo9alImg },
 ];
 
 export default function CollabsSection() {
