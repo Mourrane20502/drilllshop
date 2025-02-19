@@ -94,6 +94,10 @@ import tennis3 from "../app/assets/tennis3.png";
 import tnShoes from "../app/assets/tn.png";
 import tnShoes2 from "../app/assets/tn2.png";
 import tnShoes3 from "../app/assets/tn3.png";
+import tnBlack from "../app/assets/tnblack.png";
+import tnBlack2 from "../app/assets/tnblack2.png";
+import tnBlack3 from "../app/assets/tnblack3.png";
+import tnBlack4 from "../app/assets/tnblack4.png";
 import trap from "../app/assets/trap.png";
 import trap2 from "../app/assets/trap2.png";
 import trap3 from "../app/assets/trap3.png";
@@ -159,10 +163,10 @@ export const ProductsList: Product[] = [
     hoverImage: shoe2hover,
     ProductImages: [shoe2, shoe2hover],
     href: "/product/2",
-    isAvailable: true,
+    isAvailable: false,
     taille: ["40", "41", "42", "43"],
     category: "Shoes",
-    bestSelling: false,
+    bestSelling: true,
   },
   {
     id: 3,
@@ -174,7 +178,9 @@ export const ProductsList: Product[] = [
     ProductImages: [glove, gloveHover],
     href: "/product/3",
     isAvailable: true,
-    taille: ["S", "M", "L", "XL"],
+    taille: ["One Size"],
+    availableSizes: ["One Size"],
+
     category: "Accessories",
     bestSelling: false,
   },
@@ -187,9 +193,9 @@ export const ProductsList: Product[] = [
     image: iceflow,
     hoverImage: iceFlowHover,
     ProductImages: [iceflow, iceFlowHover],
-
     href: "/product/4",
-    taille: ["M", "L", "XL", "2XL"],
+    taille: ["S", "M", "L", "XL"],
+    availableSizes: ["S", "M", "L", "XL"],
     category: "Clothes",
     bestSelling: false,
     isAvailable: true,
@@ -205,8 +211,11 @@ export const ProductsList: Product[] = [
 
     href: "/product/5",
     taille: ["One Size"],
+    availableSizes: ["One Size"],
+
     category: "Accessories",
-    bestSelling: false,
+    bestSelling: true,
+    isAvailable: true,
   },
   {
     id: 6,
@@ -217,7 +226,7 @@ export const ProductsList: Product[] = [
     image: shoe3,
     hoverImage: shoe3hover,
     ProductImages: [shoe3, shoe3hover],
-
+    isAvailable: false,
     href: "/product/6",
     taille: ["40", "41", "42", "43"],
     category: "Shoes",
@@ -232,11 +241,12 @@ export const ProductsList: Product[] = [
     image: stussy,
     hoverImage: stussyHover,
     ProductImages: [stussy, stussyHover],
-
     href: "/product/7",
-    taille: ["M", "L", "XL", "2XL"],
-    category: "Clothes", // Category: Clothes,
+    taille: ["S", "M", "L", "XL"],
+    availableSizes: ["S", "M", "L", "XL"],
+    category: "Clothes",
     bestSelling: false,
+    isAvailable: true,
   },
   {
     id: 8,
@@ -249,7 +259,11 @@ export const ProductsList: Product[] = [
 
     href: "/product/8",
     taille: ["One Size"],
+    availableSizes: ["One Size"],
+
     category: "Accessories",
+    isAvailable: true,
+
     bestSelling: false,
   },
   {
@@ -261,7 +275,7 @@ export const ProductsList: Product[] = [
     image: shoe1,
     hoverImage: shoe1hover,
     ProductImages: [shoe1, shoe1hover],
-
+    isAvailable: false,
     href: "/product/9",
     taille: ["40", "41", "42", "43"],
     category: "Shoes",
@@ -279,6 +293,7 @@ export const ProductsList: Product[] = [
 
     href: "/product/10",
     taille: ["S", "M", "L", "XL"],
+    availableSizes: ["S", "M", "L", "XL"],
     category: "Clothes",
     bestSelling: false,
     isAvailable: true,
@@ -286,15 +301,19 @@ export const ProductsList: Product[] = [
   {
     id: 11,
     name: "Cubain Chain",
-    price: 100,
-    description: "Protect your eyes with these trendy sunglasses.",
+    price: 199,
+    description: "Popular, bold necklace featuring interlocking.",
     image: cubainHover,
     hoverImage: cubain,
     ProductImages: [cubainHover, cubain],
 
     href: "/product/11",
     taille: ["One Size"],
+    availableSizes: ["One Size"],
+
     category: "Accessories",
+    isAvailable: true,
+
     bestSelling: false,
   },
   {
@@ -308,8 +327,10 @@ export const ProductsList: Product[] = [
     ProductImages: [sabr, sabrhover],
 
     href: "/product/12",
-    taille: ["M", "L", "XL", "2XL"],
+    taille: ["S", "M", "L", "XL"],
+    availableSizes: ["S", "M", "L", "XL"],
     category: "Clothes",
+    isAvailable: true,
     bestSelling: false,
   },
   {
@@ -333,7 +354,7 @@ export const ProductsList: Product[] = [
     name: "Black Polo Corteiz",
     price: 149,
     description:
-      "Warm, lightweight with a sleek design. Perfect for staying cozy in cold weather.",
+      "Made from high-quality materials, it offers a stylish, perfect for streetwear looks.",
     image: polo,
     hoverImage: polo2,
     href: "/product/14",
@@ -349,7 +370,7 @@ export const ProductsList: Product[] = [
     name: "Débardeur Corteiz",
     price: 149,
     description:
-      "Warm, lightweight with a sleek design. Perfect for staying cozy in cold weather.",
+      "Ideal for warm weather or layering, it combines casual ease with urban flair.",
     image: debardeur,
     hoverImage: debardeur4,
     href: "/product/15",
@@ -365,7 +386,7 @@ export const ProductsList: Product[] = [
     name: "Corteiz Spring jacket",
     price: 269,
     description:
-      "Warm, lightweight with a sleek design. Perfect for staying cozy in cold weather.",
+      "offers a comfortable fit and urban edge, ideal for casual streetwear looks.",
     image: jacket,
     hoverImage: jacket2,
     href: "/product/16",
@@ -379,35 +400,45 @@ export const ProductsList: Product[] = [
   {
     id: 17,
     name: "Pendentifs",
-    price: 100,
-    description: "Protect your eyes with these trendy sunglasses.",
+    price: 59,
+    description:
+      "Typically worn on a necklace, adding a personalized or stylish touch.",
     image: savage,
     hoverImage: pendentif2,
     ProductImages: [savage, pendentif2, pendentif3, pendentif4, pendentif5],
 
     href: "/product/17",
     taille: ["One Size"],
+    availableSizes: ["One Size"],
+
     category: "Accessories",
+    isAvailable: true,
+
     bestSelling: false,
   },
   {
     id: 18,
     name: "Tennis Chain",
-    price: 100,
-    description: "Protect your eyes with these trendy sunglasses.",
+    price: 199,
+    description:
+      "classic, elegant necklace featuring a continuous line of small.",
     image: tennis,
     hoverImage: tennis2,
     ProductImages: [tennis, tennis2, tennis3],
     href: "/product/18",
     taille: ["One Size"],
+    availableSizes: ["One Size"],
+
     category: "Accessories",
+    isAvailable: true,
+
     bestSelling: false,
   },
   {
     id: 19,
     name: "Ensemble Corteiz",
     price: 399,
-    description: "Protect your eyes with these trendy sunglasses.",
+    description: "coordinated streetwear set that blends style and comfort",
     image: ensembleCorteiz,
     isAvailable: true,
     hoverImage: ensembleCorteiz2,
@@ -427,7 +458,8 @@ export const ProductsList: Product[] = [
     id: 20,
     name: "Short Corteiz",
     price: 209,
-    description: "Protect your eyes with these trendy sunglasses.",
+    description:
+      "offer a comfortable, streetwear-inspired fit with bold branding.",
     image: short,
     isAvailable: true,
     hoverImage: short2,
@@ -442,10 +474,10 @@ export const ProductsList: Product[] = [
   },
   {
     id: 21,
-    name: "Tn Shoes",
+    name: "Tn White Shoes",
     price: 379,
     description:
-      "A bold collaboration featuring the Nike Air Max 95 in a striking darkgreen colorway.",
+      "Provide superior support and a bold, sporty look. Popular in streetwear culture.",
     image: tnShoes,
     hoverImage: tnShoes2,
     ProductImages: [tnShoes, tnShoes2, tnShoes3],
@@ -461,7 +493,7 @@ export const ProductsList: Product[] = [
     name: "Sac Trapstar",
     price: 439,
     description:
-      "A bold collaboration featuring the Nike Air Max 95 in a striking darkgreen colorway.",
+      "Rendy, streetwear-inspired accessory known for its bold branding and urban style.",
     image: trap,
     hoverImage: trap2,
     ProductImages: [trap, trap2, trap3, trap4],
@@ -469,17 +501,18 @@ export const ProductsList: Product[] = [
     colors: ["Blue", "Black", "White"],
     href: "/product/22",
     isAvailable: true,
-    taille: ["40", "41", "42", "43"],
-    availableSizes: ["40", "41", "42", "43"],
+    taille: ["One Size"],
+    availableSizes: ["One Size"],
     category: "Accessories",
-    bestSelling: false,
+
+    bestSelling: true,
   },
   {
     id: 23,
     name: "Cargo Corteiz",
     price: 249,
     description:
-      "A bold collaboration featuring the Nike Air Max 95 in a striking darkgreen colorway.",
+      "utility-inspired design with multiple pockets and a comfortable fit.",
     image: cargo,
     hoverImage: cargo2,
     ProductImages: [cargo, cargo2, cargo3, cargo4],
@@ -497,28 +530,31 @@ export const ProductsList: Product[] = [
     name: "Masque Trapstar",
     price: 69,
     description:
-      "A bold collaboration featuring the Nike Air Max 95 in a striking darkgreen colorway.",
+      "Treetwear accessory that adds an edgy, bold look. Featuring the brand's signature logo.",
     image: masquetrap,
     hoverImage: masquetrap2,
     ProductImages: [masquetrap, masquetrap2, masquetrap3],
     href: "/product/24",
     isAvailable: true,
     taille: ["All sizes"],
+    availableSizes: ["All sizes"],
+
     category: "Accessories",
-    bestSelling: false,
+    bestSelling: true,
   },
   {
     id: 25,
     name: "Masque NorthFace",
     price: 69,
-    description:
-      "A bold collaboration featuring the Nike Air Max 95 in a striking darkgreen colorway.",
+    description: "Combines comfort, durability, and outdoor-ready performance.",
     image: masquenorth,
     hoverImage: masquenorth2,
     ProductImages: [masquenorth, masquenorth2, masquenorth3, masquenorth4],
     href: "/product/25",
     isAvailable: true,
     taille: ["All sizes"],
+    availableSizes: ["All sizes"],
+
     category: "Accessories",
     bestSelling: false,
   },
@@ -526,29 +562,31 @@ export const ProductsList: Product[] = [
     id: 26,
     name: "Masque Nike",
     price: 69,
-    description:
-      "A bold collaboration featuring the Nike Air Max 95 in a striking darkgreen colorway.",
+    description: "Combines comfort, durability, and outdoor-ready performance.",
     image: masquenike,
     hoverImage: masquenike2,
     ProductImages: [masquenike, masquenike2, masquenike3],
     href: "/product/26",
     isAvailable: true,
     taille: ["All sizes"],
+    availableSizes: ["All sizes"],
+
     category: "Accessories",
+
     bestSelling: false,
   },
   {
     id: 27,
     name: "Masque Simple",
     price: 69,
-    description:
-      "A bold collaboration featuring the Nike Air Max 95 in a striking darkgreen colorway.",
+    description: "Combines comfort, durability, and outdoor-ready performance.",
     image: masquesimple,
     hoverImage: masquesimple2,
     ProductImages: [masquesimple, masquesimple2, masquesimple3],
     href: "/product/27",
     isAvailable: true,
     taille: ["All sizes"],
+    availableSizes: ["All sizes"],
     category: "Accessories",
     bestSelling: false,
   },
@@ -557,7 +595,7 @@ export const ProductsList: Product[] = [
     name: "Hoodie Corteiz",
     price: 199,
     description:
-      "A bold collaboration featuring the Nike Air Max 95 in a striking darkgreen colorway.",
+      "offers bold style and comfort with its oversized fit,100% Coton.",
     image: hoodieCorteiz,
     hoverImage: hoodieCorteiz2,
     ProductImages: [
@@ -574,6 +612,22 @@ export const ProductsList: Product[] = [
     taille: ["S", "M", "L", "XL"],
     availableSizes: ["S", "M", "L", "XL"],
     category: "Clothes",
+    bestSelling: true,
+  },
+  {
+    id: 29,
+    name: "Black Air Max Tn",
+    price: 379,
+    description:
+      "sleek, iconic sneaker featuring a streamlined design with a black colorway.",
+    image: tnBlack2,
+    hoverImage: tnBlack,
+    ProductImages: [tnBlack, tnBlack2, tnBlack3, tnBlack4],
+    href: "/product/29",
+    isAvailable: true,
+    taille: ["39", "40", "41", "42", "43"],
+    availableSizes: ["39", "40"],
+    category: "Shoes",
     bestSelling: true,
   },
 ];

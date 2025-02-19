@@ -22,12 +22,21 @@ export default function Home() {
     ...new Set(ProductsList.map((product) => product.category)),
   ];
 
-  const filteredProducts = ProductsList.filter(
-    (product) =>
-      (selectedCategory === "Best Seller" ||
-        product.category === selectedCategory) &&
+  const filteredProducts = ProductsList.filter((product) => {
+    if (selectedCategory === "Best Seller") {
+      return (
+        product.bestSelling &&
+        product.category === "Clothes" &&
+        product.name.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+    }
+
+    return (
+      (product.category === selectedCategory ||
+        selectedCategory === "Best Seller") &&
       product.name.toLowerCase().includes(searchQuery.toLowerCase())
-  ).sort((a, b) => {
+    );
+  }).sort((a, b) => {
     if (a.bestSelling && !b.bestSelling) {
       return -1;
     }

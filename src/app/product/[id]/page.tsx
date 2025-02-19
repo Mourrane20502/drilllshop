@@ -177,7 +177,7 @@ export default function ProductPage() {
                   : "text-red-600"
               } `}
             >
-              {product.isAvailable ? "In Stock " : "Not Available "}
+              {product.isAvailable ? "In Stock " : "Out of Stock"}
             </p>
 
             {/* Size Selector */}
