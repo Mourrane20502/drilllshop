@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import { FaWhatsapp } from "react-icons/fa";
 import CollabsSection from "./_components/CollabsSection";
 import FeedbackSection from "./_components/FeedbackSlider";
 import BgSection from "./assets/bgsection.png";
@@ -95,6 +96,23 @@ export default function Home() {
           </motion.div>
         </motion.div>
       </motion.section>
+      <motion.div
+        className="fixed bottom-10 right-5 z-50 rounded-full size-16 flex items-center justify-center bg-green-500"
+        initial={{ opacity: 0, y: 250 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <Link
+          href="https://wa.me/212697690740"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:text-blue-400 transition-colors duration-300"
+        >
+          <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
+            <FaWhatsapp size={50} className="fill-white z-30 cursor-pointer" />
+          </motion.div>
+        </Link>
+      </motion.div>
 
       {/* Products Section */}
       <section id="products" className="w-full px-8 py-12 scroll-m-16">
