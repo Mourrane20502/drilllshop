@@ -37,12 +37,20 @@ export default function Home() {
       product.name.toLowerCase().includes(searchQuery.toLowerCase())
     );
   }).sort((a, b) => {
+    if (a.lastDrop && !b.lastDrop) {
+      return -1;
+    }
+    if (!a.lastDrop && b.lastDrop) {
+      return 1;
+    }
+
     if (a.bestSelling && !b.bestSelling) {
       return -1;
     }
     if (!a.bestSelling && b.bestSelling) {
       return 1;
     }
+
     return 0;
   });
 

@@ -25,29 +25,29 @@ export default function Header() {
         } transition-all gap-4 duration-300 ease-in-out flex items-center justify-start w-full h-14 absolute top-0 left-0 z-50 overflow-hidden`}
       >
         {/* Paragraphs with animation and spaced out */}
-        <p className="text-center max-md:hidden  uppercase header-container px-4 animate-slide">
+        <p className="text-center max-md:hidden text-[15px] uppercase header-container px-4 animate-slide">
           NEW DROP SOON
         </p>
-        <p className="text-center max-md:hidden uppercase header-container px-4 animate-slide delay-200">
+        <p className="text-center max-md:hidden text-[15px] uppercase header-container px-4 animate-slide delay-200">
           NEW DROP SOON
         </p>
-        <p className="text-center max-md:hidden uppercase header-container px-4 animate-slide delay-400">
+        <p className="text-center max-md:hidden text-[15px] uppercase header-container px-4 animate-slide delay-400">
           NEW DROP SOON
         </p>
-        <p className="text-center max-md:w-full max-md:text-[14px]  uppercase header-container px-4 animate-slide delay-600">
+        <p className="text-center max-md:hidden text-[15px] max-md:text-[14px]  uppercase header-container px-4 animate-slide delay-600">
           NEW DROP SOON
         </p>
-        <p className="text-center max-md:w-full max-md:text-[14px] uppercase header-container px-4 animate-slide delay-600">
+        <p className="text-center max-md:w-full text-[15px] max-md:text-[14px] uppercase header-container px-4 animate-slide delay-600">
           NEW DROP SOON
         </p>
-        <p className="text-center max-md:w-full max-md:text-[14px]  uppercase header-container px-4 animate-slide delay-600">
+        <p className="text-center max-md:w-full text-[15px] max-md:text-[14px]  uppercase header-container px-4 animate-slide delay-600">
           NEW DROP SOON
         </p>
 
-        <p className="text-center max-md:hidden uppercase header-container px-4 animate-slide delay-400">
+        <p className="text-center max-md:hidden text-[15px] uppercase header-container px-4 animate-slide delay-400">
           NEW DROP SOON
         </p>
-        <p className="text-center max-md:hidden  uppercase header-container px-4 animate-slide delay-600">
+        <p className="text-center max-md:hidden text-[15px] uppercase header-container px-4 animate-slide delay-600">
           NEW DROP SOON
         </p>
       </div>

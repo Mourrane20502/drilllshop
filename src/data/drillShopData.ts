@@ -127,6 +127,7 @@ export interface Product {
   bestSelling?: boolean;
   hasMultipleColors?: boolean;
   colors?: string[];
+  lastDrop?: boolean;
 }
 
 export const ProductsList: Product[] = [
@@ -613,6 +614,7 @@ export const ProductsList: Product[] = [
     availableSizes: ["S", "M", "L", "XL"],
     category: "Clothes",
     bestSelling: true,
+    lastDrop: true,
   },
   {
     id: 29,

@@ -29,7 +29,6 @@ export default function ProductPage() {
     }
   }, [product]);
 
-  // Get random products to display in the "Other Products" section
   const getRandomProducts = () => {
     const randomProducts: Product[] = [];
     while (randomProducts.length < 5) {
@@ -139,7 +138,7 @@ export default function ProductPage() {
             </div>
 
             {/* Thumbnail Images */}
-            <div className="flex justify-center space-x-4 lg:flex-col lg:space-x-0 lg:space-y-4">
+            <div className="flex max-md:grid max-md:grid-cols-4 max-md:gap-y-9  justify-center space-x-4 lg:flex-col lg:space-x-0 lg:space-y-4">
               {product.ProductImages?.map((image, index) => (
                 <div
                   key={index}
@@ -254,7 +253,7 @@ export default function ProductPage() {
                   -
                 </button>
                 <input
-                  type="number"
+                  type="text"
                   value={quantity}
                   onChange={(e) => {
                     const value = parseInt(e.target.value, 10);

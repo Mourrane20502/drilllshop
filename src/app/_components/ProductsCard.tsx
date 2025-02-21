@@ -12,6 +12,7 @@ interface ProductsCardProps {
   hoverImage: string | StaticImageData;
   href: string;
   bestSelling?: boolean;
+  lastDrop?: boolean;
 }
 
 export default function ProductsCard({
@@ -23,6 +24,7 @@ export default function ProductsCard({
   hoverImage,
   href,
   bestSelling,
+  lastDrop,
 }: ProductsCardProps) {
   const [currentImage, setCurrentImage] = useState(image);
 
@@ -43,6 +45,13 @@ export default function ProductsCard({
         <div className="absolute flex flex-col items-center justify-center -top-3 rounded-full -right-2 z-10 bg-[#f80312] text-white text-sm  w-[80px] h-[80px] font-bold uppercase shadow-lg">
           <p>Best</p>
           <p>Seller</p>
+        </div>
+      )}
+
+      {lastDrop && (
+        <div className="absolute flex flex-col items-center justify-center -top-3 rounded-full -right-2 z-10 bg-[#f80312] text-white text-sm  w-[80px] h-[80px] font-bold uppercase shadow-lg">
+          <p>Last</p>
+          <p>Drop</p>
         </div>
       )}
 
