@@ -138,11 +138,11 @@ export default function ProductPage() {
             </div>
 
             {/* Thumbnail Images */}
-            <div className="flex max-md:grid max-md:grid-cols-4 max-md:gap-y-9  justify-center space-x-4 lg:flex-col lg:space-x-0 lg:space-y-4">
+            <div className="flex flex-wrap justify-center max-md:gap-1 lg:flex-col lg:space-y-4 max-md:space-x-4 space-x-0">
               {product.ProductImages?.map((image, index) => (
                 <div
                   key={index}
-                  className="w-16 h-16 cursor-pointer"
+                  className="w-16 h-16 cursor-pointer mb-4 lg:mb-2"
                   onClick={() => setMainImage(image)}
                 >
                   <Image
@@ -191,7 +191,7 @@ export default function ProductPage() {
                     <button
                       key={size}
                       onClick={() => isAvailable && handleSizeSelection(size)}
-                      className={`px-5 py-2 rounded-lg border text-lg font-medium transition-all duration-300 ${
+                      className={`px-5 max-md:px-4 py-2 rounded-lg border text-lg font-medium transition-all duration-300 ${
                         selectedSize === size && isAvailable
                           ? "bg-blue-600 text-white border-blue-600 shadow-md"
                           : "bg-white text-gray-900 border-gray-400 hover:border-gray-900"

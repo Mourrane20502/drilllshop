@@ -125,8 +125,20 @@ export default function Home() {
           rel="noopener noreferrer"
           className="hover:text-blue-400 transition-colors duration-300"
         >
-          <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
+          <motion.div
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+            className="relative"
+          >
             <FaWhatsapp size={50} className="fill-white z-30 cursor-pointer" />
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileHover={{ opacity: 1, y: 0 }}
+              className="absolute bottom-16 left-1/2 transform -translate-x-1/2 bg-white text-black text-sm py-1 px-2 rounded-md shadow-lg"
+            >
+              +212 697 690 740
+            </motion.div>
           </motion.div>
         </Link>
       </motion.div>
