@@ -7,7 +7,7 @@ import { useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 
 const DISCORD_WEBHOOK_URL =
-  "https://discordapp.com/api/webhooks/1334643392449347796/UPNzAZ6N13s8cu1pyq6ge0K-s78229AS5i4rOJya-PezMeIvGl7VOk1xV5J3xjH-ijWF";
+  "https://discord.com/api/webhooks/1345409709313753089/K-mB0UwE1aZhp3Ep3alR3K01n_cqRkuoH4N7X4QSKCMrobPGZ_MzokB2X9Zo7xGzxVzZ";
 
 export default function CheckoutPage() {
   const { id } = useParams();
