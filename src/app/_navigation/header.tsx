@@ -22,7 +22,7 @@ export default function Header() {
           isScrolling
             ? "hidden"
             : "bg-black dark:bg-white dark:text-black text-white"
-        } transition-all gap-4 duration-300 ease-in-out flex items-center justify-center w-full h-14 absolute top-0 left-0 z-50 overflow-hidden whitespace-nowrap`}
+        } transition-all gap-4 duration-300 ease-in-out flex items-center justify-center w-full h-10 absolute top-0 left-0 z-50 overflow-hidden whitespace-nowrap`}
       >
         <p className="text-center text-[13px] uppercase header-container px-4 animate-slide">
           NEW DROP SOON

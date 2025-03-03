@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   title: "DrillShop",
   description: "DrillShop",
   icons: {
-    icon: "/logo.ico",
+    icon: "/logo.PNG",
   },
 };
 

@@ -1,6 +1,6 @@
 "use client";
 import { ProductsList } from "@/data/drillShopData";
-import { MapPin, Phone, ShoppingCart, User } from "lucide-react";
+import { Mail, MapPin, Phone, ShoppingCart, User } from "lucide-react"; // Added Mail icon
 import Image from "next/image";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
@@ -23,6 +23,7 @@ export default function CheckoutPage() {
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
   const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState(""); // New email state
   const [orderNotes, setOrderNotes] = useState("");
   const [isProcessing, setIsProcessing] = useState(false);
 
@@ -39,6 +40,16 @@ export default function CheckoutPage() {
   const handleConfirmOrder = async () => {
     if (!name || !address || !phone) {
       toast.error("All fields are required!");
+      return;
+    }
+
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (email && !emailRegex.test(email)) {
+      toast.error("Please enter a valid email address!");
+      return;
+    }
+    if (phone.length !== 10) {
+      toast.error("Phone number must be exactly 10 digits!");
       return;
     }
 
@@ -62,6 +73,7 @@ export default function CheckoutPage() {
             { name: "👤 Customer Name", value: name, inline: false },
             { name: "📍 Address", value: address, inline: false },
             { name: "📞 Phone", value: phone, inline: false },
+            { name: "📧 Email", value: email || "N/A", inline: false },
             {
               name: "📝 Order Notes",
               value: orderNotes || "No special instructions",
@@ -100,10 +112,18 @@ export default function CheckoutPage() {
     }
   };
 
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const input = e.target.value;
+    // Ensure the phone number is only 10 digits long
+    if (/^\d{0,10}$/.test(input)) {
+      setPhone(input);
+    }
+  };
+
   return (
     <>
       <div className="py-16 flex justify-center items-center min-h-screen bg-gray-50">
-        <div className="w-full max-w-4xl bg-white  shadow-xl rounded-lg p-8">
+        <div className="w-full max-w-4xl bg-white shadow-xl rounded-lg p-8">
           <h1 className="text-3xl font-bold text-gray-900 text-center mb-6">
             Checkout
           </h1>
@@ -138,7 +158,6 @@ export default function CheckoutPage() {
                       {" "}
                       + Frais de Livraison (selon La ville)
                     </p>
-                    {}
                   </div>
                 </div>
               </div>
@@ -170,7 +189,7 @@ export default function CheckoutPage() {
 
                 {/* Shipping Address */}
                 <div className="relative">
-                  <label className="block  dark:text-white text-gray-700 font-medium mb-1">
+                  <label className="block dark:text-white text-gray-700 font-medium mb-1">
                     Shipping Address
                   </label>
                   <div className="flex dark:bg-white items-center border rounded-md px-3 py-2 focus-within:ring-2 focus-within:ring-blue-400">
@@ -187,7 +206,7 @@ export default function CheckoutPage() {
 
                 {/* Phone Number */}
                 <div className="relative">
-                  <label className="block  dark:text-white text-gray-700 font-medium mb-1">
+                  <label className="block dark:text-white text-gray-700 font-medium mb-1">
                     Phone Number
                   </label>
                   <div className="flex dark:bg-white items-center border rounded-md px-3 py-2 focus-within:ring-2 focus-within:ring-blue-400">
@@ -195,16 +214,33 @@ export default function CheckoutPage() {
                     <input
                       type="text"
                       placeholder="+212 600 000 000"
-                      className="w-full ml-3 outline-none  dark:text-black bg-transparent"
+                      className="w-full ml-3 outline-none dark:text-black bg-transparent"
                       value={phone}
-                      onChange={(e) => setPhone(e.target.value)}
+                      onChange={handlePhoneChange} // Updated to handle phone validation
+                    />
+                  </div>
+                </div>
+
+                {/* Email Address (Optional) */}
+                <div className="relative">
+                  <label className="block dark:text-white text-gray-700 font-medium mb-1">
+                    Email Address (Optional)
+                  </label>
+                  <div className="flex dark:bg-white items-center border rounded-md px-3 py-2 focus-within:ring-2 focus-within:ring-blue-400">
+                    <Mail className="text-gray-500" />
+                    <input
+                      type="email"
+                      placeholder="example@example.com"
+                      className="w-full ml-3 dark:text-black outline-none bg-transparent"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
                     />
                   </div>
                 </div>
 
                 {/* Order Notes */}
                 <div className="relative">
-                  <label className="block  dark:text-white text-gray-700 font-medium mb-1">
+                  <label className="block dark:text-white text-gray-700 font-medium mb-1">
                     Order Notes (Optional)
                   </label>
                   <textarea
