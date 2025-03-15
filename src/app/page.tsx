@@ -3,6 +3,7 @@ import ProductsCard from "@/app/_components/ProductsCard";
 import { Button } from "@/components/ui/button";
 import { ProductsList } from "@/data/drillShopData";
 import { motion } from "framer-motion";
+import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
@@ -62,6 +63,40 @@ export default function Home() {
       : filteredProducts.slice(0, 6);
   return (
     <div className="py-28">
+      <Head>
+        <title>DrillShop.ma - Where style meets attitude</title>
+        <meta
+          name="description"
+          content="Your Moroccan-based streetwear and lifestyle store. We bring exclusive drip and bold fashion to the streets. Elevate your style with our latest collections."
+        />
+        <meta
+          name="keywords"
+          content="streetwear, fashion, Moroccan store, lifestyle, exclusive fashion, DrillShop"
+        />
+        <meta
+          property="og:title"
+          content="DrillShop.ma - Where style meets attitude"
+        />
+        <meta
+          property="og:description"
+          content="Your Moroccan-based streetwear and lifestyle store. We bring exclusive drip and bold fashion to the streets. Elevate your style with our latest collections."
+        />
+        <meta property="og:url" content="https://www.drillshop.ma" />
+        <meta property="og:image" content="./assets/drilllogowhite.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="DrillShop.ma - Where style meets attitude"
+        />
+        <meta
+          name="twitter:description"
+          content="Your Moroccan-based streetwear and lifestyle store. We bring exclusive drip and bold fashion to the streets. Elevate your style with our latest collections."
+        />
+        <meta
+          name="twitter:image"
+          content="https://www.drillshop.ma/images/twitter-image.jpg"
+        />
+      </Head>
       {/* Main section */}
       <motion.section
         id="main"
