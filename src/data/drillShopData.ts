@@ -129,17 +129,25 @@ export interface Product {
   colors?: string[];
   lastDrop?: boolean;
 }
+const generateSlug = (name: string) => {
+  return name
+    .toLowerCase()
+    .replace(/\s+/g, "-")
+    .replace(/[^\w\-]+/g, "");
+};
 
 export const ProductsList: Product[] = [
   {
     id: 1,
     name: "CRTZ x Slaughter Gang",
-    price: 399,
+    price: 349,
     description:
       "This is blends bold street style with premium quality and limited edition.",
     image: crtz,
     hoverImage: crtzhover,
-    href: "/product/1",
+    // href: "/product/1",
+    href: `/product/${generateSlug("CRTZ x Slaughter Gang")}`,
+
     isAvailable: true,
     ProductImages: [
       crtz,
@@ -163,7 +171,7 @@ export const ProductsList: Product[] = [
     image: shoe2,
     hoverImage: shoe2hover,
     ProductImages: [shoe2, shoe2hover],
-    href: "/product/2",
+    href: `/product/${generateSlug("Corteiz Nike Air Max 95 DarkGreen")}`,
     isAvailable: false,
     taille: ["40", "41", "42", "43"],
     category: "Shoes",
@@ -177,11 +185,10 @@ export const ProductsList: Product[] = [
     image: glove,
     hoverImage: gloveHover,
     ProductImages: [glove, gloveHover],
-    href: "/product/3",
+    href: `/product/${generateSlug("Nike Gloves")}`,
     isAvailable: true,
     taille: ["One Size"],
     availableSizes: ["One Size"],
-
     category: "Accessories",
     bestSelling: false,
   },
@@ -194,7 +201,7 @@ export const ProductsList: Product[] = [
     image: iceflow,
     hoverImage: iceFlowHover,
     ProductImages: [iceflow, iceFlowHover],
-    href: "/product/4",
+    href: `/product/${generateSlug("Ice FLOW Collection")}`,
     taille: ["S", "M", "L", "XL"],
     availableSizes: ["S", "M", "L", "XL"],
     category: "Clothes",
@@ -209,8 +216,7 @@ export const ProductsList: Product[] = [
     image: glove2,
     hoverImage: glove2hover,
     ProductImages: [glove2, glove2hover],
-
-    href: "/product/5",
+    href: `/product/${generateSlug("NorthFace Gloves")}`,
     taille: ["One Size"],
     availableSizes: ["One Size"],
 
@@ -228,7 +234,7 @@ export const ProductsList: Product[] = [
     hoverImage: shoe3hover,
     ProductImages: [shoe3, shoe3hover],
     isAvailable: false,
-    href: "/product/6",
+    href: `/product/${generateSlug("Corteiz Nike Air Max 95 Pink")}`,
     taille: ["40", "41", "42", "43"],
     category: "Shoes",
     bestSelling: false,
@@ -242,7 +248,7 @@ export const ProductsList: Product[] = [
     image: stussy,
     hoverImage: stussyHover,
     ProductImages: [stussy, stussyHover],
-    href: "/product/7",
+    href: `/product/${generateSlug("STÜSSY TEE Collection")}`,
     taille: ["S", "M", "L", "XL"],
     availableSizes: ["S", "M", "L", "XL"],
     category: "Clothes",
@@ -257,8 +263,7 @@ export const ProductsList: Product[] = [
     image: glove3,
     hoverImage: glove3hover,
     ProductImages: [glove3, glove3hover],
-
-    href: "/product/8",
+    href: `/product/${generateSlug("Trapstar Gloves")}`,
     taille: ["One Size"],
     availableSizes: ["One Size"],
 
@@ -277,22 +282,21 @@ export const ProductsList: Product[] = [
     hoverImage: shoe1hover,
     ProductImages: [shoe1, shoe1hover],
     isAvailable: false,
-    href: "/product/9",
+    href: `/product/${generateSlug("Corteiz Nike Air Max 95 Blue")}`,
     taille: ["40", "41", "42", "43"],
     category: "Shoes",
     bestSelling: false,
   },
   {
     id: 10,
-    name: "NIKE TRACK PANTS ",
+    name: "NIKE TRACK PANTS",
     price: 169,
     description:
       "Comfortable and stylish with a sleek, breathable design. Perfect for any activity.",
     image: nikeshort,
     hoverImage: nikeshorthover,
     ProductImages: [nikeshort, nikeshorthover],
-
-    href: "/product/10",
+    href: `/product/${generateSlug("NIKE TRACK PANTS")}`,
     taille: ["S", "M", "L", "XL"],
     availableSizes: ["S", "M", "L", "XL"],
     category: "Clothes",
@@ -307,14 +311,11 @@ export const ProductsList: Product[] = [
     image: cubainHover,
     hoverImage: cubain,
     ProductImages: [cubainHover, cubain],
-
-    href: "/product/11",
+    href: `/product/${generateSlug("Cubain Chain")}`,
     taille: ["One Size"],
     availableSizes: ["One Size"],
-
     category: "Accessories",
     isAvailable: true,
-
     bestSelling: false,
   },
   {
@@ -326,8 +327,7 @@ export const ProductsList: Product[] = [
     image: sabr,
     hoverImage: sabrhover,
     ProductImages: [sabr, sabrhover],
-
-    href: "/product/12",
+    href: `/product/${generateSlug("صبر  - Summer Collection")}`,
     taille: ["S", "M", "L", "XL"],
     availableSizes: ["S", "M", "L", "XL"],
     category: "Clothes",
@@ -342,7 +342,7 @@ export const ProductsList: Product[] = [
       "Warm, lightweight with a sleek design. Perfect for staying cozy in cold weather.",
     image: ilyas,
     hoverImage: ilyas2,
-    href: "/product/13",
+    href: `/product/${generateSlug("Nike Puffer Jacket")}`,
     isAvailable: true,
     ProductImages: [ilyas, ilyas2, ilyas3, ilyas4, ilyas5],
     taille: ["S", "M", "L", "XL"],
@@ -358,7 +358,7 @@ export const ProductsList: Product[] = [
       "Made from high-quality materials, it offers a stylish, perfect for streetwear looks.",
     image: polo,
     hoverImage: polo2,
-    href: "/product/14",
+    href: `/product/${generateSlug("Black Polo Corteiz")}`,
     isAvailable: true,
     ProductImages: [polo, polo3, polo2],
     taille: ["S", "M", "L", "XL"],
@@ -374,7 +374,7 @@ export const ProductsList: Product[] = [
       "Ideal for warm weather or layering, it combines casual ease with urban flair.",
     image: debardeur,
     hoverImage: debardeur4,
-    href: "/product/15",
+    href: `/product/${generateSlug("Débardeur Corteiz")}`,
     isAvailable: true,
     ProductImages: [debardeur, debardeur2, debardeur3, debardeur4],
     taille: ["S", "M", "L", "XL"],
@@ -390,7 +390,7 @@ export const ProductsList: Product[] = [
       "offers a comfortable fit and urban edge, ideal for casual streetwear looks.",
     image: jacket,
     hoverImage: jacket2,
-    href: "/product/16",
+    href: `/product/${generateSlug("Corteiz Spring jacket")}`,
     isAvailable: true,
     ProductImages: [jacket, jacket2, jacket3, jacket4, jacket5],
     taille: ["S", "M", "L", "XL"],
@@ -407,11 +407,9 @@ export const ProductsList: Product[] = [
     image: savage,
     hoverImage: pendentif2,
     ProductImages: [savage, pendentif2, pendentif3, pendentif4, pendentif5],
-
-    href: "/product/17",
+    href: `/product/${generateSlug("Pendentifs")}`,
     taille: ["One Size"],
     availableSizes: ["One Size"],
-
     category: "Accessories",
     isAvailable: true,
 
@@ -426,7 +424,7 @@ export const ProductsList: Product[] = [
     image: tennis,
     hoverImage: tennis2,
     ProductImages: [tennis, tennis2, tennis3],
-    href: "/product/18",
+    href: `/product/${generateSlug("Tennis Chain")}`,
     taille: ["One Size"],
     availableSizes: ["One Size"],
 
@@ -449,7 +447,7 @@ export const ProductsList: Product[] = [
       ensembleCorteiz3,
       ensembleCorteiz4,
     ],
-    href: "/product/19",
+    href: `/product/${generateSlug("Ensemble Corteiz")}`,
     taille: ["S", "M", "L", "XL"],
     availableSizes: ["S", "M", "L", "XL"],
     category: "Clothes",
@@ -465,7 +463,7 @@ export const ProductsList: Product[] = [
     isAvailable: true,
     hoverImage: short2,
     ProductImages: [short, short2, short3, short4, short5, short6, short7],
-    href: "/product/20",
+    href: `/product/${generateSlug("Short Corteiz")}`,
     taille: ["S", "M", "L", "XL"],
     availableSizes: ["S", "M", "L", "XL"],
     category: "Clothes",
@@ -482,7 +480,7 @@ export const ProductsList: Product[] = [
     image: tnShoes,
     hoverImage: tnShoes2,
     ProductImages: [tnShoes, tnShoes2, tnShoes3],
-    href: "/product/21",
+    href: `/product/${generateSlug("Tn White Shoes")}`,
     isAvailable: true,
     taille: ["40", "41", "42", "43"],
     availableSizes: ["40", "41", "42", "43"],
@@ -500,7 +498,7 @@ export const ProductsList: Product[] = [
     ProductImages: [trap, trap2, trap3, trap4],
     hasMultipleColors: true,
     colors: ["Blue", "Black", "White"],
-    href: "/product/22",
+    href: `/product/${generateSlug("Sac Trapstar")}`,
     isAvailable: true,
     taille: ["One Size"],
     availableSizes: ["One Size"],
@@ -519,7 +517,7 @@ export const ProductsList: Product[] = [
     ProductImages: [cargo, cargo2, cargo3, cargo4],
     // hasMultipleColors: true,
     // colors: ["Blue", "Black", "White"],
-    href: "/product/23",
+    href: `/product/${generateSlug("Cargo Corteiz")}`,
     isAvailable: true,
     taille: ["S", "M", "L", "XL"],
     availableSizes: ["S", "M", "L", "XL"],
@@ -535,11 +533,10 @@ export const ProductsList: Product[] = [
     image: masquetrap,
     hoverImage: masquetrap2,
     ProductImages: [masquetrap, masquetrap2, masquetrap3],
-    href: "/product/24",
+    href: `/product/${generateSlug("Masque Trapstar")}`,
     isAvailable: true,
     taille: ["All sizes"],
     availableSizes: ["All sizes"],
-
     category: "Accessories",
     bestSelling: true,
   },
@@ -551,7 +548,7 @@ export const ProductsList: Product[] = [
     image: masquenorth,
     hoverImage: masquenorth2,
     ProductImages: [masquenorth, masquenorth2, masquenorth3, masquenorth4],
-    href: "/product/25",
+    href: `/product/${generateSlug("Masque NorthFace")}`,
     isAvailable: true,
     taille: ["All sizes"],
     availableSizes: ["All sizes"],
@@ -567,13 +564,11 @@ export const ProductsList: Product[] = [
     image: masquenike,
     hoverImage: masquenike2,
     ProductImages: [masquenike, masquenike2, masquenike3],
-    href: "/product/26",
+    href: `/product/${generateSlug("Masque Nike")}`,
     isAvailable: true,
     taille: ["All sizes"],
     availableSizes: ["All sizes"],
-
     category: "Accessories",
-
     bestSelling: false,
   },
   {
@@ -584,7 +579,7 @@ export const ProductsList: Product[] = [
     image: masquesimple,
     hoverImage: masquesimple2,
     ProductImages: [masquesimple, masquesimple2, masquesimple3],
-    href: "/product/27",
+    href: `/product/${generateSlug("Masque Simple")}`,
     isAvailable: true,
     taille: ["All sizes"],
     availableSizes: ["All sizes"],
@@ -608,7 +603,7 @@ export const ProductsList: Product[] = [
       hoodieCorteiz6,
       hoodieCorteiz7,
     ],
-    href: "/product/28",
+    href: `/product/${generateSlug("Hoodie Corteiz")}`,
     isAvailable: true,
     taille: ["S", "M", "L", "XL"],
     availableSizes: ["S", "M", "L", "XL"],
@@ -625,7 +620,7 @@ export const ProductsList: Product[] = [
     image: tnBlack2,
     hoverImage: tnBlack,
     ProductImages: [tnBlack, tnBlack2, tnBlack3, tnBlack4],
-    href: "/product/29",
+    href: `/product/${generateSlug("Black Air Max Tn")}`,
     isAvailable: true,
     taille: ["39", "40", "41", "42", "43"],
     availableSizes: ["39", "40"],
