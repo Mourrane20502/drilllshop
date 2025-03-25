@@ -191,7 +191,7 @@ export default function ProductPage() {
                     <button
                       key={size}
                       onClick={() => isAvailable && handleSizeSelection(size)}
-                      className={`px-5 max-md:px-4 py-2 rounded-lg border text-lg font-medium transition-all duration-300 ${
+                      className={`px-5 max-md:px-3 py-2 rounded-lg border text-lg font-medium transition-all duration-300 ${
                         selectedSize === size && isAvailable
                           ? "bg-blue-600 text-white border-blue-600 shadow-md"
                           : "bg-white text-gray-900 border-gray-400 hover:border-gray-900"
