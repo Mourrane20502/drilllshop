@@ -634,7 +634,7 @@ export const ProductsList: Product[] = [
     name: "Skull cap",
     price: 99,
     description:
-      "A bold and stylish accessory, the Skull Cap offers a perfect blend of comfort and street style.",
+      "Designed  for a snug fit, breathability, and everyday versatility.",
     image: skull1,
     hoverImage: skull2,
     ProductImages: [skull1, skull2, skull3, skull4, skull5, skull6],
