@@ -335,7 +335,7 @@ export default function ProductPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
             {randomProducts.map((product, index) => (
               <Link key={index} href={product.href} passHref>
-                <div className="bg-white dark:bg-black rounded-lg shadow-lg overflow-hidden cursor-pointer">
+                <div className="bg-white dark:bg-black dark:border dark:border-white rounded-lg shadow-lg overflow-hidden cursor-pointer">
                   <div className="relative h-64">
                     <Image
                       src={product.image}
@@ -349,9 +349,7 @@ export default function ProductPage() {
                     <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
                       {product.name}
                     </h3>
-                    <p className="text-gray-600 dark:text-gray-300">
-                      {product.price} DH
-                    </p>
+                    <p className="text-red-600">{product.price} DH</p>
                     <Button className="py-5">SEE PRODUCT</Button>
                   </div>
                 </div>

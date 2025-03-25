@@ -82,6 +82,12 @@ import shoe3hover from "../app/assets/shoe3hover.png";
 import shoe1hover from "../app/assets/shoehover.avif";
 import shoe2hover from "../app/assets/shover2hover.jpg";
 import simo from "../app/assets/simo.jpg";
+import skull1 from "../app/assets/skull1.jpg";
+import skull2 from "../app/assets/skull2.png";
+import skull3 from "../app/assets/skull3.png";
+import skull4 from "../app/assets/skull4.png";
+import skull5 from "../app/assets/skull5.png";
+import skull6 from "../app/assets/skull6.png";
 import slaughter4 from "../app/assets/slaughter4.png";
 import slaughter5 from "../app/assets/slaughter5.png";
 import slaughter6 from "../app/assets/slaughter6.png";
@@ -175,7 +181,6 @@ export const ProductsList: Product[] = [
     isAvailable: false,
     taille: ["40", "41", "42", "43"],
     category: "Shoes",
-    bestSelling: true,
   },
   {
     id: 3,
@@ -221,7 +226,6 @@ export const ProductsList: Product[] = [
     availableSizes: ["One Size"],
 
     category: "Accessories",
-    bestSelling: true,
     isAvailable: true,
   },
   {
@@ -608,8 +612,6 @@ export const ProductsList: Product[] = [
     taille: ["S", "M", "L", "XL"],
     availableSizes: ["S", "M", "L", "XL"],
     category: "Clothes",
-    bestSelling: true,
-    lastDrop: true,
   },
   {
     id: 29,
@@ -625,6 +627,23 @@ export const ProductsList: Product[] = [
     taille: ["39", "40", "41", "42", "43"],
     availableSizes: ["39", "40"],
     category: "Shoes",
+    bestSelling: true,
+  },
+  {
+    id: 30,
+    name: "Skull cap",
+    price: 99,
+    description:
+      "A bold and stylish accessory, the Skull Cap offers a perfect blend of comfort and street style.",
+    image: skull1,
+    hoverImage: skull2,
+    ProductImages: [skull1, skull2, skull3, skull4, skull5, skull6],
+    href: `/product/${generateSlug("Skull cap")}`,
+    isAvailable: true,
+    taille: ["Nike", "Corteiz", "Synaworld"],
+    availableSizes: ["Nike", "Corteiz", "Synaworld"],
+    category: "Accessories",
+    lastDrop: true,
     bestSelling: true,
   },
 ];

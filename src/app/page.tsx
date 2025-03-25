@@ -27,7 +27,6 @@ export default function Home() {
     if (selectedCategory === "Best Seller") {
       return (
         product.bestSelling &&
-        product.category === "Clothes" &&
         product.name.toLowerCase().includes(searchQuery.toLowerCase())
       );
     }
