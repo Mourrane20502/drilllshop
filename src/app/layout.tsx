@@ -1,4 +1,5 @@
 import { ThemeProvider } from "@/context/ThemeContext";
+import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Footer from "./_navigation/footer";
@@ -36,6 +37,7 @@ export default function RootLayout({
         <ThemeProvider>
           <Header />
           {children}
+          <Analytics />
           <Footer />
         </ThemeProvider>
       </body>
