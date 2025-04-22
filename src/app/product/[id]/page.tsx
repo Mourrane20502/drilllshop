@@ -31,7 +31,7 @@ export default function ProductPage() {
 
   const getRandomProducts = () => {
     const randomProducts: Product[] = [];
-    while (randomProducts.length < 5) {
+    while (randomProducts.length < 4) {
       const randomProduct =
         ProductsList[Math.floor(Math.random() * ProductsList.length)];
       if (!randomProducts.includes(randomProduct)) {
@@ -335,22 +335,30 @@ export default function ProductPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
             {randomProducts.map((product, index) => (
               <Link key={index} href={product.href} passHref>
-                <div className="bg-white dark:bg-black dark:border dark:border-white rounded-lg shadow-lg overflow-hidden cursor-pointer">
+                <div className="bg-white p-4 dark:border-1 dark:border-white dark:shadow-xl rounded-lg shadow-lg overflow-hidden cursor-pointer">
                   <div className="relative h-64">
                     <Image
                       src={product.image}
                       alt={product.name}
                       layout="fill"
                       objectFit="cover"
-                      className="rounded-t-lg"
+                      className="rounded-t-lg  h-full object-cover rounded-lg"
                     />
                   </div>
                   <div className="p-4 flex flex-col items-center justify-center gap-3">
-                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+                    <h3 className="text-lg font-semibold text-center text-gray-900 max-md:text-xl">
                       {product.name}
                     </h3>
-                    <p className="text-red-600">{product.price} DH</p>
-                    <Button className="py-5">SEE PRODUCT</Button>
+                    <p className="text-red-600 font-bold text-lg">
+                      {product.price} DH
+                    </p>
+                    <p className="text-gray-600 text-center font-light px-4">
+                      {product.description}
+                    </p>
+
+                    <Button className="py-6 px-8 dark:bg-black dark:text-white">
+                      SEE PRODUCT
+                    </Button>
                   </div>
                 </div>
               </Link>
