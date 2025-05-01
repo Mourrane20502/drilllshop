@@ -100,9 +100,9 @@ export default function Header() {
               className="p-2 rounded-full transition-colors hover:bg-gray-200 dark:hover:bg-gray-700"
             >
               {darkMode ? (
-                <Moon className="w-6 h-6 text-white" />
+                <Sun className="w-6 h-6 text-white" />
               ) : (
-                <Sun className="w-6 h-6 text-black" />
+                <Moon className="w-6 h-6 text-black" />
               )}
             </button>
           </div>
@@ -166,9 +166,9 @@ export default function Header() {
             className="p-2 rounded-full transition-colors hover:bg-gray-200 dark:hover:bg-gray-700"
           >
             {darkMode ? (
-              <Moon className="w-6 h-6 text-white" />
-            ) : (
               <Sun className="w-6 h-6 text-white" />
+            ) : (
+              <Moon className="w-6 h-6 text-black" />
             )}
           </button>
         </div>
