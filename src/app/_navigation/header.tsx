@@ -1,10 +1,9 @@
 "use client";
 
-import { Switch } from "@/components/ui/switch";
 import { useTheme } from "@/context/ThemeContext";
 import { useScroll } from "@/hooks/useScroll";
 import { useToggleMobile } from "@/hooks/useToggleMobile";
-import { Menu, X } from "lucide-react";
+import { Menu, Moon, Sun, X } from "lucide-react";
 import Link from "next/link";
 import { LogoDrill } from "../_components/LogoDrill";
 import { LogoDrillWhite } from "../_components/LogoDrillWhite";
@@ -96,12 +95,16 @@ export default function Header() {
             >
               Feedback
             </Link>
-            <Switch
-              id="darkModeSwitch"
-              checked={darkMode}
-              onCheckedChange={toggleDarkMode}
-              className="w-12 h-6 rounded-full"
-            />
+            <button
+              onClick={toggleDarkMode}
+              className="p-2 rounded-full transition-colors hover:bg-gray-200 dark:hover:bg-gray-700"
+            >
+              {darkMode ? (
+                <Moon className="w-6 h-6 text-white" />
+              ) : (
+                <Sun className="w-6 h-6 text-black" />
+              )}
+            </button>
           </div>
 
           {/* Mobile Menu Icon */}
@@ -158,12 +161,16 @@ export default function Header() {
           >
             Feedback
           </Link>
-          <Switch
-            id="darkModeSwitchMobile"
-            checked={darkMode}
-            onCheckedChange={toggleDarkMode}
-            className="w-12 h-6 rounded-full"
-          />
+          <button
+            onClick={toggleDarkMode}
+            className="p-2 rounded-full transition-colors hover:bg-gray-200 dark:hover:bg-gray-700"
+          >
+            {darkMode ? (
+              <Moon className="w-6 h-6 text-white" />
+            ) : (
+              <Sun className="w-6 h-6 text-white" />
+            )}
+          </button>
         </div>
       </header>
     </>
