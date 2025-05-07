@@ -63,6 +63,13 @@ import masquesimple3 from "../app/assets/masque_simple3.png";
 import masquetrap from "../app/assets/masque_trap.png";
 import masquetrap2 from "../app/assets/masque_trap2.png";
 import masquetrap3 from "../app/assets/masque_trap3.png";
+import niketrack2 from "../app/assets/Nikecorteiz1.png";
+import niketrack3 from "../app/assets/Nikecorteiz2.png";
+import niketrack4 from "../app/assets/Nikecorteiz3.png";
+import niketrack5 from "../app/assets/Nikecorteiz4.png";
+import niketrack6 from "../app/assets/Nikecorteiz5.png";
+import niketrack7 from "../app/assets/Nikecorteiz6.png";
+import niketrack1 from "../app/assets/Nikecorteizmain.png";
 import nikeshort from "../app/assets/nikeshort.png";
 import nikeshorthover from "../app/assets/nikeshorthover.png";
 import omar from "../app/assets/omar.jpg";
@@ -643,6 +650,31 @@ export const ProductsList: Product[] = [
     taille: ["Nike", "Corteiz", "Synaworld"],
     availableSizes: ["Nike", "Corteiz", "Synaworld"],
     category: "Accessories",
+    lastDrop: false,
+    bestSelling: true,
+  },
+  {
+    id: 31,
+    name: "Nike & Corteiz Track pants",
+    price: 179,
+    description:
+      "Sporty comfort meets street style in these premium, relaxed-fit track pants with bold branding..",
+    image: niketrack1,
+    hoverImage: niketrack3,
+    ProductImages: [
+      niketrack1,
+      niketrack2,
+      niketrack3,
+      niketrack4,
+      niketrack5,
+      niketrack6,
+      niketrack7,
+    ],
+    href: `/product/${generateSlug("Nike & Corteiz Track pants")}`,
+    isAvailable: true,
+    taille: ["S", "M", "L", "XL"],
+    availableSizes: ["S", "M", "L", "XL"],
+    category: "Clothes",
     lastDrop: true,
     bestSelling: true,
   },
