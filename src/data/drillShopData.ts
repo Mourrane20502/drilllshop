@@ -40,6 +40,7 @@ import hoodieCorteiz4 from "../app/assets/hoodie_corteiz4.png";
 import hoodieCorteiz5 from "../app/assets/hoodie_corteiz5.png";
 import hoodieCorteiz6 from "../app/assets/hoodie_corteiz6.png";
 import hoodieCorteiz7 from "../app/assets/hoodie_corteiz7.png";
+
 import ilyas from "../app/assets/ilyas.png";
 import ilyas2 from "../app/assets/ilyas2.png";
 import ilyas3 from "../app/assets/ilyas3.png";
@@ -63,6 +64,7 @@ import masquesimple3 from "../app/assets/masque_simple3.png";
 import masquetrap from "../app/assets/masque_trap.png";
 import masquetrap2 from "../app/assets/masque_trap2.png";
 import masquetrap3 from "../app/assets/masque_trap3.png";
+import niketrack8 from "../app/assets/newtrack.jpg";
 import niketrack2 from "../app/assets/Nikecorteiz1.png";
 import niketrack3 from "../app/assets/Nikecorteiz2.png";
 import niketrack4 from "../app/assets/Nikecorteiz3.png";
@@ -669,6 +671,7 @@ export const ProductsList: Product[] = [
       niketrack5,
       niketrack6,
       niketrack7,
+      niketrack8,
     ],
     href: `/product/${generateSlug("Nike & Corteiz Track pants")}`,
     isAvailable: true,
