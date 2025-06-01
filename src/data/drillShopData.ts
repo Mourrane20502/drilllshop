@@ -103,6 +103,12 @@ import slaughter6 from "../app/assets/slaughter6.png";
 import slaughter7 from "../app/assets/slaughter7.png";
 import stussy from "../app/assets/stussy.png";
 import stussyHover from "../app/assets/stussyhover.png";
+import summerbob3 from "../app/assets/summerbob3.png";
+import summerbob4 from "../app/assets/summerbob4.png";
+import summerbob5 from "../app/assets/summerbob5.png";
+import summerbob6 from "../app/assets/summerbob6.png";
+import summerbob from "../app/assets/Summerbox1.png";
+import summerbob2 from "../app/assets/Summerbox2.png";
 import tennis from "../app/assets/tennis.png";
 import tennis2 from "../app/assets/tennis2.png";
 import tennis3 from "../app/assets/tennis3.png";
@@ -361,7 +367,7 @@ export const ProductsList: Product[] = [
     taille: ["S", "M", "L", "XL"],
     availableSizes: ["S", "M", "L", "XL"],
     category: "Clothes",
-    bestSelling: true,
+    bestSelling: false,
   },
   {
     id: 14,
@@ -517,7 +523,7 @@ export const ProductsList: Product[] = [
     availableSizes: ["One Size"],
     category: "Accessories",
 
-    bestSelling: true,
+    bestSelling: false,
   },
   {
     id: 23,
@@ -551,7 +557,7 @@ export const ProductsList: Product[] = [
     taille: ["All sizes"],
     availableSizes: ["All sizes"],
     category: "Accessories",
-    bestSelling: true,
+    bestSelling: false,
   },
   {
     id: 25,
@@ -636,7 +642,7 @@ export const ProductsList: Product[] = [
     taille: ["39", "40", "41", "42", "43"],
     availableSizes: ["39", "40"],
     category: "Shoes",
-    bestSelling: true,
+    bestSelling: false,
   },
   {
     id: 30,
@@ -653,7 +659,7 @@ export const ProductsList: Product[] = [
     availableSizes: ["Nike", "Corteiz", "Synaworld"],
     category: "Accessories",
     lastDrop: false,
-    bestSelling: true,
+    bestSelling: false,
   },
   {
     id: 31,
@@ -678,6 +684,30 @@ export const ProductsList: Product[] = [
     taille: ["S", "M", "L", "XL"],
     availableSizes: ["S", "M", "L", "XL"],
     category: "Clothes",
+    lastDrop: false,
+    bestSelling: true,
+  },
+  {
+    id: 32,
+    name: "Summer Bob Collection",
+    price: 119,
+    description:
+      "Designed  for a snug fit, breathability, and everyday versatility.",
+    image: summerbob,
+    hoverImage: summerbob5,
+    ProductImages: [
+      summerbob,
+      summerbob2,
+      summerbob3,
+      summerbob4,
+      summerbob5,
+      summerbob6,
+    ],
+    href: `/product/${generateSlug("Summer Bob Collection")}`,
+    isAvailable: true,
+    taille: ["Noir Nike", "Noir North Face", "Vert militaire nike"],
+    availableSizes: ["Noir Nike", "Noir North Face", "Vert militaire nike"],
+    category: "Accessories",
     lastDrop: true,
     bestSelling: true,
   },
