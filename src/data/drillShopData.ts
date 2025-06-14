@@ -690,7 +690,7 @@ export const ProductsList: Product[] = [
   {
     id: 32,
     name: "Summer Bob Collection",
-    price: 119,
+    price: 129,
     description:
       "Designed  for a snug fit, breathability, and everyday versatility.",
     image: summerbob,
