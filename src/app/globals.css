@@ -12,9 +12,15 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: 'Outfit', sans-serif;
 }
+
 html {
   scroll-behavior: smooth;
 }
@@ -24,29 +30,34 @@ html {
     opacity: 0;
     transform: translateY(10px);
   }
+
   100% {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-@keyframes scrollHeader {
+@keyframes slide {
   0% {
     transform: translateX(0);
   }
+
   100% {
-    transform: translateX(-100%);
+    transform: translateX(-50%);
   }
 }
 
-.header-container {
-  animation: scrollHeader 12s ease-in-out infinite;
+.animate-slide {
+  animation: slide 20s linear infinite;
+  display: flex;
+  width: max-content;
 }
 
 @keyframes scroll {
   0% {
     transform: translateX(100px);
   }
+
   100% {
     transform: translateX(50%);
   }
@@ -88,6 +99,7 @@ html {
     opacity: 0;
     transform: translateX(-100%);
   }
+
   100% {
     opacity: 1;
     transform: translateX(0);
@@ -164,6 +176,7 @@ html {
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }

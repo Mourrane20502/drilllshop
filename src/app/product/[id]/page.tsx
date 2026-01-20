@@ -84,8 +84,13 @@ export default function ProductPage() {
       toast.error("Please select a size before ordering.");
       return;
     }
+    if (product.hasMultipleColors && !selectedColor) {
+      toast.error("Please select a color before ordering.");
+      return;
+    }
+    const colorParam = selectedColor ? `&color=${selectedColor}` : "";
     router.push(
-      `/product/${id}/checkout?size=${selectedSize}&quantity=${quantity}`
+      `/product/${id}/checkout?size=${selectedSize}&quantity=${quantity}${colorParam}`
     );
   };
 

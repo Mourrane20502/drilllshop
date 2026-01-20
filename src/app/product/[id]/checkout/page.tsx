@@ -18,6 +18,7 @@ export default function CheckoutPage() {
     (product) => product.href === `/product/${id}`
   );
   const selectedSize = searchParams.get("size");
+  const selectedColor = searchParams.get("color");
   const quantity = parseInt(searchParams.get("quantity") || "1", 10);
 
   const [name, setName] = useState("");
@@ -63,6 +64,7 @@ export default function CheckoutPage() {
           fields: [
             { name: "📦 Product", value: product.name, inline: false },
             { name: "📏 Size", value: selectedSize || "N/A", inline: false },
+            { name: "🎨 Color", value: selectedColor || "N/A", inline: false },
             { name: "💰 Price", value: `${product.price} DH`, inline: false },
             { name: "🔢 Quantity", value: quantity.toString(), inline: false },
             {
@@ -150,6 +152,11 @@ export default function CheckoutPage() {
                   <p className="text-lg dark:text-white text-gray-700 mt-1">
                     Quantity: <strong>{quantity}</strong>
                   </p>
+                  {selectedColor && (
+                    <p className="text-lg dark:text-white text-gray-700 mt-1">
+                      Color: <strong>{selectedColor}</strong>
+                    </p>
+                  )}
                   <div className="flex flex-col items-center justify-center gap-1">
                     <p className="text-lg font-semibold text-red-600 mt-2">
                       Total: {totalPrice} DH
@@ -254,11 +261,10 @@ export default function CheckoutPage() {
                 {/* Confirm Order Button */}
                 <button
                   onClick={handleConfirmOrder}
-                  className={`w-full text-lg font-semibold py-3 rounded-md flex items-center justify-center gap-3 transition-all duration-300 ${
-                    isProcessing
-                      ? "bg-gray-400 cursor-not-allowed"
-                      : "bg-black dark:bg-white dark:text-black hover:bg-white hover:text-black hover:border-2 hover:border-black/40 text-white"
-                  }`}
+                  className={`w-full text-lg font-semibold py-3 rounded-md flex items-center justify-center gap-3 transition-all duration-300 ${isProcessing
+                    ? "bg-gray-400 cursor-not-allowed"
+                    : "bg-black dark:bg-white dark:text-black hover:bg-white hover:text-black hover:border-2 hover:border-black/40 text-white"
+                    }`}
                   disabled={isProcessing}
                 >
                   <ShoppingCart size={22} />

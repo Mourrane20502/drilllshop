@@ -22,11 +22,15 @@ export default function Header() {
           : "translate-y-0"
           } transition-transform duration-500 ease-in-out bg-brand text-white flex items-center justify-center w-full h-10 fixed top-0 left-0 z-[60] overflow-hidden whitespace-nowrap`}
       >
-        <div className="flex gap-12 animate-slide">
-          {[...Array(10)].map((_, i) => (
-            <p key={i} className="text-[11px] font-bold uppercase tracking-[0.2em]">
-              New Drop Soon • DrillShop Exclusive •
-            </p>
+        <div className="flex animate-slide shrink-0 flex-nowrap min-w-full">
+          {[...Array(2)].map((_, outerIndex) => (
+            <div key={outerIndex} className="flex gap-12 shrink-0 pr-12">
+              {[...Array(5)].map((_, i) => (
+                <p key={i} className="text-[11px] font-bold uppercase tracking-[0.2em] whitespace-nowrap">
+                  New Drop Soon • DrillShop Exclusive •
+                </p>
+              ))}
+            </div>
           ))}
         </div>
       </div>
