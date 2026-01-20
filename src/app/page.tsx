@@ -58,8 +58,8 @@ export default function Home() {
     selectedCategory === "Best Seller"
       ? filteredProducts.slice(0, 3)
       : showAllProducts
-      ? filteredProducts
-      : filteredProducts.slice(0, 6);
+        ? filteredProducts
+        : filteredProducts.slice(0, 6);
   return (
     <div className="py-28">
       <Head>
@@ -96,101 +96,96 @@ export default function Home() {
           content="https://www.drillshop.ma/images/twitter-image.jpg"
         />
       </Head>
-      {/* Main section */}
+      {/* Hero Section */}
       <motion.section
-        id="main"
-        initial={{ opacity: 0, x: -50 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 1, ease: "easeOut" }}
-        className="fromLeft w-full from-left h-[700px] bg-cover bg-center relative"
-        style={{
-          backgroundImage: `url(${BgSection.src})`,
-          backgroundPosition: "center ",
-          backgroundSize: "cover",
-        }}
+        id="home"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+        className="w-full h-[90vh] relative flex items-center justify-center overflow-hidden"
       >
-        <div className="absolute inset-0 bg-black opacity-25"></div>
-        <motion.div
-          className="absolute inset-0 flex justify-center max-md:-left-4 flex-col max-md:gap-6 gap-9 items-center"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
+        <div
+          className="absolute inset-0 z-0 scale-105"
+          style={{
+            backgroundImage: `url(${BgSection.src})`,
+            backgroundPosition: "center",
+            backgroundSize: "cover",
+          }}
         >
-          <motion.h1
-            className="text-6xl max-md:text-5xl text-white font-semibold tracking-wider drop-shadow-lg"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, delay: 0.8 }}
-          >
-            DRILLSHOP
-          </motion.h1>
-          <motion.p
-            className="text-lg text-center max-md:w-[90%] max-md:text-[18px] text-balance text-white font-medium leading-relaxed drop-shadow-lg"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 1 }}
-          >
-            – Where style meets attitude. Explore exclusive drip clothing and
-            accessories to elevate your look –
-          </motion.p>
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/80"></div>
+        </div>
+
+        <div className="relative z-10 container mx-auto px-6 text-center">
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, delay: 1.2 }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <Button
-              asChild
-              className="bg-white text-black px-7 py-6 text-lg rounded-lg hover:scale-105 transition-all duration-300 ease-in-out"
-            >
-              <Link href="#products"> Shop Now</Link>
-            </Button>
+            <h1 className="text-7xl md:text-9xl font-extrabold text-white tracking-tighter mb-6 drop-shadow-2xl">
+              DRILL<span className="text-brand">SHOP</span>
+            </h1>
+            <p className="text-xl md:text-2xl text-white/90 max-w-2xl mx-auto font-medium leading-relaxed mb-10 drop-shadow-lg">
+              Where style meets attitude. Explore exclusive drip clothing and accessories to elevate your look.
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Button
+                asChild
+                className="bg-brand hover:bg-brand-dark text-white px-10 py-7 text-lg rounded-full transition-all duration-300 hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(248,3,18,0.3)]"
+              >
+                <Link href="#products">Explore Collection</Link>
+              </Button>
+              <Button
+                asChild
+                variant="outline"
+                className="bg-white/10 backdrop-blur-md border-white/20 text-white hover:bg-white hover:text-black px-10 py-7 text-lg rounded-full transition-all duration-300"
+              >
+                <Link href="#about">Learn Our Story</Link>
+              </Button>
+            </div>
           </motion.div>
+        </div>
+
+        <motion.div
+          className="absolute bottom-10 left-1/2 -translate-x-1/2 text-white/50 animate-bounce"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.5 }}
+        >
+          <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center p-1">
+            <div className="w-1 h-2 bg-white/50 rounded-full"></div>
+          </div>
         </motion.div>
       </motion.section>
-      <motion.div
-        className="fixed bottom-10 right-5 z-50 rounded-full size-16 flex items-center justify-center bg-green-500"
-        initial={{ opacity: 0, y: 250 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-      >
-        <Link
-          href="https://wa.me/212697690740"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hover:text-blue-400 transition-colors duration-300"
-        >
-          <motion.div
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-            className="relative"
-          >
-            <FaWhatsapp size={50} className="fill-white z-30 cursor-pointer" />
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileHover={{ opacity: 1, y: 0 }}
-              className="absolute bottom-16 left-1/2 transform -translate-x-1/2 bg-white text-black text-sm py-1 px-2 rounded-md shadow-lg"
-            >
-              +212 697 690 740
-            </motion.div>
-          </motion.div>
-        </Link>
-      </motion.div>
 
       {/* Products Section */}
-      <section id="products" className="w-full px-8 py-12 scroll-m-16">
-        <div className="flex items-center justify-center mb-8">
-          <input
-            type="text"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="Search for a product..."
-            className="w-full max-w-lg px-6 py-3 dark:text-black rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-black transition-all duration-300"
-          />
+      <section id="products" className="w-full max-w-7xl mx-auto px-6 py-24 scroll-m-24">
+        <div className="flex flex-col items-center mb-16">
+          <motion.h2
+            className="text-4xl md:text-5xl font-bold mb-8 text-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            Featured <span className="text-brand">Drops</span>
+          </motion.h2>
+
+          <div className="relative w-full max-w-2xl group">
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Search for a product..."
+              className="w-full px-8 py-5 bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-2xl focus:outline-none focus:ring-2 focus:ring-brand focus:border-transparent transition-all duration-300 text-lg"
+            />
+            <div className="absolute right-5 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-brand transition-colors">
+              {/* Add a search icon here if available, otherwise just use CSS */}
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            </div>
+          </div>
         </div>
 
         {/* Category Buttons */}
-        <div className="flex flex-wrap justify-center gap-4 mb-10">
+        <div className="flex flex-wrap justify-center gap-3 mb-16">
           {categories.map((category) => (
             <button
               key={category}
@@ -198,11 +193,10 @@ export default function Home() {
                 setSelectedCategory(category);
                 setShowAllProducts(false);
               }}
-              className={`px-6 py-3 rounded-lg text-lg font-medium transition-all duration-300 ${
-                selectedCategory === category
-                  ? "bg-black border-[1px] border-white text-white"
-                  : "bg-white text-black hover:bg-gray-300"
-              }`}
+              className={`px-8 py-3 rounded-xl text-[15px] font-semibold transition-all duration-300 border-2 ${selectedCategory === category
+                ? "bg-black border-black text-white dark:bg-white dark:border-white dark:text-black shadow-lg scale-105"
+                : "bg-transparent border-gray-200 dark:border-white/10 text-gray-600 dark:text-gray-400 hover:border-brand hover:text-brand"
+                }`}
             >
               {category}
             </button>
@@ -242,68 +236,72 @@ export default function Home() {
         )}
       </section>
       {/* About Section */}
-      <motion.section
-        id="about"
-        className="w-full dark:bg-black/95 max-md:flex-col max-md:gap-6 flex items-center justify-center py-20 px-4 max-md:px-2"
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 1, ease: "easeOut" }}
-      >
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 1, delay: 0.5 }}
-        >
-          <Image
-            src={maindrill}
-            loading="lazy"
-            height={550}
-            alt="brand photo"
-            className="rounded-2xl shadow-xl hover:scale-105 transition-transform duration-500 ease-in-out"
-          />
-        </motion.div>
-        <motion.div
-          className="flex flex-col items-center gap-8 max-w-2xl max-md:px-2 px-6"
-          initial={{ opacity: 0, x: -50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 1, delay: 0.8, ease: "easeOut" }}
-        >
-          <motion.h2
-            className="dark:text-white text-center max-md:tracking-wider text-5xl text-gray-900 font-bold tracking-wide leading-tight"
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 1, delay: 1 }}
-          >
-            DRILLSHOP
-          </motion.h2>
-          <motion.p
-            className="text-xl dark:text-white text-gray-700 max-md:text-md leading-relaxed tracking-wide text-center"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 1, delay: 1.2 }}
-          >
-            DrillShop is a 100% Moroccan store created by a group of passionate
-            friends. We offer unlimited collections, with limited stock
-            production, unique for each model. Each piece is exclusive and
-            reflects the culture of young Moroccans.
-          </motion.p>
+      <section id="about" className="py-32 bg-white dark:bg-zinc-950 px-6 relative overflow-hidden">
+        <div className="absolute top-1/2 left-0 -translate-y-1/2 w-64 h-64 bg-brand/5 blur-[100px] rounded-full"></div>
+
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 1, delay: 1.4 }}
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="relative"
           >
-            <Button className="px-8  py-6 text-lg border-2 dark:bg-white dark:text-black border-gray-900 hover:bg-gray-900 hover:text-white transition-all duration-300 ease-in-out max-md:w-full">
-              <Link href="#feedback">See Feedback</Link>
-            </Button>
+            {/* Decorative Background for Image */}
+            <div className="absolute -top-6 -left-6 w-full h-full border-2 border-brand rounded-[2.5rem] -z-10"></div>
+            <div className="relative group overflow-hidden rounded-[2.5rem] shadow-2xl bg-zinc-100 dark:bg-zinc-900 aspect-[4/5]">
+              <Image
+                src={maindrill}
+                alt="DrillShop Culture"
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+              <div className="absolute bottom-10 left-10">
+                <span className="text-white text-4xl font-black tracking-tighter">EST. 2024</span>
+              </div>
+            </div>
           </motion.div>
-        </motion.div>
-      </motion.section>
+
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="space-y-10"
+          >
+            <div className="space-y-4">
+              <span className="text-brand font-bold tracking-[0.3em] uppercase text-sm">Our Identity</span>
+              <h2 className="text-5xl md:text-7xl font-black tracking-tighter leading-[0.9]">
+                DRILL<span className="text-brand">SHOP</span> <br />
+                <span className="text-zinc-400">CULTURE</span>
+              </h2>
+            </div>
+
+            <p className="text-xl text-zinc-600 dark:text-zinc-400 leading-relaxed font-medium">
+              DrillShop is a 100% Moroccan brand born from passion and street culture.
+              We believe in exclusivity over mass production. Every drop is a limited
+              statement, designed for those who dare to stand out in the urban landscape.
+            </p>
+
+            <ul className="grid grid-cols-2 gap-8 pb-4">
+              {[
+                { label: "Limited Drops", value: "Exclusive" },
+                { label: "Moroccan Root", value: "Authentic" }
+              ].map((stat, i) => (
+                <li key={i} className="space-y-1 border-l-2 border-brand pl-6">
+                  <span className="block text-xs font-black uppercase tracking-widest text-zinc-400">{stat.label}</span>
+                  <span className="block text-2xl font-bold dark:text-white">{stat.value}</span>
+                </li>
+              ))}
+            </ul>
+
+            <div className="flex flex-wrap gap-4 pt-4">
+              <Button asChild className="bg-brand hover:bg-brand-dark text-white px-10 py-7 text-lg rounded-2xl shadow-xl transition-all hover:scale-105 active:scale-95">
+                <Link href="#feedback">View Feedback</Link>
+              </Button>
+            </div>
+          </motion.div>
+        </div>
+      </section>
 
       <FeedbackSection />
 

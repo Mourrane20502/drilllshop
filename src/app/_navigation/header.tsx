@@ -17,160 +17,100 @@ export default function Header() {
     <>
       {/* Announcement Bar */}
       <div
-        className={`${
-          isScrolling
-            ? "hidden"
-            : "bg-black dark:bg-white dark:text-black text-white"
-        } transition-all gap-4 duration-300 ease-in-out flex items-center justify-center w-full h-10 absolute top-0 left-0 z-50 overflow-hidden whitespace-nowrap`}
+        className={`${isScrolling
+          ? "-translate-y-full"
+          : "translate-y-0"
+          } transition-transform duration-500 ease-in-out bg-brand text-white flex items-center justify-center w-full h-10 fixed top-0 left-0 z-[60] overflow-hidden whitespace-nowrap`}
       >
-        <p className="text-center text-[13px] uppercase header-container px-4 animate-slide">
-          NEW DROP SOON
-        </p>
-        <p className="text-center text-[13px] uppercase header-container px-4 animate-slide delay-200">
-          NEW DROP SOON
-        </p>
-        <p className="text-center text-[13px] uppercase header-container px-4 animate-slide delay-400">
-          NEW DROP SOON
-        </p>
-        <p className="text-center text-[13px] max-md:text-[14px] uppercase header-container px-4 animate-slide delay-600">
-          NEW DROP SOON
-        </p>
-        <p className="text-center text-[13px] max-md:text-[14px] uppercase header-container px-4 animate-slide delay-600">
-          NEW DROP SOON
-        </p>
-        <p className="text-center text-[13px] max-md:text-[14px] uppercase header-container px-4 animate-slide delay-400">
-          NEW DROP SOON
-        </p>
-        <p className="text-center text-[13px] uppercase header-container px-4 animate-slide delay-600">
-          NEW DROP SOON
-        </p>
+        <div className="flex gap-12 animate-slide">
+          {[...Array(10)].map((_, i) => (
+            <p key={i} className="text-[11px] font-bold uppercase tracking-[0.2em]">
+              New Drop Soon • DrillShop Exclusive •
+            </p>
+          ))}
+        </div>
       </div>
 
       <header
-        className={`${
-          isScrolling
-            ? "shadow-lg py-4 h-[100px]"
-            : "shadow-md py-6 mt-9 h-[110px]"
-        } 
-
-        } transition-all overflow-hidden dark:bg-black duration-300 ease-in-out bg-white max-md:h-[120px] flex flex-col justify-center items-center fixed top-0 left-0 right-0 w-full z-20 p-4`}
+        className={`${isScrolling
+          ? "py-3 h-24 bg-white/80 dark:bg-black/80 backdrop-blur-md shadow-sm"
+          : "py-6 mt-10 h-16 bg-transparent"
+          } transition-all duration-500 ease-in-out fixed top-0 left-0 right-0 w-full z-50 px-6`}
       >
-        <nav className="flex items-center py-4 max-md:mt-5 justify-between w-full max-w-6xl mx-auto">
+        <nav className="flex items-center justify-between w-full max-w-7xl mx-auto h-full">
           {/* Logo */}
-          {darkMode ? (
-            <Link href="/" className="cursor-pointer">
-              <LogoDrill classname="size-[90px] mt-3 max-md:size-[50px]" />
-            </Link>
-          ) : (
-            <Link href="/" className="cursor-pointer">
-              <LogoDrillWhite classname="size-[90px] mt-3 max-md:size-[50px]" />
-            </Link>
-          )}
-
-          {/* Search Bar */}
+          <Link href="/" className="group transition-transform duration-300 hover:scale-105">
+            {darkMode ? (
+              <LogoDrill classname="w-16 h-auto max-md:w-16" />
+            ) : (
+              <LogoDrillWhite classname="w-16 h-auto max-md:w-16" />
+            )}
+          </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-6">
-            <Link
-              href="/"
-              className="text-lg dark:text-white hover:scale-105 transition-all duration-300 ease-in-out"
-            >
-              Home
-            </Link>
-            <Link
-              href="#products"
-              className="text-lg dark:text-white hover:scale-105 transition-all duration-300 ease-in-out"
-            >
-              Products
-            </Link>
-            <Link
-              href="#about"
-              className="text-lg dark:text-white hover:scale-105 transition-all duration-300 ease-in-out"
-            >
-              About
-            </Link>
-            <Link
-              href="#feedback"
-              className="text-lg dark:text-white hover:scale-105 transition-all duration-300 ease-in-out"
-            >
-              Feedback
-            </Link>
+          <div className="hidden md:flex items-center gap-10">
+            {["Home", "Products", "About", "Feedback"].map((item) => (
+              <Link
+                key={item}
+                href={item === "Home" ? "/" : `#${item.toLowerCase()}`}
+                className="text-[15px] font-medium tracking-wide dark:text-white hover:text-brand dark:hover:text-brand transition-colors duration-300 relative group"
+              >
+                {item}
+                <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-brand transition-all duration-300 group-hover:w-full"></span>
+              </Link>
+            ))}
+
             <button
               onClick={toggleDarkMode}
-              className="p-2 rounded-full transition-colors hover:bg-gray-200 dark:hover:bg-gray-700"
+              className="p-2.5 rounded-xl transition-all duration-300 hover:bg-gray-100 dark:hover:bg-white/10 group"
+              aria-label="Toggle theme"
             >
               {darkMode ? (
-                <Sun className="w-6 h-6 text-white" />
+                <Sun className="w-5 h-5 text-white transition-transform duration-500 group-rotate-90" />
               ) : (
-                <Moon className="w-6 h-6 text-black" />
+                <Moon className="w-5 h-5 text-black transition-transform duration-500 group-rotate-45" />
               )}
             </button>
           </div>
 
           {/* Mobile Menu Icon */}
-          <div className="md:hidden flex items-center space-x-4">
-            {isMobile ? (
-              <X
-                onClick={toggleMobile}
-                className="w-8 h-8 dark:text-white cursor-pointer"
-              />
-            ) : (
-              <Menu
-                onClick={toggleMobile}
-                className="w-8 h-8 dark:text-white cursor-pointer"
-              />
-            )}
+          <div className="md:hidden flex items-center gap-4">
+            <button
+              onClick={toggleDarkMode}
+              className="p-2 rounded-lg dark:text-white"
+            >
+              {darkMode ? <Sun size={20} /> : <Moon size={20} />}
+            </button>
+            <button
+              onClick={toggleMobile}
+              className="p-2 rounded-lg dark:text-white"
+            >
+              {isMobile ? <X size={26} /> : <Menu size={26} />}
+            </button>
           </div>
         </nav>
 
         {/* Mobile Navigation Menu */}
         <div
-          className={`fixed top-0 left-0 w-full h-screen bg-black bg-opacity-90 flex flex-col items-center justify-center space-y-6 transform ${
-            isMobile ? "translate-x-0" : "-translate-x-full"
-          }  transition-transform duration-300 ease-in-out md:hidden`}
+          className={`fixed inset-0 w-full h-screen bg-white dark:bg-black z-[70] flex flex-col items-center justify-center gap-8 transform ${isMobile ? "translate-x-0" : "translate-x-full"
+            } transition-transform duration-500 ease-in-out md:hidden`}
         >
-          <X
-            onClick={toggleMobile}
-            className="absolute top-14 right-6 w-10 h-10 text-white cursor-pointer"
-          />
-          <Link
-            href="/"
-            className="text-2xl text-white hover:scale-105 transition-all duration-300 ease-in-out"
-            onClick={toggleMobile}
-          >
-            Home
-          </Link>
-          <Link
-            href="#products"
-            className="text-2xl text-white hover:scale-105 transition-all duration-300 ease-in-out"
-            onClick={toggleMobile}
-          >
-            Products
-          </Link>
-          <Link
-            href="#about"
-            className="text-2xl text-white hover:scale-105 transition-all duration-300 ease-in-out"
-            onClick={toggleMobile}
-          >
-            About
-          </Link>
-          <Link
-            href="#feedback"
-            className="text-2xl text-white hover:scale-105 transition-all duration-300 ease-in-out"
-            onClick={toggleMobile}
-          >
-            Feedback
-          </Link>
           <button
-            onClick={toggleDarkMode}
-            className="p-2 rounded-full transition-colors hover:bg-gray-200 dark:hover:bg-gray-700"
+            onClick={toggleMobile}
+            className="absolute top-8 right-6 p-2 dark:text-white"
           >
-            {darkMode ? (
-              <Sun className="w-6 h-6 text-white" />
-            ) : (
-              <Moon className="w-6 h-6 text-black" />
-            )}
+            <X size={32} />
           </button>
+          {["Home", "Products", "About", "Feedback"].map((item) => (
+            <Link
+              key={item}
+              href={item === "Home" ? "/" : `#${item.toLowerCase()}`}
+              className="text-3xl font-bold dark:text-white hover:text-brand transition-colors"
+              onClick={toggleMobile}
+            >
+              {item}
+            </Link>
+          ))}
         </div>
       </header>
     </>

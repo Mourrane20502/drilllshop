@@ -158,47 +158,44 @@ export default function ProductPage() {
           </div>
 
           {/* Product Details Section */}
-          <div className="bg-white dark:bg-black shadow-lg rounded-xl p-8 space-y-6 flex flex-col items-start">
-            <h1 className="text-3xl lg:text-5xl font-bold dark:text-white text-gray-900 tracking-tight">
-              {product.name}
-            </h1>
-
-            {/* Product Price */}
-            <p className="text-2xl lg:text-3xl font-normal text-gray-900">
-              <span className="text-red-600"> {product.price}.00 DH</span>
-            </p>
-
-            {/* Product Availability */}
-            <p
-              className={`text-xl font-semibold tracking-wider  ${
-                product.isAvailable
-                  ? "text-green-600 font-bold"
-                  : "text-red-600"
-              } `}
-            >
-              {product.isAvailable ? "In Stock " : "OUT OF STOCK"}
-            </p>
+          <div className="bg-white dark:bg-white/5 backdrop-blur-sm border border-gray-100 dark:border-white/10 rounded-[2.5rem] p-8 lg:p-12 space-y-10 flex flex-col justify-center">
+            <div>
+              <h1 className="text-4xl lg:text-6xl font-extrabold text-gray-900 dark:text-white tracking-tighter mb-4">
+                {product.name}
+              </h1>
+              <div className="flex items-center gap-6">
+                <p className="text-3xl font-black text-brand">
+                  {product.price} DH
+                </p>
+                <div className={`px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest ${product.isAvailable ? "bg-green-100 text-green-700 dark:bg-green-500/20 dark:text-green-400" : "bg-red-100 text-red-700 dark:bg-brand/20 dark:text-brand"
+                  }`}>
+                  {product.isAvailable ? "In Stock" : "Out of Stock"}
+                </div>
+              </div>
+            </div>
 
             {/* Size Selector */}
-            <div className="w-full">
-              <h2 className="text-lg font-medium dark:text-white">
-                Choose Your Size:
-              </h2>
-              <div className="flex flex-wrap gap-3 mt-2">
+            <div className="space-y-4">
+              <div className="flex justify-between items-center">
+                <h2 className="text-sm font-bold uppercase tracking-widest text-gray-500 dark:text-gray-400">
+                  Select Size
+                </h2>
+                <Link href="#" className="text-xs font-bold text-brand hover:underline">Size Guide</Link>
+              </div>
+              <div className="flex flex-wrap gap-3">
                 {product.taille?.map((size) => {
                   const isAvailable = product.availableSizes?.includes(size);
+                  const isSelected = selectedSize === size;
                   return (
                     <button
                       key={size}
                       onClick={() => isAvailable && handleSizeSelection(size)}
-                      className={`px-5 max-md:px-3 py-2 rounded-lg border text-lg font-medium transition-all duration-300 ${
-                        selectedSize === size && isAvailable
-                          ? "bg-blue-600 text-white border-blue-600 shadow-md"
-                          : "bg-white text-gray-900 border-gray-400 hover:border-gray-900"
-                      } ${
-                        !isAvailable &&
-                        "cursor-not-allowed bg-gray-200 text-gray-400 border-gray-300"
-                      }`}
+                      className={`min-w-[54px] h-[54px] flex items-center justify-center rounded-2xl border-2 text-sm font-bold transition-all duration-300 ${isSelected && isAvailable
+                        ? "bg-black border-black text-white dark:bg-white dark:border-white dark:text-black shadow-xl scale-110"
+                        : isAvailable
+                          ? "bg-transparent border-gray-200 dark:border-white/10 text-gray-900 dark:text-white hover:border-brand"
+                          : "opacity-30 cursor-not-allowed border-gray-100 dark:border-white/5 text-gray-400"
+                        }`}
                       disabled={!isAvailable}
                     >
                       {size}
@@ -210,44 +207,37 @@ export default function ProductPage() {
 
             {/* Color Selector */}
             {product.hasMultipleColors && (
-              <div className="w-full">
-                <h2 className="text-lg font-medium dark:text-white">
-                  Choose Color:
+              <div className="space-y-4">
+                <h2 className="text-sm font-bold uppercase tracking-widest text-gray-500 dark:text-gray-400">
+                  Select Color
                 </h2>
-                <div className="flex gap-3 mt-2">
+                <div className="flex gap-4">
                   {product.colors?.map((color, index) => {
-                    const isWhite = color.toLowerCase() === "white";
                     const isSelected = selectedColor === color;
-
                     return (
-                      <div
+                      <button
                         key={index}
                         onClick={() => handleColorSelection(color)}
-                        className={`w-12 h-12 rounded-full cursor-pointer transition-transform duration-300 ${
-                          isSelected
-                            ? "scale-125 dark:border-2 border-white"
-                            : ""
-                        }`}
-                        style={{
-                          backgroundColor: color.toLowerCase(),
-                          border: isWhite
-                            ? "2px solid black"
-                            : "2px solid white",
-                        }}
-                      ></div>
+                        className={`w-10 h-10 rounded-full border-2 transition-all duration-300 p-0.5 ${isSelected ? "border-brand scale-125 shadow-lg" : "border-transparent hover:scale-110"
+                          }`}
+                      >
+                        <div
+                          className="w-full h-full rounded-full border border-black/10"
+                          style={{ backgroundColor: color.toLowerCase() }}
+                        />
+                      </button>
                     );
                   })}
                 </div>
               </div>
             )}
 
-            {/* Quantity Selector */}
-            <div className="w-full">
-              <h2 className="text-lg font-medium dark:text-white">Quantity:</h2>
-              <div className="flex items-center gap-3 mt-2">
+            {/* Quantity Selector & Action */}
+            <div className="flex flex-col sm:flex-row gap-4">
+              <div className="flex items-center bg-gray-100 dark:bg-white/5 rounded-2xl p-1 shrink-0">
                 <button
                   onClick={decrementQuantity}
-                  className="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition-all duration-300"
+                  className="w-12 h-12 flex items-center justify-center text-xl font-bold hover:bg-white dark:hover:bg-white/10 rounded-xl transition-colors"
                   disabled={quantity === 1}
                 >
                   -
@@ -255,74 +245,46 @@ export default function ProductPage() {
                 <input
                   type="text"
                   value={quantity}
-                  onChange={(e) => {
-                    const value = parseInt(e.target.value, 10);
-                    if (value > 0) {
-                      setQuantity(value);
-                    }
-                  }}
-                  className="w-20 dark:text-black px-4 py-2 text-center border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
-                  min="1"
+                  readOnly
+                  className="w-12 text-center bg-transparent font-bold"
                 />
                 <button
                   onClick={incrementQuantity}
-                  className="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition-all duration-300"
+                  className="w-12 h-12 flex items-center justify-center text-xl font-bold hover:bg-white dark:hover:bg-white/10 rounded-xl transition-colors"
                 >
                   +
                 </button>
               </div>
+
+              <button
+                onClick={handleOrderNow}
+                className={`flex-grow h-14 flex items-center justify-center text-[15px] font-black uppercase tracking-[0.15em] rounded-2xl transition-all duration-300 ${product.isAvailable
+                  ? "bg-brand text-white hover:bg-brand-dark shadow-[0_10px_30px_rgba(248,3,18,0.3)] hover:scale-[1.02] active:scale-[0.98]"
+                  : "bg-gray-200 text-gray-500 cursor-not-allowed"
+                  }`}
+                disabled={!product.isAvailable}
+              >
+                {product.isAvailable ? "Order Now" : "Out of Stock"}
+              </button>
             </div>
 
-            {/* Order Now Button */}
-            <button
-              onClick={handleOrderNow}
-              className={`w-full flex items-center justify-center text-lg font-semibold py-3 rounded-lg shadow-lg transition-all duration-300 ${
-                product.isAvailable
-                  ? "bg-black text-white dark:bg-white dark:text-black hover:bg-white hover:border-black hover:text-black border border-black"
-                  : "bg-gray-400 text-gray-200 cursor-not-allowed"
-              }`}
-              disabled={!product.isAvailable}
-            >
-              {product.isAvailable ? "Order Now" : "Out of Stock"}
-            </button>
-
-            {/* Product Ratings */}
-            <div className="w-full flex items-center justify-center gap-3">
-              <Star className="text-yellow-300 fill-yellow-300" />
-              <p className="text-xl dark:text-white text-center font-[500]">
-                Premium Quality With Best Prices
-              </p>
-              <Star className="text-yellow-300 fill-yellow-300" />
-            </div>
-
-            {/* Share This Product */}
-            <div className="w-full">
-              <h2 className="text-lg dark:text-white font-semibold text-gray-800">
-                Share This Product:
-              </h2>
-              <div className="flex flex-wrap gap-4 mt-3">
-                <a
-                  href="https://www.instagram.com/drillshop.ma1?igsh=MWpwa3B5ZnJrZ2tubA=="
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-lg text-gray-700 hover:text-blue-600 transition-all duration-300"
-                >
-                  <Instagram size={24} className="dark:text-white" />
-                  <span className="hover:underline dark:text-white">
-                    Instagram
-                  </span>
-                </a>
-
-                <button
-                  onClick={handleCopyLink}
-                  className="flex items-center gap-2 text-lg text-gray-700 hover:text-blue-700 transition-all duration-300"
-                >
-                  <LinkIcon size={24} className="dark:text-white" />
-                  <span className="hover:underline dark:text-white">
-                    Copy Link
-                  </span>
-                </button>
+            {/* Trust Badges */}
+            <div className="pt-6 border-t border-gray-100 dark:border-white/10 flex flex-wrap gap-6 justify-center lg:justify-start">
+              <div className="flex items-center gap-2 text-xs font-bold text-gray-500 uppercase tracking-widest">
+                <Star size={14} className="text-brand fill-brand" />
+                Premium Quality
               </div>
+              <div className="flex items-center gap-2 text-xs font-bold text-gray-500 uppercase tracking-widest">
+                <Star size={14} className="text-brand fill-brand" />
+                Moroccan Brand
+              </div>
+            </div>
+
+            {/* Share */}
+            <div className="flex items-center gap-6 pt-4">
+              <span className="text-xs font-bold uppercase tracking-widest text-gray-400">Share:</span>
+              <a href="#" className="text-gray-400 hover:text-brand transition-colors"><Instagram size={20} /></a>
+              <button onClick={handleCopyLink} className="text-gray-400 hover:text-brand transition-colors"><LinkIcon size={20} /></button>
             </div>
           </div>
         </div>

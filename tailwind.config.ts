@@ -50,13 +50,21 @@ export default {
   				'3': 'hsl(var(--chart-3))',
   				'4': 'hsl(var(--chart-4))',
   				'5': 'hsl(var(--chart-5))'
-  			}
+  			},
+        brand: {
+          DEFAULT: '#F80312',
+          foreground: '#FFFFFF',
+          dark: '#D0020F',
+        }
   		},
   		borderRadius: {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
   			sm: 'calc(var(--radius) - 4px)'
-  		}
+  		},
+      transitionDuration: {
+        '400': '400ms',
+      }
   	}
   },
   plugins: [require("tailwindcss-animate")],

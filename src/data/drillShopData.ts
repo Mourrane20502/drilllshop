@@ -127,6 +127,13 @@ import polo from "../app/assets/tricot.png";
 import polo2 from "../app/assets/tricot2.png";
 import polo3 from "../app/assets/tricot3.png";
 import youssef from "../app/assets/youssef.jpg";
+import jacketCorteiz1 from "../app/assets/jacketcorteiz1.png"
+import jacketCorteiz2 from "../app/assets/jacketcorteiz2.png"
+import jacketCorteiz3 from "../app/assets/jacketcorteiz3.png"
+import jacketCorteiz4 from "../app/assets/jacketcorteiz4.png"
+import jacketCorteiz5 from "../app/assets/jacketcorteiz5.png"
+import jacketCorteiz6 from "../app/assets/jacketcorteiz6.png"
+
 
 // export const ProductPage = [
 //   {id : 1 , name:"Nike Jackets", price: 300, description: "This is a jacket that will keep you warm in the winter and cool in the summer.", image: Image, hoverImage: hoverImage},
@@ -708,6 +715,30 @@ export const ProductsList: Product[] = [
     taille: ["Noir Nike", "Noir North Face", "Vert militaire nike"],
     availableSizes: ["Noir Nike", "Noir North Face", "Vert militaire nike"],
     category: "Accessories",
+    lastDrop: true,
+    bestSelling: true,
+  },
+  {
+    id: 33,
+    name: "Corteiz Puffer Jacket",
+    price: 349,
+    description:
+      "Designed  for a snug fit, breathability, and everyday versatility.",
+    image: jacketCorteiz1,
+    hoverImage: jacketCorteiz5,
+    ProductImages: [
+      jacketCorteiz1,
+      jacketCorteiz2,
+      jacketCorteiz3,
+      jacketCorteiz4,
+      jacketCorteiz5,
+      jacketCorteiz6,
+    ],
+    href: `/product/${generateSlug("Corteiz Puffer Jacket")}`,
+    isAvailable: true,
+    taille: ["All sizes"],
+    availableSizes: ["All sizes"],
+    category: "Clothes",
     lastDrop: true,
     bestSelling: true,
   },
