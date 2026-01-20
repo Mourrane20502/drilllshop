@@ -7,7 +7,6 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { FaWhatsapp } from "react-icons/fa";
 import CollabsSection from "./_components/CollabsSection";
 import FeedbackSection from "./_components/FeedbackSlider";
 import BgSection from "./assets/bgsection.png";
