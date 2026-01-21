@@ -666,7 +666,7 @@ export const ProductsList: Product[] = [
     availableSizes: ["Nike", "Corteiz", "Synaworld"],
     category: "Accessories",
     lastDrop: false,
-    bestSelling: false,
+    bestSelling: true,
   },
   {
     id: 31,
@@ -715,8 +715,8 @@ export const ProductsList: Product[] = [
     taille: ["Noir Nike", "Noir North Face", "Vert militaire nike"],
     availableSizes: ["Noir Nike", "Noir North Face", "Vert militaire nike"],
     category: "Accessories",
-    lastDrop: true,
-    bestSelling: true,
+    lastDrop: false,
+    bestSelling: false,
   },
   {
     id: 33,
