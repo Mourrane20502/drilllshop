@@ -53,7 +53,7 @@ const MarqueeRow = ({ items, reverse = false, speed = 50 }: { items: typeof feed
             </div>
 
             <p className="text-base md:text-lg text-white/80 font-medium leading-relaxed italic whitespace-normal line-clamp-3">
-              "{item.comment}"
+              &quot;{item.comment}&quot;
             </p>
 
             <div className="absolute bottom-6 right-8 opacity-[0.03] group-hover:opacity-10 transition-opacity">

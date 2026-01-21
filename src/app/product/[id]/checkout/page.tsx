@@ -96,7 +96,7 @@ export default function CheckoutPage() {
         toast.error("Something went wrong!");
         setIsProcessing(false);
       }
-    } catch (error) {
+    } catch {
       toast.error("Network error!");
       setIsProcessing(false);
     }

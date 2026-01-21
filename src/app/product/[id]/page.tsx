@@ -1,6 +1,6 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import { Product, ProductsList } from "@/data/drillShopData";
+import { ProductsList } from "@/data/drillShopData";
 import { ChevronLeft, Instagram, Link as LinkIcon, Star, ShieldCheck, Truck, RefreshCw, Minus, Plus } from "lucide-react";
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
@@ -31,7 +31,6 @@ export default function ProductPage() {
   }, [product]);
 
   const getRandomProducts = () => {
-    const randomProducts: Product[] = [];
     const shuffled = [...ProductsList].sort(() => 0.5 - Math.random());
     return shuffled.filter(p => p.href !== `/product/${id}`).slice(0, 4);
   };
@@ -117,7 +116,7 @@ export default function ProductPage() {
             <div className="relative aspect-square w-full bg-card rounded-[2rem] overflow-hidden border border-border shadow-2xl">
               <AnimatePresence mode="wait">
                 <motion.div
-                  key={typeof mainImage === 'string' ? mainImage : (mainImage as any).src}
+                  key={typeof mainImage === 'string' ? mainImage : (mainImage as StaticImageData).src}
                   initial={{ opacity: 0, scale: 1.1 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.95 }}

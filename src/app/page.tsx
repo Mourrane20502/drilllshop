@@ -2,7 +2,7 @@
 import ProductsCard from "@/app/_components/ProductsCard";
 import { Button } from "@/components/ui/button";
 import { ProductsList } from "@/data/drillShopData";
-import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { ChevronRight, Play, ShieldCheck, Truck, Zap } from "lucide-react";
 import Head from "next/head";
 import Image from "next/image";
@@ -388,7 +388,7 @@ export default function Home() {
               </div>
               <h3 className="text-3xl font-black uppercase tracking-tighter mb-2">No drip found</h3>
               <p className="text-muted-foreground font-medium max-w-md">
-                Try a different category or adjust your search term. We're constantly dropping new heat, so stay tuned!
+                Try a different category or adjust your search term. We&apos;re constantly dropping new heat, so stay tuned!
               </p>
               <Button
                 onClick={() => {

@@ -34,7 +34,7 @@ const faqData = [
 const FAQItem = ({ question, answer, icon, isOpen, onClick }: {
     question: string,
     answer: string,
-    icon: any,
+    icon: React.ReactNode,
     isOpen: boolean,
     onClick: () => void
 }) => {
